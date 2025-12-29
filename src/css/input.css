@@ -103,6 +103,7 @@
     @apply rounded-lg overflow-hidden transition-all duration-300;
     background-color: #2f3136;
     border: 1px solid #40444b;
+    padding: 1rem;
   }
 
   .document-card:hover {
