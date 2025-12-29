@@ -9,9 +9,15 @@
       "slug": "toan-roi-rac",
       "driveId": "1LVkS0ctxyT_ydVwVmHY7IWY4EL71o1NM",
       "description": "Các thuật ngữ trong lý thuyết đồ thị",
-      "tags": ["toan-roi-rac", "dai-hoc", "ly-thuyet", "do-thi", "to-hop"],
-      "fileSize": "255 KB",
-      "pages": 23,
+      "tags": [
+        "toan-roi-rac",
+        "dai-hoc",
+        "ly-thuyet",
+        "do-thi",
+        "to-hop"
+      ],
+      "fileSize": "255.4 KB",
+      "pages": 5,
       "uploadDate": "28/12/2025",
       "author": "Bùi Quang Chiến",
       "thumbnail": "https://drive.google.com/thumbnail?id=1LVkS0ctxyT_ydVwVmHY7IWY4EL71o1NM&sz=w400"
@@ -25,9 +31,14 @@
       "slug": "giai-tich-1-2",
       "driveId": "19-aYjiEcgHn5uPobkBwJmWzSC7jBxx1w",
       "description": "Tài liệu tóm tắt kiến thức Giải tích 1 và 2 dành cho sinh viên đại học",
-      "tags": ["daihoc", "ly-thuyet","tomtat", "thptqg"],
-      "fileSize": "5.8 MB",
-      "pages": 120,
+      "tags": [
+        "daihoc",
+        "ly-thuyet",
+        "tomtat",
+        "thptqg"
+      ],
+      "fileSize": "773.5 KB",
+      "pages": 16,
       "uploadDate": "28/12/2025",
       "author": "Bùi Quang Chiến",
       "thumbnail": "https://drive.google.com/thumbnail?id=19-aYjiEcgHn5uPobkBwJmWzSC7jBxx1w&sz=w400"

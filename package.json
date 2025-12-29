@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "css:watch": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --watch",
-    "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify"
+    "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify",
+    "update:metadata": "node scripts/update-metadata.js"
   },
   "keywords": [
     "education",
