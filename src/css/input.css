@@ -14,7 +14,7 @@
   /* Body base styles */
   body {
     @apply text-white font-sans antialiased;
-    background: linear-gradient(135deg, #1e1b4b 0%, #6b21a8 25%, #db2777 50%, #0891b2 100%);
+    background: linear-gradient(135deg, #06005b 0%, #6b21a8 25%, #db2777 50%, #0006bf 100%);
     font-size: 16px;
     line-height: 1.75;
   }
@@ -46,7 +46,7 @@
   /* Primary Button (nút gradient tím hồng) */
   .btn-primary {
     @apply px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300;
-    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #0800ff 0%, #487cec 100%);
     box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
   }
 
@@ -98,8 +98,8 @@
   }
 
   .card:hover {
-    border-color: #8b5cf6;
-    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+    border-color: #444444;
+    box-shadow: 0 8px 24px #2596be;
   }
 
   /* Document Card (card tài liệu đặc biệt) */
@@ -237,19 +237,19 @@
   /* Filter Button (nút lọc) */
   .filter-btn {
     @apply px-4 py-2 rounded-lg transition-all duration-150;
-    background-color: #2f3136;
+    background-color: #6B57FF;
     color: #ffffff;
-    border: 1px solid #40444b;
+    border: 1px solid #beb6ff;
   }
 
   .filter-btn:hover {
-    background-color: #40444b;
+    background-color: #577eff;
     color: #ffffff;
   }
 
   /* Filter active state */
   .filter-btn.active {
-    background-color: #5865F2;
+    background-color: #ffffff;
     color: white;
     border-color: #5865F2;
   }
@@ -451,7 +451,7 @@
 
 /* Be Vietnam Pro - Heading & Body */
 .font-math {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: 'Be Vietnam Pro';
 }
 
 /* Fira Code - Monospace */
