@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
+    <!-- Security Headers (CSP - Content Security Policy) -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' https://drive.google.com data:;
+        font-src 'self' https://fonts.gstatic.com;
+        connect-src 'self' https://bravemath-proxy.bravechien2209.workers.dev https://www.google-analytics.com;
+        frame-ancestors 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+    
     <!-- SEO Meta Tags -->
     <title>Bravemath - Tải tài liệu và đề thi môn Toán miễn phí</title>
     <meta name="description" content="Tải tài liệu Toán THPT và Đại học miễn phí. Đề thi, chuyên đề, công thức, giải tích, XSTK, toán rời rạc. Cập nhật liên tục, tải nhanh.">

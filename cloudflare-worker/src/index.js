@@ -3,6 +3,43 @@
  * Proxy for Google Drive files to hide direct links
  */
 
+// Rate limiting storage (in-memory, resets on Worker restart)
+const rateLimiter = new Map();
+
+// Rate limit config
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 10; // 10 requests per minute per IP
+
+// Validate Google Drive ID format (33 characters, alphanumeric + dash/underscore)
+function isValidDriveId(driveId) {
+  // Google Drive IDs are typically 33 characters (can be 28-44)
+  // Format: alphanumeric, dash, underscore
+  return /^[a-zA-Z0-9_-]{28,44}$/.test(driveId);
+}
+
+// Check rate limit for IP
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const requests = rateLimiter.get(ip) || [];
+  
+  // Remove old requests outside time window
+  const recentRequests = requests.filter(timestamp => now - timestamp < RATE_LIMIT_WINDOW);
+  
+  // Check if over limit
+  if (recentRequests.length >= RATE_LIMIT_MAX_REQUESTS) {
+    return { allowed: false, remaining: 0 };
+  }
+  
+  // Add current request
+  recentRequests.push(now);
+  rateLimiter.set(ip, recentRequests);
+  
+  return { 
+    allowed: true, 
+    remaining: RATE_LIMIT_MAX_REQUESTS - recentRequests.length 
+  };
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -19,6 +56,24 @@ export default {
       return new Response(null, { headers: corsHeaders });
     }
 
+    // Get client IP (Cloudflare provides this)
+    const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+    
+    // Check rate limit
+    const rateLimit = checkRateLimit(clientIP);
+    if (!rateLimit.allowed) {
+      return new Response('Too many requests. Please try again later.', {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          'Retry-After': '60',
+          'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS,
+          'X-RateLimit-Remaining': '0',
+          'X-RateLimit-Reset': Date.now() + RATE_LIMIT_WINDOW
+        }
+      });
+    }
+
     // Route: /download/{driveId}
     if (url.pathname.startsWith('/download/')) {
       const driveId = url.pathname.split('/download/')[1];
@@ -27,6 +82,14 @@ export default {
         return new Response('Missing Drive ID', { 
           status: 400,
           headers: corsHeaders 
+        });
+      }
+
+      // ✅ Validate Drive ID format (security fix)
+      if (!isValidDriveId(driveId)) {
+        return new Response('Invalid Drive ID format', {
+          status: 400,
+          headers: corsHeaders
         });
       }
 
@@ -73,6 +136,14 @@ export default {
         return new Response('Missing Drive ID', { 
           status: 400,
           headers: corsHeaders 
+        });
+      }
+
+      // ✅ Validate Drive ID format (security fix)
+      if (!isValidDriveId(driveId)) {
+        return new Response('Invalid Drive ID format', {
+          status: 400,
+          headers: corsHeaders
         });
       }
 
