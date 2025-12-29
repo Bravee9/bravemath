@@ -14,7 +14,7 @@
   /* Body base styles */
   body {
     @apply text-white font-sans antialiased;
-    background: linear-gradient(135deg, #06005b 0%, #6b21a8 25%, #db2777 50%, #0006bf 100%);
+    background: linear-gradient(135deg, #04003d 0%, #2c21a8 25%, #276cdb 50%, #006cbf 100%);
     font-size: 16px;
     line-height: 1.75;
   }
