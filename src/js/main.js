@@ -124,7 +124,7 @@ function renderDocuments(documents) {
     
     // Render mỗi document
     documents.forEach(doc => {
-            const card = createDocumentCard(doc, index);
+        const card = createDocumentCard(doc);
         grid.appendChild(card);
     });
 }
