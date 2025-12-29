@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "css:watch": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --watch",
     "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify",
-    "update:metadata": "node scripts/update-metadata.js"
+    "update:metadata": "node scripts/update-metadata.js",
+    "add:document": "node scripts/add-document.js"
   },
   "keywords": [
     "education",
