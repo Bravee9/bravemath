@@ -191,9 +191,38 @@
 
             <!-- Documents Grid với scroll - 3 cột cho desktop -->
             <div class="max-h-[700px] overflow-y-auto px-2">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="documents-grid">
-                    <!-- Document Card 1 -->
-                    <div class="document-card">
+                <!-- Loading skeleton -->
+                <div id="loading-skeleton" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="document-card animate-pulse">
+                        <div class="h-48 bg-slate-700 rounded-lg mb-4"></div>
+                        <div class="p-6">
+                            <div class="h-6 bg-slate-700 rounded mb-4"></div>
+                            <div class="h-4 bg-slate-700 rounded mb-2"></div>
+                            <div class="h-4 bg-slate-700 rounded w-3/4"></div>
+                        </div>
+                    </div>
+                    <div class="document-card animate-pulse">
+                        <div class="h-48 bg-slate-700 rounded-lg mb-4"></div>
+                        <div class="p-6">
+                            <div class="h-6 bg-slate-700 rounded mb-4"></div>
+                            <div class="h-4 bg-slate-700 rounded mb-2"></div>
+                            <div class="h-4 bg-slate-700 rounded w-3/4"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Documents grid (populated by JS) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden" id="documents-grid">
+                    <!-- JS sẽ thêm documents vào đây -->
+                </div>
+                
+                <!-- Empty state -->
+                <div id="empty-state" class="hidden text-center py-16">
+                    <p class="text-slate-400 text-lg">Không tìm thấy tài liệu nào.</p>
+                </div>
+            </div>
+        </div>
+    </section>
                         <div class="relative h-48">
                             <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(to bottom right, #5865F2, #EB459E);">
                                 <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
