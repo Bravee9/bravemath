@@ -159,7 +159,10 @@ function createDocumentCard(doc) {
     const card = document.createElement('div');
     card.className = 'document-card';
     
-    const thumbnail = doc.thumbnail || '/assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg';
+    // Thumbnail with Vite base path
+    const basePath = import.meta.env.BASE_URL || '/';
+    const fallbackImg = `${basePath}assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg`;
+    const thumbnail = doc.thumbnail || fallbackImg;
     
     const categoryMap = {
         'ly-thuyet': 'Lý thuyết',
@@ -186,7 +189,7 @@ function createDocumentCard(doc) {
                 src="${escapeHtml(thumbnail)}" 
                 alt="${safeTitle}"
                 class="w-full aspect-[210/297] object-cover rounded-lg mb-3 cursor-pointer hover:opacity-80 transition-opacity"
-                onerror="this.src='/assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg'"
+                onerror="this.onerror=null; this.src='${fallbackImg}'"
             >
             <div class="flex flex-wrap gap-2 mb-2">
                 <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">
