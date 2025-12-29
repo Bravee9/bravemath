@@ -83,11 +83,50 @@
       "uploadDate": "29/12/2025",
       "author": "Bùi Quang Chiến",
       "thumbnail": "https://drive.google.com/thumbnail?id=1pLrr0cVOnbPsrY_IGKTE0N9fR0mlXKEf&sz=w400"
+    },
+    {
+      "id": "doc-005",
+      "title": "Bài tập Giải tích 1",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "bai-tap",
+      "slug": "bai-tap-giai-tich-1",
+      "driveId": "1sZQLReaFcVOOqscefW0TcYmqT8WGhVOp",
+      "description": "Bài tập và lý thuyết (có lời giải) môn Giải tích 1",
+      "tags": [
+        "giai-tich",
+        "dai-hoc",
+        "luyenn-tap-giai-tich"
+      ],
+      "fileSize": "1.4 MB",
+      "pages": 28,
+      "uploadDate": "30/12/2025",
+      "author": "Không rõ",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1sZQLReaFcVOOqscefW0TcYmqT8WGhVOp&sz=w400"
+    },
+    {
+      "id": "doc-006",
+      "title": "Công thức Leibnitz và bài tập (Eureka-Uni)",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "bai-tap",
+      "slug": "cong-thuc-leibnitz-va-bai-tap-eureka-uni",
+      "driveId": "1e2xWILhDxT22J7iI8ne72mVixETbjmzv",
+      "description": "Bài tập và công thức Leibnitz cho Giải tích 1",
+      "tags": [
+        "giai-tich",
+        "leibnitz"
+      ],
+      "fileSize": "384.1 KB",
+      "pages": 5,
+      "uploadDate": "30/12/2025",
+      "author": "Eureka-Uni",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1e2xWILhDxT22J7iI8ne72mVixETbjmzv&sz=w400"
     }
   ],
   "metadata": {
-    "lastUpdated": "2025-12-29T14:41:29.849Z",
-    "totalDocuments": 4,
+    "lastUpdated": "2025-12-29T20:06:08.450Z",
+    "totalDocuments": 6,
     "version": "1.0.0"
   },
   "categories": {
