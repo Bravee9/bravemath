@@ -27,7 +27,9 @@ npm run add:document
    - Category (Lý thuyết/Đề thi/Bài tập/Giải chi tiết)
    - Môn học (toan, ly, hoa...)
    - Tác giả
-   - Tags (phân cách bằng dấu phẩy)
+   - **Tags** (phân cách bằng dấu phẩy, VD: `Giải tích, Đại học, Tóm tắt`)
+     - ✅ Viết có dấu hoặc không dấu đều được
+     - ✅ Tự động convert sang kebab-case: `Giải tích` → `giai-tich`
    - **Số trang (nhập thủ công)**
 
 **Tự động**:
@@ -35,6 +37,7 @@ npm run add:document
 - ✅ Lấy file size từ Google Drive (HEAD request)
 - ✅ Tạo thumbnail URL
 - ✅ Tạo slug từ tiêu đề (Vietnamese → ASCII)
+- ✅ **Convert tags sang kebab-case** (giải-tich, dai-hoc, tom-tat...)
 - ✅ Thêm vào documents.json
 - ✅ Cập nhật metadata (totalDocuments, lastUpdated)
 

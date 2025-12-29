@@ -147,7 +147,13 @@ async function addDocument() {
     
     const subject = await question('📚 Môn học (vd: toan, ly, hoa): ') || 'toan';
     const author = await question('👤 Tác giả: ') || 'Bùi Quang Chiến';
-    const tags = await question('🏷️  Tags (phân cách bằng dấu phẩy): ');
+    const tagsInput = await question('🏷️  Tags (phân cách bằng dấu phẩy, vd: Giải tích, Đại học): ');
+    
+    // Convert tags sang kebab-case để consistent
+    const tags = tagsInput
+      .split(',')
+      .map(t => createSlug(t.trim()))  // Sử dụng hàm createSlug() có sẵn
+      .filter(t => t);
     
     // 2. Tự động lấy metadata từ Google Drive (chỉ size, không có pageCount API)
     console.log('\n⏳ Đang lấy file size từ Google Drive...');
@@ -172,7 +178,7 @@ async function addDocument() {
       slug: slug,
       driveId: driveId.trim(),
       description: description.trim(),
-      tags: tags.split(',').map(t => t.trim()).filter(t => t),
+      tags: tags,  // Đã convert sang kebab-case
       fileSize: metadata.size,
       pages: pages,
       uploadDate: uploadDate,
@@ -197,6 +203,7 @@ async function addDocument() {
     console.log(`📄 ID: ${newDoc.id}`);
     console.log(`📖 Tiêu đề: ${newDoc.title}`);
     console.log(`🔗 Drive ID: ${newDoc.driveId}`);
+    console.log(`🏷️  Tags: ${newDoc.tags.join(', ')}`);
     console.log(`📊 Size: ${newDoc.fileSize} | Pages: ${newDoc.pages} (manual input)`);
     console.log('\n💡 Next steps:');
     console.log('   1. git add data/documents.json');
