@@ -14,9 +14,9 @@
   /* Body base styles */
   body {
     @apply text-white font-sans antialiased;
-    background-color: #000000;
+    background: linear-gradient(135deg, #1e1b4b 0%, #6b21a8 25%, #db2777 50%, #0891b2 100%);
     font-size: 16px;
-    line-height: 2;
+    line-height: 1.75;
   }
 
   /* Headings base styles */
@@ -43,14 +43,17 @@
   
   /* === BUTTONS === */
   
-  /* Primary Button (nút xanh chính) */
+  /* Primary Button (nút gradient tím hồng) */
   .btn-primary {
-    @apply px-6 py-3 text-white font-medium rounded-lg transition-all duration-150;
-    background-color: #0000ff;
+    @apply px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300;
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
   }
 
   .btn-primary:hover {
-    background-color: #00bbff;
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
   }
 
   .btn-primary:active {
@@ -89,38 +92,42 @@
   
   /* Card cơ bản (khung chứa nội dung) */
   .card {
-    @apply rounded-lg p-6 transition-all duration-150;
-    background-color: #2f3136;
-    border: 1px solid #40444b;
+    @apply rounded-lg p-6 transition-all duration-300;
+    background-color: #0B0B0F;
+    border: 1px solid #1e293b;
   }
 
   .card:hover {
-    border-color: #5865F2;
+    border-color: #8b5cf6;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
   }
 
   /* Document Card (card tài liệu đặc biệt) */
   .document-card {
     @apply rounded-lg overflow-hidden transition-all duration-300 flex flex-col;
-    background-color: #2f3136;
-    border: 1px solid #40444b;
+    background-color: #0B0B0F;
+    border: 2px solid #1e293b;
     padding: 0.75rem;
     height: 100%;
     min-height: 420px;
   }
 
   .document-card:hover {
-    border-color: #5865F2;
+    border-color: #8b5cf6;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.3);
   }
 
   /* Featured Card (card nổi bật lớn hơn) */
   .featured-card {
     @apply rounded-lg overflow-hidden transition-all duration-300;
-    background-color: #2f3136;
-    border: 1px solid #40444b;
+    background-color: #0B0B0F;
+    border: 2px solid #1e293b;
   }
 
   .featured-card:hover {
-    border-color: #5865F2;
+    border-color: #ec4899;
+    box-shadow: 0 12px 32px rgba(236, 72, 153, 0.3);
   }
 
   /* === BADGES === */
@@ -169,22 +176,23 @@
   
   /* Input Field (ô nhập text) */
   .input-field {
-    @apply w-full px-4 py-3 rounded-lg text-white transition-all duration-150;
-    background-color: #40444b;
-    border: 1px solid #202225;
+    @apply w-full px-4 py-3 rounded-lg text-white transition-all duration-300;
+    background-color: #0B0B0F;
+    border: 2px solid #1e293b;
   }
 
   .input-field::placeholder {
-    color: #72767d;
+    color: #64748b;
   }
 
   .input-field:hover {
-    border-color: #202225;
+    border-color: #334155;
   }
 
   .input-field:focus {
     outline: none;
-    border-color: #5865F2;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
   }
 
   /* Select Field (dropdown) */
@@ -202,19 +210,19 @@
   /* Section Title với gradient */
   .section-title {
     @apply text-3xl md:text-4xl font-bold font-math mb-4 bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, #000000, #003cff, rgb(0, 255, 251));
+    background-image: linear-gradient(135deg, #8b5cf6, #ec4899, #0891b2);
   }
 
   /* Section Title lớn hơn */
   .section-title-lg {
     @apply text-4xl md:text-6xl font-bold font-math mb-6 bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, #000000, #003cff, white);
+    background-image: linear-gradient(135deg, #a78bfa, #f472b6, #06b6d4);
   }
 
   /* Underline cho title */
   .title-underline {
     @apply w-20 h-1 mx-auto;
-    background-image: linear-gradient(to right, #1E40AF, #06B6D4);
+    background-image: linear-gradient(to right, #8b5cf6, #ec4899);
   }
 
   /* === CONTAINERS === */
@@ -299,9 +307,14 @@
 
   /* === GRADIENTS === */
   
-  /* Gradient Background - Hero */
+  /* Gradient Background - Hero (JetBrains Kotlin style) */
   .gradient-hero {
-    background: linear-gradient(to bottom, #000000 36%, #000dff);
+    background: linear-gradient(135deg, 
+      #6b21a8 0%,   /* Deep Purple */
+      #8b5cf6 25%,  /* Purple */
+      #ec4899 50%,  /* Pink */
+      #0891b2 100%  /* Cyan */
+    );
   }
 
   /* Gradient Card Background */
