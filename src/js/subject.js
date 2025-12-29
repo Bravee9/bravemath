@@ -162,39 +162,41 @@ function createDocumentCard(doc) {
     };
     
     card.innerHTML = `
-        <div class="mb-4">
-            <img 
-                src="${thumbnail}" 
-                alt="${doc.title}"
-                class="w-full aspect-[210/297] object-cover rounded-lg mb-3 cursor-pointer hover:opacity-80 transition-opacity"
-                onerror="this.src='/assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg'"
-            >
-            <div class="flex flex-wrap gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">
-                    ${levelMap[doc.level] || doc.level}
-                </span>
-                <span class="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs rounded">
-                    ${categoryMap[doc.category] || doc.category}
-                </span>
+        <div class="p-4">
+            <div class="mb-4">
+                <img 
+                    src="${thumbnail}" 
+                    alt="${doc.title}"
+                    class="w-full aspect-[210/297] object-cover rounded-lg mb-3 cursor-pointer hover:opacity-80 transition-opacity"
+                    onerror="this.src='/assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg'"
+                >
+                <div class="flex flex-wrap gap-2 mb-2">
+                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">
+                        ${levelMap[doc.level] || doc.level}
+                    </span>
+                    <span class="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs rounded">
+                        ${categoryMap[doc.category] || doc.category}
+                    </span>
+                </div>
             </div>
+            <h3 class="font-math text-lg font-semibold text-white mb-3 line-clamp-2">
+                ${doc.title}
+            </h3>
+            <p class="text-slate-400 text-sm mb-4 line-clamp-2">
+                ${doc.description || ''}
+            </p>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-4">
+                <span>${doc.pages || 0} trang</span>
+                <span>${doc.fileSize || ''}</span>
+            </div>
+            <button 
+                class="btn-primary w-full download-btn" 
+                data-drive-id="${doc.driveId}"
+                data-filename="${doc.title.replace(/[^a-z0-9]/gi, '_')}.pdf"
+            >
+                Tải xuống
+            </button>
         </div>
-        <h3 class="font-math text-lg font-semibold text-white mb-2 line-clamp-2">
-            ${doc.title}
-        </h3>
-        <p class="text-slate-400 text-sm mb-3 line-clamp-2">
-            ${doc.description || ''}
-        </p>
-        <div class="flex items-center justify-between text-xs text-slate-500 mb-4">
-            <span>${doc.pages || 0} trang</span>
-            <span>${doc.fileSize || ''}</span>
-        </div>
-        <button 
-            class="btn-primary w-full download-btn" 
-            data-drive-id="${doc.driveId}"
-            data-filename="${doc.title.replace(/[^a-z0-9]/gi, '_')}.pdf"
-        >
-            Tải xuống
-        </button>
     `;
     
     // Thêm event listener cho thumbnail (preview)
