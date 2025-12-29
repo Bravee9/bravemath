@@ -15,8 +15,8 @@
   body {
     @apply text-white font-sans antialiased;
     background: linear-gradient(135deg, #04003d 0%, #2c21a8 25%, #276cdb 50%, #006cbf 100%);
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 17px;
+    line-height: 1.95;
   }
 
   /* Headings base styles */
@@ -93,12 +93,12 @@
   /* Card cơ bản (khung chứa nội dung) */
   .card {
     @apply rounded-lg p-6 transition-all duration-300;
-    background-color: #0B0B0F;
-    border: 1px solid #1e293b;
+    background-color: #3b3b50;
+    border: 1px solid #5c7678;
   }
 
   .card:hover {
-    border-color: #444444;
+    border-color: #7f7f7f;
     box-shadow: 0 8px 24px #2596be;
   }
 
