@@ -154,6 +154,10 @@ async function addDocument() {
     const metadata = await getDriveMetadata(driveId);
     console.log(`✅ File size: ${metadata.size}`);
     
+    // 3. Nhập số trang thủ công (Google Drive API không cung cấp)
+    const pagesInput = await question('📄 Số trang (mở PDF xem): ');
+    const pages = parseInt(pagesInput) || 1;
+    
     // 4. Tạo document object
     const newId = await generateNewId();
     const slug = createSlug(title);
@@ -170,11 +174,7 @@ async function addDocument() {
       description: description.trim(),
       tags: tags.split(',').map(t => t.trim()).filter(t => t),
       fileSize: metadata.size,
-      pages: pages,  // User input, không phải ước lượng),
-      description: description.trim(),
-      tags: tags.split(',').map(t => t.trim()).filter(t => t),
-      fileSize: metadata.size,
-      pages: metadata.pages,
+      pages: pages,
       uploadDate: uploadDate,
       author: author.trim(),
       thumbnail: `https://drive.google.com/thumbnail?id=${driveId.trim()}&sz=w400`
