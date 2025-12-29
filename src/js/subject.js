@@ -184,39 +184,41 @@ function createDocumentCard(doc) {
     const safeFileSize = escapeHtml(doc.fileSize || '');
     
     card.innerHTML = `
-        <div class="mb-4">
+        <div class="mb-3">
             <img 
                 src="${escapeHtml(thumbnail)}" 
                 alt="${safeTitle}"
-                class="w-full aspect-[210/297] object-cover rounded-lg mb-3 cursor-pointer hover:opacity-80 transition-opacity"
+                class="w-full aspect-[4/3] object-cover rounded-lg mb-2 cursor-pointer hover:opacity-80 transition-opacity"
                 onerror="this.onerror=null; this.src='${fallbackImg}'"
             >
-            <div class="flex flex-wrap gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">
+            <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded">
                     ${safeLevel}
                 </span>
-                <span class="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs rounded">
+                <span class="px-2 py-0.5 bg-slate-700/50 text-slate-300 text-xs rounded">
                     ${safeCategory}
                 </span>
             </div>
         </div>
-        <h3 class="font-math text-lg font-semibold text-white mb-3 line-clamp-2">
-            ${safeTitle}
-        </h3>
-        <p class="text-slate-400 text-sm mb-4 line-clamp-2">
-            ${safeDescription}
-        </p>
-        <div class="flex items-center justify-between text-xs text-slate-500 mb-4">
-            <span>${doc.pages || 0} trang</span>
-            <span>${safeFileSize}</span>
+        <div class="flex-1 flex flex-col">
+            <h3 class="font-math text-base font-semibold text-white mb-2 line-clamp-2">
+                ${safeTitle}
+            </h3>
+            <p class="text-slate-400 text-xs mb-3 line-clamp-2 flex-1">
+                ${safeDescription}
+            </p>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-3">
+                <span>${doc.pages || 0} trang</span>
+                <span>${safeFileSize}</span>
+            </div>
+            <button 
+                class="btn-primary w-full download-btn text-sm py-2" 
+                data-drive-id="${escapeHtml(doc.driveId)}"
+                data-filename="${escapeHtml(doc.title.replace(/[^a-z0-9]/gi, '_'))}.pdf"
+            >
+                Tải xuống
+            </button>
         </div>
-        <button 
-            class="btn-primary w-full download-btn" 
-            data-drive-id="${escapeHtml(doc.driveId)}"
-            data-filename="${escapeHtml(doc.title.replace(/[^a-z0-9]/gi, '_'))}.pdf"
-        >
-            Tải xuống
-        </button>
     `;
     
     // Thêm event listener cho thumbnail (preview)

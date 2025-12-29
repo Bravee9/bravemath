@@ -100,10 +100,12 @@
 
   /* Document Card (card tài liệu đặc biệt) */
   .document-card {
-    @apply rounded-lg overflow-hidden transition-all duration-300;
+    @apply rounded-lg overflow-hidden transition-all duration-300 flex flex-col;
     background-color: #2f3136;
     border: 1px solid #40444b;
-    padding: 1rem;
+    padding: 0.75rem;
+    height: 100%;
+    min-height: 420px;
   }
 
   .document-card:hover {

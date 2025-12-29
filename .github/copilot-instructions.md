@@ -12,6 +12,76 @@
 
 ---
 
+## 🚨 CRITICAL SECURITY & DATA INTEGRITY
+
+### **1. CSP Configuration (Content Security Policy)**
+
+**CRITICAL**: CSP trong `src/pages/index.html` phải allow Google Drive thumbnails:
+
+```html
+<!-- ✅ CORRECT - Wildcard for Google domains -->
+<meta http-equiv="Content-Security-Policy" content="
+    img-src 'self' https://*.google.com https://*.googleusercontent.com data: blob:;
+">
+
+<!-- ❌ WRONG - Blocks thumbnails -->
+<meta http-equiv="Content-Security-Policy" content="
+    img-src 'self' https://drive.google.com data:;
+">
+```
+
+### **2. Duplicate Prevention (Data Integrity)**
+
+**CRITICAL**: `scripts/add-document.js` PHẢI kiểm tra duplicate:
+
+```javascript
+// ✅ Kiểm tra Drive ID trùng (BLOCKING)
+const duplicateDoc = existingData.documents.find(
+  doc => doc.driveId === driveId.trim()
+);
+if (duplicateDoc) {
+  console.log('❌ TÀI LIỆU ĐÃ TỒN TẠI');
+  return; // Block duplicate Drive ID
+}
+
+// ✅ Kiểm tra Title trùng (WARNING)
+const duplicateTitle = existingData.documents.find(
+  doc => doc.title.toLowerCase().trim() === title.toLowerCase().trim()
+);
+if (duplicateTitle) {
+  const confirm = await question('Tiếp tục? (y/n): ');
+  if (confirm !== 'y') return;
+}
+```
+
+### **3. Path Resolution (Vite Base URL)**
+
+**CRITICAL**: Luôn dùng `import.meta.env.BASE_URL` cho paths:
+
+```javascript
+// ✅ CORRECT - Dynamic base path
+const basePath = import.meta.env.BASE_URL || '/';
+const fallbackImg = `${basePath}assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg`;
+
+// ❌ WRONG - Hardcoded absolute path (fails on GitHub Pages)
+const fallbackImg = '/assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg';
+```
+
+### **4. Vietnamese Filename Sanitization**
+
+**CRITICAL**: Download filenames PHẢI sanitize Vietnamese chars:
+
+```javascript
+// In api.js - sanitizeFilename() function
+const vietnameseMap = {
+  'à': 'a', 'á': 'a', 'đ': 'd', 'ư': 'u', ... // 45 entries
+};
+// Add "-bravemath" suffix before extension
+return `${name}-bravemath${ext}`;
+```
+
+---
+
 ## 🏗️ Architecture & Design Patterns
 
 ### **1. Module Pattern (ES6 Modules)**
@@ -287,6 +357,17 @@ npm run css:watch      # Watch Tailwind CSS changes
 npm run dev            # Start Vite dev server (port 3000)
 ```
 
+### **Add New Document (Automated)**
+```bash
+npm run add:document   # Interactive CLI với duplicate detection
+# Script tự động:
+# - Check duplicate driveId (blocking)
+# - Check duplicate title (warning)
+# - Fetch file size từ Google Drive
+# - Convert tags to kebab-case
+# - Generate thumbnail URL
+```
+
 ### **Build & Deploy**
 ```bash
 npm run css:build      # Build production CSS
@@ -294,34 +375,56 @@ npm run build          # Build for production
 git add . && git commit -m "..." && git push  # Auto-deploy via GitHub Actions
 ```
 
-### **Metadata Update** (Run in WSL - npm not in PowerShell PATH)
-```bash
-npm run update:metadata  # Fetch fileSize & pages from Google Drive
+**IMPORTANT**: 
+- CSS build không cần thiết nếu chỉ sửa JS/JSON (GitHub Actions tự build)
+- Chờ ~2-3 phút cho GitHub Actions deploy
+- Hard refresh (Ctr{ id: 1, title: "Fake Document" }];
 ```
 
----
-
-## 🚫 Anti-Patterns & Gotchas
-
-### **❌ NEVER DO THESE:**
-
-1. **Hardcode Data**
-```javascript
-// ❌ WRONG - Tạo data khống
-const documents = [
-  { id: 1, title: "Fake Document" }
-];
-```
-
-2. **Inline Styles**
+2. **Inline Styles hoặc Hardcoded Paths**
 ```html
 <!-- ❌ WRONG -->
-<div style="background: #2f3136; padding: 1rem;">
+<div style="background: #2f3136;">
+<img src="/assets/images/thumb.jpg">
+
+<!-- ✅ CORRECT -->
+<div class="document-card">
+<img src="${basePath}assets/images/thumb.jpg">
 ```
 
-3. **Duplicate Wrapper Divs**
+3. **Add Document Without Duplicate Check**
+```javascript
+// ❌ WRONG - Thêm trực tiếp vào documents.json
+data.documents.push(newDoc);
+
+// ✅ CORRECT - Dùng npm run add:document (có duplicate detection)
+```
+
+4. **Commit Sensitive Files**
+```bash
+# ❌ NEVER commit these (.gitignore blocks them)
+.env
+cloudflare-worker/wrangler.toml
+.github/copilot-instructions.md  # This file!
+```
+
+5. **Forget onerror Handler for Images**
 ```html
-<!-- ❌ WRONG - Wrapper đã được thêm vào .document-card CSS -->
+<!-- ❌ WRONG - Infinite loop nếu fallback cũng fail -->
+onerror="this.src='fallback.jpg'"
+
+<!-- ✅ CORRECT - Prevent loop với onerror=null -->
+onerror="this.onerror=null; this.src='${fallbackImg}'"
+```
+
+6. **XSS Vulnerabilities**
+```javascript
+// ❌ WRONG - Directly inject user content
+card.innerHTML = `<h3>${doc.title}</h3>`;
+
+// ✅ CORRECT - Escape HTML (main.js has escapeHtml function)
+const safeTitle = escapeHtml(doc.title);
+card.innerHTML = `<h3>${safeTitle}</h3>`; WRONG - Wrapper đã được thêm vào .document-card CSS -->
 <div class="document-card">
   <div class="p-4">
     Content...
@@ -418,23 +521,41 @@ cloudflare-worker/wrangler.toml
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
 │ Google Drive (File Storage)                                │
-│ - PDF documents stored with public access                  │
-│ - Thumbnails via Google Drive API                          │
-│ - Metadata (fileSize, pages) via Drive API                 │
-└─────────────────────────────────────────────────────────────┘
-```
+│ - PDF documents stored withse `npm run add:document` CLI (có duplicate detection), NEVER edit documents.json manually
+- **"Sửa màu"** → Edit `src/css/input.css`, rebuild CSS, never inline styles
+- **"Fix spacing"** → Edit CSS classes, not wrapper divs (padding đã có trong .document-card)
+- **"Deploy"** → `git push` triggers GitHub Actions automatically (~2-3 min)
+- **"Thumbnails không hiện"** → Check CSP header in index.html, verify wildcard `https://*.google.com`
+- **"Download bị lỗi chữ"** → Check sanitizeFilename() in api.js có đủ Vietnamese char mapping
+
+### **Before Making Changes:**
+
+1. ✅ Check CSP không block resources (thumbnails, workers)
+2. ✅ Verify no data is hardcoded (always load from documents.json)
+3. ✅ Use `import.meta.env.BASE_URL` cho paths (không hardcode /assets/)
+4. ✅ Escape user content với escapeHtml() để prevent XSS
+5. ✅ Test fallback images có onerror=null để tránh infinite loop
+6. ✅ Check duplicate detection trong add-document.js (driveId + title)
+
+### **Common Debugging:**
+
+- **Thumbnails không load**: Check Console (F12) → CSP violation?
+- **Documents không update**: Cache issue → Check `?v=${timestamp}` in api.js
+- **Download filename lỗi**: Check sanitizeFilename() mapping Vietnamese chars
+- **Duplicate documents**: Verify add-document.js check driveId trước khi thêm
 
 ---
 
-## 💡 Key Reminders for AI Assistant
+## 📝 Version History
 
-### **When User Asks to:**
-
-- **"Thêm tài liệu mới"** → Update `data/documents.json` only, never hardcode in HTML
-- **"Sửa màu"** → Edit `src/css/input.css`, rebuild CSS, never inline styles
-- **"Fix spacing"** → Edit CSS classes (`.document-card { padding: 1rem; }`), not wrapper divs
-- **"Deploy"** → `git push` triggers GitHub Actions automatically
-- **"Tạo file mới"** → Check if it should be in `.gitignore` first (especially .env, wrangler.toml)
+- **v1.2.0** (2025-12-29): Security & Data Integrity Updates
+  - ✅ CSP wildcard for Google Drive thumbnails
+  - ✅ Duplicate detection (driveId + title) in add-document.js
+  - ✅ Dynamic base path with Vite BASE_URL
+  - ✅ Vietnamese filename sanitization with branding suffix
+  - ✅ Cache busting strategy for documents.json
+  - ✅ XSS prevention with escapeHtml()
+  - ✅ Infinite loop prevention in image onerror handlers→ Check if it should be in `.gitignore` first (especially .env, wrangler.toml)
 
 ### **Before Making Changes:**
 
