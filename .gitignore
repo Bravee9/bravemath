@@ -18,10 +18,13 @@ public/assets/css/
 # Sensitive files - NEVER COMMIT
 .github/copilot-instructions.md
 **/copilot-instructions.md
+**/add-document.js
+**/update-metadata.js
 **/*.key
 **/*.pem
 **/secrets.*
 **/*secret*
+
 wrangler.toml
 
 # IDE
