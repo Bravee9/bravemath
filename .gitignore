@@ -15,6 +15,15 @@ public/assets/css/
 .env.production
 .env.*.local
 
+# Sensitive files - NEVER COMMIT
+.github/copilot-instructions.md
+**/copilot-instructions.md
+**/*.key
+**/*.pem
+**/secrets.*
+**/*secret*
+wrangler.toml
+
 # IDE
 .vscode/
 .idea/
