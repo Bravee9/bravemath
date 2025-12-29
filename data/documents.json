@@ -122,11 +122,54 @@
       "uploadDate": "30/12/2025",
       "author": "Eureka-Uni",
       "thumbnail": "https://drive.google.com/thumbnail?id=1e2xWILhDxT22J7iI8ne72mVixETbjmzv&sz=w400"
+    },
+    {
+      "id": "doc-007",
+      "title": "Tổng hợp kiến thức môn Toán (Darkmode)",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "tong-hop-kien-thuc-mon-toan-darkmode",
+      "driveId": "1eBlQ8Ld1KtKXUsqIEpvy1naPWzFFB7_b",
+      "description": "Bản darkmode cho tài liệu tổng hợp kiến thức môn Toán, giúp học sinh trang bị kiến thức cho kì thi THPTQG",
+      "tags": [
+        "thptqg",
+        "toan12",
+        "tong-hop-kien-thuc"
+      ],
+      "fileSize": "6.7 MB",
+      "pages": 259,
+      "uploadDate": "30/12/2025",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1eBlQ8Ld1KtKXUsqIEpvy1naPWzFFB7_b&sz=w400"
+    },
+    {
+      "id": "doc-008",
+      "title": "Tổng hợp kiến thức môn Toán (Photo)",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "tong-hop-kien-thuc-mon-toan-photo",
+      "driveId": "1qdMH2Ou4av_2u8za7RC3YsXaaepmTmSr",
+      "description": "Bản photo cho tài liệu tổng hợp kiến thức môn Toán, giúp học sinh trang bị kiến thức cho kì thi THPTQG",
+      "tags": [
+        "thptqg",
+        "toan12",
+        "tong-hop-kien-thucc",
+        "thpt",
+        "xac-suat-thong-ke",
+        "hinh-hoc-khong-gian"
+      ],
+      "fileSize": "5.5 MB",
+      "pages": 259,
+      "uploadDate": "30/12/2025",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1qdMH2Ou4av_2u8za7RC3YsXaaepmTmSr&sz=w400"
     }
   ],
   "metadata": {
-    "lastUpdated": "2025-12-29T20:06:08.450Z",
-    "totalDocuments": 6,
+    "lastUpdated": "2025-12-29T20:17:15.514Z",
+    "totalDocuments": 8,
     "version": "1.0.0"
   },
   "categories": {
