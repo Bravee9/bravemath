@@ -1,6 +1,11 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { copyFileSync, mkdirSync } from 'fs';
+import { copyFileSync, mkdirSync, existsSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
   // Base path cho GitHub Pages
@@ -9,8 +14,8 @@ export default defineConfig({
   // Root directory
   root: 'src/pages',
   
-  // Public directory - static assets (ảnh)
-  publicDir: '../../assets',
+  // Public directory - static assets
+  publicDir: resolve(__dirname, 'assets'),
   
   // Build options
   build: {
@@ -36,11 +41,20 @@ export default defineConfig({
     name: 'copy-data',
     closeBundle() {
       try {
-        mkdirSync('dist/data', { recursive: true });
-        copyFileSync('data/documents.json', 'dist/data/documents.json');
-        console.log('Copied documents.json to dist/data/');
+        const dataDir = resolve(__dirname, 'dist/data');
+        const srcFile = resolve(__dirname, 'data/documents.json');
+        const destFile = resolve(__dirname, 'dist/data/documents.json');
+        
+        if (!existsSync(srcFile)) {
+          console.error('❌ Source file not found:', srcFile);
+          return;
+        }
+        
+        mkdirSync(dataDir, { recursive: true });
+        copyFileSync(srcFile, destFile);
+        console.log('✅ Copied documents.json to dist/data/');
       } catch (err) {
-        console.error('Failed to copy documents.json:', err);
+        console.error('❌ Failed to copy documents.json:', err);
       }
     }
   }]

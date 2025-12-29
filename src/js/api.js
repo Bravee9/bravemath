@@ -11,8 +11,12 @@ const WORKER_URL = 'https://bravemath-proxy.bravechien2209.workers.dev';
  */
 export async function loadDocuments() {
     try {
-        // Vite sẽ serve file từ public hoặc root
-        const response = await fetch('/data/documents.json');
+        // Fetch với base path cho GitHub Pages
+        const basePath = import.meta.env.BASE_URL || '/';
+        const url = `${basePath}data/documents.json`;
+        console.log('Fetching documents from:', url);
+        
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
