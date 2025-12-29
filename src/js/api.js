@@ -67,7 +67,9 @@ export async function loadDocuments() {
     try {
         // Fetch với base path cho GitHub Pages
         const basePath = import.meta.env.BASE_URL || '/';
-        const url = `${basePath}data/documents.json`;
+        // Thêm timestamp để force reload (cache busting)
+        const timestamp = new Date().getTime();
+        const url = `${basePath}data/documents.json?v=${timestamp}`;
         console.log('Fetching documents from:', url);
         
         const response = await fetch(url);
