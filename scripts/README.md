@@ -75,6 +75,42 @@ npm run update:metadata
 
 ## 📋 Workflow Khuyến Nghị
 
+### **📌 QUAN TRỌNG: Naming Convention cho Google Drive**
+
+**Vấn đề**: File có tên tiếng Việt (có dấu) sẽ bị lỗi encoding khi download:
+```
+❌ Các thường trong lý thuyết đồ thị.pdf
+→ Download: C_c thu_ng_trong l_thuy_t__th_.pdf (LỖI!)
+```
+
+**Giải pháp**: Đặt tên file **KHÔNG DẤU, kebab-case** trên Google Drive:
+```
+✅ ĐÚNG: cac-thuong-trong-ly-thuyet-do-thi.pdf
+✅ ĐÚNG: giai-tich-1-bai-tap-co-ban.pdf
+✅ ĐÚNG: xstk-de-thi-giua-ky.pdf
+```
+
+**Quy tắc đặt tên**:
+1. ✅ Chữ thường (lowercase)
+2. ✅ Bỏ dấu tiếng Việt
+3. ✅ Thay space bằng dấu gạch ngang `-`
+4. ✅ Chỉ dùng: `a-z`, `0-9`, `-`, `.`
+5. ❌ KHÔNG dùng: `_`, space, ký tự đặc biệt, Unicode
+
+**Ví dụ Convert**:
+```
+"Đại số tuyến tính.pdf"  → dai-so-tuyen-tinh.pdf
+"Giải tích 1 & 2.pdf"     → giai-tich-1-2.pdf
+"Đề thi THPT QG.pdf"      → de-thi-thpt-qg.pdf
+```
+
+**💡 Lưu ý**: 
+- Script `add-document.js` **TỰ ĐỘNG sanitize** filename khi thêm vào JSON
+- Website sẽ download với tên đã sanitize (không lỗi chữ)
+- Tên hiển thị trên web vẫn có dấu bình thường (từ field `title`)
+
+---
+
 ### **Thêm 1 tài liệu mới**:
 ```bash
 # Bước 1: Upload file lên Drive và get Drive ID
