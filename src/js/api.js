@@ -48,7 +48,15 @@ function sanitizeFilename(filename) {
         .replace(/^-|-$/g, '')           // Remove leading/trailing dashes
         .toLowerCase();                  // Lowercase
     
-    return result;
+    // Tách tên file và extension
+    const lastDotIndex = result.lastIndexOf('.');
+    if (lastDotIndex > 0) {
+        const name = result.substring(0, lastDotIndex);
+        const ext = result.substring(lastDotIndex);
+        return `${name}-bravemath${ext}`;
+    }
+    
+    return `${result}-bravemath`;
 }
 
 /**
