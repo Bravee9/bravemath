@@ -18,7 +18,8 @@ npm run add:document
 1. Upload PDF lên Google Drive
 2. Click chuột phải → Share → "Anyone with the link" → Copy link
 3. Lấy Drive ID từ URL (ví dụ: `https://drive.google.com/file/d/1ABC123xyz/view` → ID là `1ABC123xyz`)
-4. Chạy script và nhập thông tin theo hướng dẫn:
+4. **Mở PDF và đếm số trang** (Google Drive API không cung cấp pageCount)
+5. Chạy script và nhập thông tin theo hướng dẫn:
    - Drive ID
    - Tiêu đề tài liệu
    - Mô tả ngắn
@@ -27,13 +28,13 @@ npm run add:document
    - Môn học (toan, ly, hoa...)
    - Tác giả
    - Tags (phân cách bằng dấu phẩy)
+   - **Số trang (nhập thủ công)**
 
 **Tự động**:
 - ✅ Tạo ID mới (doc-001, doc-002...)
-- ✅ Lấy file size từ Google Drive
-- ✅ Ước lượng số trang
+- ✅ Lấy file size từ Google Drive (HEAD request)
 - ✅ Tạo thumbnail URL
-- ✅ Tạo slug từ tiêu đề
+- ✅ Tạo slug từ tiêu đề (Vietnamese → ASCII)
 - ✅ Thêm vào documents.json
 - ✅ Cập nhật metadata (totalDocuments, lastUpdated)
 
@@ -43,7 +44,7 @@ npm run add:document
 📄 ID: doc-003
 📖 Tiêu đề: Bài tập Đại số tuyến tính
 🔗 Drive ID: 1XYZ789abc
-📊 Size: 1.2 MB, Pages: 25
+📊 Size: 1.2 MB | Pages: 25 (manual input)
 
 💡 Next steps:
    1. git add data/documents.json
@@ -55,7 +56,7 @@ npm run add:document
 
 ### **2. Cập Nhật Metadata** (`update-metadata.js`)
 
-**Công dụng**: Tự động cập nhật file size và số trang cho TẤT CẢ tài liệu trong `documents.json`.
+**Công dụng**: Tự động cập nhật file size cho TẤT CẢ tài liệu trong `documents.json`.
 
 ```bash
 npm run update:metadata
@@ -64,12 +65,33 @@ npm run update:metadata
 **Khi nào dùng**:
 - Sau khi cập nhật file PDF trên Drive (file size thay đổi)
 - Kiểm tra lại metadata định kỳ
-- Sau khi thêm nhiều tài liệu bằng tay
 
 **Tự động**:
-- ✅ Fetch file size từ Google Drive API
-- ✅ Ước lượng số trang (1 page ≈ 50KB)
-- ✅ Cập nhật tất cả documents trong 1 lần chạy
+- ✅ Fetch file size từ Google Drive API (HEAD request)
+- ⚠️ KHÔNG thay đổi số trang (pages) - giữ nguyên giá trị đã nhập thủ công
+
+**Lưu ý**: Script này **chỉ cập nhật file size**, không động chạm đến số trang vì:
+- Google Drive API không có field `pageCount`
+- Số trang đã nhập thủ công chính xác hơn
+
+---
+
+## ❓ FAQ
+
+### **Q: Tại sao không tự động lấy số trang từ Google Drive?**
+
+**A:** Google Drive API v3 **KHÔNG cung cấp field `pageCount`** cho PDF files!
+
+Fields có sẵn trong Drive API:
+- ✅ `size` (file size in bytes)
+- ✅ `name`, `mimeType`, `modifiedTime`, `fileExtension`
+- ❌ `pageCount`, `numberOfPages` - **KHÔNG TỒN TẠI**
+
+Để lấy số trang PDF cần:
+1. **Download file và parse** bằng library (pdf-lib, pdf-parse) - quá phức tạp, tốn bandwidth
+2. **Nhập thủ công** - đơn giản nhất và chính xác 100% ⭐
+
+→ **Giải pháp**: User nhập số trang khi chạy `add-document.js` script.
 
 ---
 

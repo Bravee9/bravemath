@@ -1,5 +1,6 @@
 /**
- * Script tự động cập nhật fileSize và pages từ Google Drive
+ * Script tự động cập nhật fileSize từ Google Drive
+ * LƯU Ý: KHÔNG cập nhật pages vì Google Drive API không cung cấp pageCount
  * Chạy: node scripts/update-metadata.js
  */
 
@@ -13,16 +14,14 @@ const __dirname = dirname(__filename);
 const DOCUMENTS_PATH = resolve(__dirname, '../data/documents.json');
 
 /**
- * Lấy metadata từ Google Drive (public file)
+ * Lấy metadata từ Google Drive (chỉ file size)
+ * LƯU Ý: Google Drive API không có pageCount field, số trang phải nhập thủ công
  * @param {string} driveId 
- * @returns {Promise<{size: string, pages: number}>}
+ * @returns {Promise<{size: string}>}
  */
 async function getDriveMetadata(driveId) {
   try {
-    // Google Drive file metadata endpoint (cho public files)
-    const url = `https://www.googleapis.com/drive/v3/files/${driveId}?fields=size,name,mimeType&key=YOUR_API_KEY`;
-    
-    // Nếu không có API key, ước lượng từ HEAD request
+    // Không có API key, chỉ lấy Content-Length từ HEAD request
     const response = await fetch(`https://drive.google.com/uc?id=${driveId}&export=download`, {
       method: 'HEAD'
     });
@@ -33,16 +32,13 @@ async function getDriveMetadata(driveId) {
       const bytes = parseInt(contentLength);
       const size = formatFileSize(bytes);
       
-      // Ước lượng số trang (1 page ≈ 50KB cho PDF text-heavy)
-      const estimatedPages = Math.max(1, Math.round(bytes / 50000));
-      
-      return { size, pages: estimatedPages };
+      return { size };
     }
     
-    return { size: 'N/A', pages: 0 };
+    return { size: 'N/A' };
   } catch (error) {
     console.error(`❌ Error fetching metadata for ${driveId}:`, error.message);
-    return { size: 'N/A', pages: 0 };
+    return { size: 'N/A' };
   }
 }
 
@@ -58,7 +54,7 @@ function formatFileSize(bytes) {
 }
 
 /**
- * Cập nhật documents.json với metadata mới
+ * Cập nhật documents.json với file size mới (KHÔNG động số trang đã nhập thủ công)
  */
 async function updateDocuments() {
   try {
@@ -72,11 +68,10 @@ async function updateDocuments() {
       
       const metadata = await getDriveMetadata(doc.driveId);
       
-      // Cập nhật metadata
+      // Chỉ cập nhật fileSize, KHÔNG thay đổi pages (đã nhập thủ công)
       doc.fileSize = metadata.size;
-      doc.pages = metadata.pages;
       
-      console.log(`   ✅ Size: ${metadata.size}, Pages: ${metadata.pages}\n`);
+      console.log(`   ✅ Size: ${metadata.size} | Pages: ${doc.pages} (giữ nguyên)\n`);
     }
     
     // Ghi lại file
@@ -86,7 +81,8 @@ async function updateDocuments() {
       'utf-8'
     );
     
-    console.log('✅ Đã cập nhật documents.json thành công!');
+    console.log('✅ Đã cập nhật file sizes trong documents.json!');
+    console.log('💡 Số trang KHÔNG bị thay đổi (vì Google Drive API không cung cấp pageCount)');
     
   } catch (error) {
     console.error('❌ Lỗi:', error);

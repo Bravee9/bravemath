@@ -28,6 +28,7 @@ const question = (query) => new Promise((resolve) => rl.question(query, resolve)
 
 /**
  * Tự động lấy metadata từ Google Drive
+ * LƯU Ý: Google Drive API không cung cấp số trang cho PDF, user phải nhập thủ công
  */
 async function getDriveMetadata(driveId) {
   try {
@@ -40,15 +41,14 @@ async function getDriveMetadata(driveId) {
     if (contentLength) {
       const bytes = parseInt(contentLength);
       const size = formatFileSize(bytes);
-      const estimatedPages = Math.max(1, Math.round(bytes / 50000));
       
-      return { size, pages: estimatedPages };
+      return { size };
     }
     
-    return { size: 'N/A', pages: 0 };
+    return { size: 'N/A' };
   } catch (error) {
     console.error(`❌ Error fetching metadata:`, error.message);
-    return { size: 'N/A', pages: 0 };
+    return { size: 'N/A' };
   }
 }
 
@@ -149,12 +149,12 @@ async function addDocument() {
     const author = await question('👤 Tác giả: ') || 'Bùi Quang Chiến';
     const tags = await question('🏷️  Tags (phân cách bằng dấu phẩy): ');
     
-    // 2. Tự động lấy metadata
-    console.log('\n⏳ Đang lấy metadata từ Google Drive...');
+    // 2. Tự động lấy metadata từ Google Drive (chỉ size, không có pageCount API)
+    console.log('\n⏳ Đang lấy file size từ Google Drive...');
     const metadata = await getDriveMetadata(driveId);
-    console.log(`✅ Size: ${metadata.size}, Pages: ${metadata.pages}`);
+    console.log(`✅ File size: ${metadata.size}`);
     
-    // 3. Tạo document object
+    // 4. Tạo document object
     const newId = await generateNewId();
     const slug = createSlug(title);
     const uploadDate = new Date().toLocaleDateString('vi-VN');
@@ -170,13 +170,17 @@ async function addDocument() {
       description: description.trim(),
       tags: tags.split(',').map(t => t.trim()).filter(t => t),
       fileSize: metadata.size,
+      pages: pages,  // User input, không phải ước lượng),
+      description: description.trim(),
+      tags: tags.split(',').map(t => t.trim()).filter(t => t),
+      fileSize: metadata.size,
       pages: metadata.pages,
       uploadDate: uploadDate,
       author: author.trim(),
       thumbnail: `https://drive.google.com/thumbnail?id=${driveId.trim()}&sz=w400`
     };
     
-    // 4. Thêm vào documents.json
+    // 5. Thêm vào documents.json
     console.log('\n⏳ Đang cập nhật documents.json...');
     const data = JSON.parse(await fs.readFile(DOCUMENTS_PATH, 'utf-8'));
     data.documents.push(newDoc);
@@ -193,7 +197,7 @@ async function addDocument() {
     console.log(`📄 ID: ${newDoc.id}`);
     console.log(`📖 Tiêu đề: ${newDoc.title}`);
     console.log(`🔗 Drive ID: ${newDoc.driveId}`);
-    console.log(`📊 Size: ${newDoc.fileSize}, Pages: ${newDoc.pages}`);
+    console.log(`📊 Size: ${newDoc.fileSize} | Pages: ${newDoc.pages} (manual input)`);
     console.log('\n💡 Next steps:');
     console.log('   1. git add data/documents.json');
     console.log('   2. git commit -m "Add: [Tên tài liệu]"');
