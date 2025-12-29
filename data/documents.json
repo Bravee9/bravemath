@@ -165,11 +165,55 @@
       "uploadDate": "30/12/2025",
       "author": "Bùi Quang Chiến",
       "thumbnail": "https://drive.google.com/thumbnail?id=1qdMH2Ou4av_2u8za7RC3YsXaaepmTmSr&sz=w400"
+    },
+    {
+      "id": "doc-009",
+      "title": "Đề thi cuối kì Giải tích 1 - HUS - K66 - KHDL - 2021 2022",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "de-thi",
+      "slug": "de-thi-cuoi-ki-giai-tich-1-hus-k66-khdl-2021-2022",
+      "driveId": "1F2UzBwVQeINehfzCJ2wn0K-d2ctB1wQT",
+      "description": "Đề thi cuối kì",
+      "tags": [
+        "giai-tich",
+        "khdl",
+        "de-thi-cuoi-ki",
+        "hus"
+      ],
+      "fileSize": "120.5 KB",
+      "pages": 1,
+      "uploadDate": "30/12/2025",
+      "author": "HUS",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1F2UzBwVQeINehfzCJ2wn0K-d2ctB1wQT&sz=w400"
+    },
+    {
+      "id": "doc-010",
+      "title": "Đề thi cuối kì Giải tích 1 - HUS - K67 - KHMT&TT - 2022 2023",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "giai-chi-tiet",
+      "slug": "de-thi-cuoi-ki-giai-tich-1-hus-k67-khmttt-2022-2023",
+      "driveId": "1PwRH323Ou7aAomFblP3OSR2eobyNaXxk",
+      "description": "Đề thi cuối kì (Có lời giải)",
+      "tags": [
+        "giai-tich",
+        "dai-hoc",
+        "co-loi-giai",
+        "khmt",
+        "khdl",
+        "dap-an"
+      ],
+      "fileSize": "122.9 KB",
+      "pages": 2,
+      "uploadDate": "30/12/2025",
+      "author": "HUS",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1PwRH323Ou7aAomFblP3OSR2eobyNaXxk&sz=w400"
     }
   ],
   "metadata": {
-    "lastUpdated": "2025-12-29T20:17:15.514Z",
-    "totalDocuments": 8,
+    "lastUpdated": "2025-12-29T20:40:33.626Z",
+    "totalDocuments": 10,
     "version": "1.0.0"
   },
   "categories": {
