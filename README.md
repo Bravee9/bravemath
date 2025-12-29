@@ -106,11 +106,6 @@ MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết
 
 - GitHub: [@Bravee9](https://github.com/Bravee9)
 
-## Cảm ơn
-
-- Thiết kế lấy cảm hứng từ [Happy Hues](https://www.happyhues.co/palettes/4)
-- Tài liệu học thuật từ Bùi Quang Chiến
-
 ---
 
 Made with love for Vietnamese students <3
