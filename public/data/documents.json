@@ -1,0 +1,55 @@
+{
+  "documents": [
+    {
+      "id": "doc-001",
+      "title": "Các thuật ngữ trong lý thuyết đồ thị",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "ly-thuyet",
+      "slug": "toan-roi-rac",
+      "driveId": "1LVkS0ctxyT_ydVwVmHY7IWY4EL71o1NM",
+      "description": "Các thuật ngữ trong lý thuyết đồ thị",
+      "tags": ["toan-roi-rac", "dai-hoc", "ly-thuyet", "do-thi", "to-hop"],
+      "fileSize": "255 KB",
+      "pages": 23,
+      "uploadDate": "28/12/2025",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "/assets/images/thumbnails/cac_thuat_ngu_ly_thuyet_do_thi.png"
+    },
+    {
+      "id": "doc-002",
+      "title": "Tóm tắt kiến thức Giải tích 1 và 2",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "ly-thuyet",
+      "slug": "giai-tich-1-2",
+      "driveId": "19-aYjiEcgHn5uPobkBwJmWzSC7jBxx1w",
+      "description": "Tài liệu tóm tắt kiến thức Giải tích 1 và 2 dành cho sinh viên đại học",
+      "tags": ["daihoc", "ly-thuyet","tomtat", "thptqg"],
+      "fileSize": "5.8 MB",
+      "pages": 120,
+      "uploadDate": "28/12/2025",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "/assets/images/thumbnails/.jpg"
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-12-28T00:00:00Z",
+    "totalDocuments": 2,
+    "version": "1.0.0"
+  },
+  "categories": {
+    "ly-thuyet": "Lý thuyết",
+    "de-thi": "Đề thi",
+    "bai-tap": "Bài tập",
+    "giai-chi-tiet": "Giải chi tiết"
+  },
+  "subjects": {
+    "toan": "Toán học",
+    "ly": "Vật lý"
+  },
+  "levels": {
+    "thpt": "THPT Quốc Gia",
+    "daihoc": "Đại học"
+  }
+}

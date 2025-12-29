@@ -1,0 +1,449 @@
+/* Font Import - PHẢI đặt đầu file */
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
+
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   CUSTOM BASE STYLES
+   ======================================== */
+
+@layer base {
+  /* Body base styles */
+  body {
+    @apply text-white font-sans antialiased;
+    background-color: #202225;
+    font-size: 16px;
+    line-height: 2;
+  }
+
+  /* Headings base styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-math text-white;
+  }
+
+  /* Links base styles */
+  a {
+    @apply transition-colors duration-150;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ========================================
+   CUSTOM COMPONENTS
+   ======================================== */
+
+@layer components {
+  
+  /* === BUTTONS === */
+  
+  /* Primary Button (nút xanh chính) */
+  .btn-primary {
+    @apply px-6 py-3 text-white font-medium rounded-lg transition-all duration-150;
+    background-color: #5865F2;
+  }
+
+  .btn-primary:hover {
+    background-color: #4752C4;
+  }
+
+  .btn-primary:active {
+    @apply scale-95;
+  }
+
+  /* Secondary Button (nút xám phụ) */
+  .btn-secondary {
+    @apply px-6 py-3 text-white font-medium rounded-lg transition-all duration-150;
+    background-color: #2f3136;
+    border: 1px solid #40444b;
+  }
+
+  .btn-secondary:hover {
+    background-color: #40444b;
+    border-color: #40444b;
+  }
+
+  .btn-secondary:active {
+    @apply scale-95;
+  }
+
+  /* Outline Button (nút viền) */
+  .btn-outline {
+    @apply px-6 py-3 bg-transparent font-medium rounded-lg transition-all duration-150;
+    border: 2px solid #5865F2;
+    color: #5865F2;
+  }
+
+  .btn-outline:hover {
+    background-color: #5865F2;
+    color: white;
+  }
+
+  /* === CARDS === */
+  
+  /* Card cơ bản (khung chứa nội dung) */
+  .card {
+    @apply rounded-lg p-6 transition-all duration-150;
+    background-color: #2f3136;
+    border: 1px solid #40444b;
+  }
+
+  .card:hover {
+    border-color: #5865F2;
+  }
+
+  /* Document Card (card tài liệu đặc biệt) */
+  .document-card {
+    @apply rounded-lg overflow-hidden transition-all duration-300;
+    background-color: #2f3136;
+    border: 1px solid #40444b;
+  }
+
+  .document-card:hover {
+    border-color: #5865F2;
+  }
+
+  /* Featured Card (card nổi bật lớn hơn) */
+  .featured-card {
+    @apply rounded-lg overflow-hidden transition-all duration-300;
+    background-color: #2f3136;
+    border: 1px solid #40444b;
+  }
+
+  .featured-card:hover {
+    border-color: #5865F2;
+  }
+
+  /* === BADGES === */
+  
+  /* Badge cơ bản (tag nhỏ) */
+  .badge {
+    @apply px-2 py-1 text-xs rounded font-medium;
+  }
+
+  /* Badge THPT */
+  .badge-thpt {
+    @apply badge;
+    background-color: #5865F2;
+    color: #ffffff;
+  }
+
+  /* Badge Đại học */
+  .badge-daihoc {
+    @apply badge;
+    background-color: #EB459E;
+    color: #ffffff;
+  }
+
+  /* Badge Lý thuyết */
+  .badge-theory {
+    @apply badge;
+    background-color: #3BA55D;
+    color: #ffffff;
+  }
+
+  /* Badge Đề thi */
+  .badge-exam {
+    @apply badge;
+    background-color: #FAA81A;
+    color: #ffffff;
+  }
+
+  /* Badge Bài tập */
+  .badge-exercise {
+    @apply badge;
+    background-color: #ED4245;
+    color: #ffffff;
+  }
+
+  /* === FORM ELEMENTS === */
+  
+  /* Input Field (ô nhập text) */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg text-white transition-all duration-150;
+    background-color: #40444b;
+    border: 1px solid #202225;
+  }
+
+  .input-field::placeholder {
+    color: #72767d;
+  }
+
+  .input-field:hover {
+    border-color: #202225;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: #5865F2;
+  }
+
+  /* Select Field (dropdown) */
+  .select-field {
+    @apply input-field cursor-pointer;
+  }
+
+  /* Search Input (ô tìm kiếm đặc biệt) */
+  .search-input {
+    @apply input-field pr-12;
+  }
+
+  /* === SECTION TITLES === */
+  
+  /* Section Title với gradient */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold font-math mb-4 bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #000000, #003cff, rgb(0, 255, 251));
+  }
+
+  /* Section Title lớn hơn */
+  .section-title-lg {
+    @apply text-4xl md:text-6xl font-bold font-math mb-6 bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #000000, #003cff, white);
+  }
+
+  /* Underline cho title */
+  .title-underline {
+    @apply w-20 h-1 mx-auto;
+    background-image: linear-gradient(to right, #1E40AF, #06B6D4);
+  }
+
+  /* === CONTAINERS === */
+  
+  /* Container section */
+  .section-container {
+    @apply py-16 px-4;
+  }
+
+  /* === FILTERS === */
+  
+  /* Filter Button (nút lọc) */
+  .filter-btn {
+    @apply px-4 py-2 rounded-lg transition-all duration-150;
+    background-color: #2f3136;
+    color: #ffffff;
+    border: 1px solid #40444b;
+  }
+
+  .filter-btn:hover {
+    background-color: #40444b;
+    color: #ffffff;
+  }
+
+  /* Filter active state */
+  .filter-btn.active {
+    background-color: #5865F2;
+    color: white;
+    border-color: #5865F2;
+  }
+
+  /* === STATS === */
+  
+  /* Stat Item (số liệu thống kê) */
+  .stat-item {
+    @apply text-center;
+  }
+
+  .stat-number {
+    @apply text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #3B82F6, #06B6D4);
+  }
+
+  .stat-label {
+    @apply text-sm md:text-base;
+    color: #ffffff;
+  }
+
+  /* === NAVIGATION === */
+  
+  /* Nav Link */
+  .nav-link {
+    @apply transition-colors duration-150;
+    color: #ffffff;
+  }
+
+  .nav-link:hover {
+    color: white;
+  }
+
+  /* Mobile Menu Link */
+  .mobile-nav-link {
+    @apply block transition-colors duration-150 py-2;
+    color: #ffffff;
+  }
+
+  .mobile-nav-link:hover {
+    color: rgb(255, 255, 255);
+  }
+
+  /* === FOOTER === */
+  
+  /* Footer Link */
+  .footer-link {
+    @apply transition-colors duration-150 text-sm;
+    color: #ffffff;
+  }
+
+  .footer-link:hover {
+    color: rgb(255, 255, 255);
+  }
+
+  /* === GRADIENTS === */
+  
+  /* Gradient Background - Hero */
+  .gradient-hero {
+    background: linear-gradient(to bottom, #000000 36%, #000dff);
+  }
+
+  /* Gradient Card Background */
+  .gradient-card-blue {
+    background: linear-gradient(to bottom right, #000000, #00aaff);
+  }
+
+  .gradient-card-purple {
+    background: linear-gradient(to bottom right, #000000, #8c00ff);
+  }
+
+  .gradient-card-green {
+    background: linear-gradient(to bottom right, #000000, #00ffaa);
+  }
+
+  .gradient-card-orange {
+    background: linear-gradient(to bottom right, #000000, #ff4800);
+  }
+
+  .gradient-card-red {
+    background: linear-gradient(to bottom right, #000000, #ff0000);
+  }
+
+  .gradient-card-indigo {
+    background: linear-gradient(to bottom right, #000000, #1500ff);
+  }
+
+  .gradient-card-pink {
+    background: linear-gradient(to bottom right, #000000, #ff006a);
+  }
+
+  .gradient-card-teal {
+    background: linear-gradient(to bottom right, #000000, #0099ff);
+  }
+}
+
+/* ========================================
+   CUSTOM UTILITIES
+   ======================================== */
+
+@layer utilities {
+  
+  /* Text Gradient Utilities */
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #000000, #001aff, rgb(0, 85, 255));
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #000000, #1e00ff);
+  }
+
+  /* Glow Effect (KHÔNG SỬ DỤNG - giữ để tương thích) */
+  .glow-blue {
+    /* Removed glow effect */
+  }
+
+  .glow-blue-strong {
+    /* Removed glow effect */
+  }
+
+  /* Line Clamp (giới hạn số dòng text) */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Backdrop Blur */
+  .backdrop-blur-header {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Smooth Shadow */
+  .shadow-smooth {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow-smooth-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Hover Lift Effect */
+  .hover-lift {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+
+  /* Focus Visible */
+  .focus-blue:focus-visible {
+    @apply outline-none;
+    box-shadow: 0 0 0 2px #000000, 0 0 0 4px #006aff;
+  }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR (cho PC)
+   ======================================== */
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2f3136;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #202225;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #40444b;
+}
+
+/* ========================================
+   FONT FACE DECLARATIONS
+   ======================================== */
+
+/* Imperial Script - Logo font */
+.font-script {
+  font-family: 'Imperial Script', cursive;
+}
+
+/* Cambria Math - Heading & Body */
+.font-math {
+  font-family: 'Libertinus Serif', 'Libertinus Math';
+}
+
+/* Fira Code - Monospace */
+.font-code {
+  font-family: 'Fira Code';
+}

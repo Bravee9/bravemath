@@ -1,0 +1,29 @@
+{
+  "name": "bravemath",
+  "version": "1.0.0",
+  "description": "Platform chia sẻ tài liệu học thuật miễn phí cho học sinh THPT và sinh viên",
+  "main": "src/js/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "css:watch": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --watch",
+    "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify"
+  },
+  "keywords": [
+    "education",
+    "mathematics",
+    "learning",
+    "vietnam",
+    "thpt",
+    "dai-hoc"
+  ],
+  "author": "Bravee9",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.0"
+  }
+}

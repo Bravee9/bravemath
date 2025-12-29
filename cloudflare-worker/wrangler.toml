@@ -1,0 +1,28 @@
+name = "bravemath-proxy"
+main = "src/index.js"
+compatibility_date = "2025-11-28"
+
+# Bỏ comment dòng dưới khi muốn chỉ định account ID cụ thể
+# account_id = "YOUR_ACCOUNT_ID_HERE"
+workers_dev = true
+
+# Route configuration (optional)
+# routes = [
+#   { pattern = "bravemath.pages.dev/api/*", zone_name = "bravemath.pages.dev" }
+# ]
+
+# Environment variables (if needed)
+# [env.production]
+# vars = { ENVIRONMENT = "production" }
+
+# [env.staging]
+# vars = { ENVIRONMENT = "staging" }
+
+# KV Namespaces (for caching, analytics - optional)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
+
+# Rate limiting (optional, requires Workers Paid plan)
+# [limits]
+# cpu_ms = 50
