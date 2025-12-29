@@ -62,11 +62,31 @@
       "uploadDate": "29/12/2025",
       "author": "Bùi Quang Chiến",
       "thumbnail": "https://drive.google.com/thumbnail?id=1vy0_N6-G-Ha2lNGA0dwtzKqInwGAEs0W&sz=w400"
+    },
+    {
+      "id": "doc-004",
+      "title": "Hiểu rõ khai triển Maclaurin và Taylor",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "ly-thuyet",
+      "slug": "hieu-ro-khai-trien-maclaurin-va-taylor",
+      "driveId": "1pLrr0cVOnbPsrY_IGKTE0N9fR0mlXKEf",
+      "description": "Khai triển Maclaurin và Taylor được giải thích và định nghĩa cùng hình ảnh minh hoạ dễ hình dung",
+      "tags": [
+        "giai-tich",
+        "dai-hoc",
+        "khai-trien-maclaurin-taylor"
+      ],
+      "fileSize": "506.5 KB",
+      "pages": 13,
+      "uploadDate": "29/12/2025",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1pLrr0cVOnbPsrY_IGKTE0N9fR0mlXKEf&sz=w400"
     }
   ],
   "metadata": {
-    "lastUpdated": "2025-12-29T13:32:24.657Z",
-    "totalDocuments": 3,
+    "lastUpdated": "2025-12-29T14:41:29.849Z",
+    "totalDocuments": 4,
     "version": "1.0.0"
   },
   "categories": {
