@@ -127,7 +127,41 @@ async function addDocument() {
       return;
     }
     
+    // 🔍 KIỂM TRA DUPLICATE DRIVE ID
+    const existingData = JSON.parse(await fs.readFile(DOCUMENTS_PATH, 'utf-8'));
+    const duplicateDoc = existingData.documents.find(doc => doc.driveId === driveId.trim());
+    
+    if (duplicateDoc) {
+      console.log('\n❌ ===== LỖI: TÀI LIỆU ĐÃ TỒN TẠI =====');
+      console.log(`📄 ID: ${duplicateDoc.id}`);
+      console.log(`📖 Tiêu đề: ${duplicateDoc.title}`);
+      console.log(`📅 Upload date: ${duplicateDoc.uploadDate}`);
+      console.log(`👤 Tác giả: ${duplicateDoc.author}`);
+      console.log(`\n💡 Drive ID này đã được sử dụng cho tài liệu trên.`);
+      console.log(`   Vui lòng kiểm tra lại hoặc sử dụng Drive ID khác.\n`);
+      rl.close();
+      return;
+    }
+    
     const title = await question('📖 Tiêu đề tài liệu: ');
+    
+    // 🔍 KIỂM tra DUPLICATE TITLE (warning only, không block)
+    const duplicateTitle = existingData.documents.find(doc => 
+      doc.title.toLowerCase().trim() === title.toLowerCase().trim()
+    );
+    
+    if (duplicateTitle) {
+      console.log(`\n⚠️  Cảnh báo: Đã có tài liệu với tiêu đề tương tự:`);
+      console.log(`   "${duplicateTitle.title}" (${duplicateTitle.id})`);
+      const confirmContinue = await question('   Bạn có chắc muốn tiếp tục? (y/n): ');
+      
+      if (confirmContinue.toLowerCase() !== 'y') {
+        console.log('\n❌ Đã hủy thêm tài liệu.');
+        rl.close();
+        return;
+      }
+    }
+    
     const description = await question('📝 Mô tả ngắn: ');
     
     console.log('\n🏷️  Chọn Level:');

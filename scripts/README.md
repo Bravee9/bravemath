@@ -98,6 +98,28 @@ Fields có sẵn trong Drive API:
 
 ---
 
+### **Q: Script có kiểm tra tài liệu trùng lặp không?**
+
+**A:** Có! Script tự động kiểm tra 2 loại duplicate:
+
+**1️⃣ Duplicate Drive ID** (BLOCKING - không cho phép):
+```
+❌ ===== LỖI: TÀI LIỆU ĐÃ TỒN TẠI =====
+📄 ID: doc-001
+📖 Tiêu đề: Tài liệu ABC
+💡 Drive ID này đã được sử dụng. Vui lòng dùng Drive ID khác.
+```
+→ Script **tự động dừng**, phải dùng Drive ID khác.
+
+**2️⃣ Duplicate Title** (WARNING - cảnh báo):
+```
+⚠️  Cảnh báo: Đã có tài liệu với tiêu đề tương tự
+Bạn có chắc muốn tiếp tục? (y/n):
+```
+→ User có thể chọn tiếp tục hoặc hủy.
+
+---
+
 ## 📋 Workflow Khuyến Nghị
 
 ### **📌 QUAN TRỌNG: Naming Convention cho Google Drive**
