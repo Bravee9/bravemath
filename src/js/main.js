@@ -13,7 +13,8 @@ let filteredDocuments = [];
 let currentFilters = {
     level: '',
     subject: '',
-    category: ''
+    category: '',
+    query: ''
 };
 
 /**
@@ -31,6 +32,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Setup filters
     setupFilters();
+    
+    // Setup clear filters button
+    setupClearFilters();
     
     // Load và hiển thị documents
     try {
@@ -65,8 +69,8 @@ async function loadAndRenderDocuments() {
  * Áp dụng filters và render documents
  */
 function applyFilters() {
-    const searchInput = document.getElementById('search-input') || document.getElementById('search-input-mobile');
-    const query = searchInput?.value || '';
+    // Get query from current filters or search inputs
+    const query = currentFilters.query || '';
     
     // Lọc documents
     filteredDocuments = filterDocuments(allDocuments, query, currentFilters);
@@ -261,6 +265,83 @@ function setupMobileMenu() {
  * Setup search functionality
  */
 function setupSearch() {
+    const headerSearch = document.getElementById('header-search');
+    const headerSearchMobile = document.getElementById('header-search-mobile');
+    const headerSearchCount = document.getElementById('header-search-count');
+    const headerSearchCountMobile = document.getElementById('header-search-count-mobile');
+    const mobileSearchBtn = document.getElementById('mobile-search-btn');
+    const mobileSearchContainer = document.getElementById('mobile-search');
+    
+    // Mobile search toggle
+    if (mobileSearchBtn && mobileSearchContainer) {
+        mobileSearchBtn.addEventListener('click', () => {
+            mobileSearchContainer.classList.toggle('hidden');
+            if (!mobileSearchContainer.classList.contains('hidden')) {
+                headerSearchMobile?.focus();
+            }
+        });
+    }
+    
+    // Desktop header search
+    if (headerSearch) {
+        let searchTimeout;
+        headerSearch.addEventListener('input', (e) => {
+            try {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    try {
+                        currentFilters.query = e.target.value;
+                        applyFilters();
+                        
+                        // Show results count
+                        if (headerSearchCount) {
+                            if (filteredDocuments.length > 0 || e.target.value.trim()) {
+                                headerSearchCount.textContent = `Tìm thấy ${filteredDocuments.length}/${allDocuments.length} tài liệu`;
+                                headerSearchCount.classList.remove('hidden');
+                            } else {
+                                headerSearchCount.classList.add('hidden');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error in desktop search timeout:', error);
+                    }
+                }, 300);
+            } catch (error) {
+                console.error('Error in desktop header search:', error);
+            }
+        });
+    }
+    
+    // Mobile header search
+    if (headerSearchMobile) {
+        let searchTimeout;
+        headerSearchMobile.addEventListener('input', (e) => {
+            try {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    try {
+                        currentFilters.query = e.target.value;
+                        applyFilters();
+                        
+                        // Show results count
+                        if (headerSearchCountMobile) {
+                            if (filteredDocuments.length > 0 || e.target.value.trim()) {
+                                headerSearchCountMobile.textContent = `Tìm thấy ${filteredDocuments.length}/${allDocuments.length} tài liệu`;
+                                headerSearchCountMobile.classList.remove('hidden');
+                            } else {
+                                headerSearchCountMobile.classList.add('hidden');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error in mobile search timeout:', error);
+                    }
+                }, 300);
+            } catch (error) {
+                console.error('Error in mobile header search:', error);
+            }
+        });
+    }
+    
     const searchInput = document.getElementById('search-input');
     const searchInputMobile = document.getElementById('search-input-mobile');
     const suggestionsContainer = document.getElementById('search-suggestions');
@@ -332,6 +413,39 @@ function setupSearch() {
 }
 
 /**
+ * Setup clear filters button
+ */
+function setupClearFilters() {
+    const clearBtn = document.getElementById('clear-filters-btn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            try {
+                // Reset filters
+                currentFilters = { level: '', subject: '', category: '', query: '' };
+                
+                // Reset dropdowns
+                const filterLevel = document.getElementById('filter-level');
+                const filterSubject = document.getElementById('filter-subject');
+                const filterCategory = document.getElementById('filter-category');
+                const headerSearch = document.getElementById('header-search');
+                const headerSearchMobile = document.getElementById('header-search-mobile');
+                
+                if (filterLevel) filterLevel.value = '';
+                if (filterSubject) filterSubject.value = '';
+                if (filterCategory) filterCategory.value = '';
+                if (headerSearch) headerSearch.value = '';
+                if (headerSearchMobile) headerSearchMobile.value = '';
+                
+                // Re-render
+                applyFilters();
+            } catch (error) {
+                console.error('Error clearing filters:', error);
+            }
+        });
+    }
+}
+
+/**
  * Setup filter dropdowns
  */
 function setupFilters() {
@@ -341,22 +455,34 @@ function setupFilters() {
     
     if (filterLevel) {
         filterLevel.addEventListener('change', (e) => {
-            currentFilters.level = e.target.value;
-            applyFilters();
+            try {
+                currentFilters.level = e.target.value;
+                applyFilters();
+            } catch (error) {
+                console.error('Error filtering by level:', error);
+            }
         });
     }
     
     if (filterSubject) {
         filterSubject.addEventListener('change', (e) => {
-            currentFilters.subject = e.target.value;
-            applyFilters();
+            try {
+                currentFilters.subject = e.target.value;
+                applyFilters();
+            } catch (error) {
+                console.error('Error filtering by subject:', error);
+            }
         });
     }
     
     if (filterCategory) {
         filterCategory.addEventListener('change', (e) => {
-            currentFilters.category = e.target.value;
-            applyFilters();
+            try {
+                currentFilters.category = e.target.value;
+                applyFilters();
+            } catch (error) {
+                console.error('Error filtering by category:', error);
+            }
         });
     }
 }

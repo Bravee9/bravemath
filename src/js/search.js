@@ -34,9 +34,11 @@ export function filterDocuments(documents, query = '', filters = {}) {
         filtered = filtered.filter(doc => doc.level === filters.level);
     }
     
-    // Lọc theo subject
+    // Lọc theo subject (dựa trên tags)
     if (filters.subject) {
-        filtered = filtered.filter(doc => doc.subject === filters.subject);
+        filtered = filtered.filter(doc => 
+            doc.tags && doc.tags.includes(filters.subject)
+        );
     }
     
     // Lọc theo category

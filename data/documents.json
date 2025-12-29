@@ -32,10 +32,10 @@
       "driveId": "19-aYjiEcgHn5uPobkBwJmWzSC7jBxx1w",
       "description": "Tài liệu tóm tắt kiến thức Giải tích 1 và 2 dành cho sinh viên đại học",
       "tags": [
+        "giai-tich",
         "daihoc",
         "ly-thuyet",
-        "tomtat",
-        "thptqg"
+        "tomtat"
       ],
       "fileSize": "773.5 KB",
       "pages": 16,
@@ -53,8 +53,9 @@
       "driveId": "1vy0_N6-G-Ha2lNGA0dwtzKqInwGAEs0W",
       "description": "Tài liệu trình bày các khái niệm và định lý cơ bản về giới hạn của dãy số thực",
       "tags": [
+        "giai-tich",
         "gioi-han",
-        "ly-thuyet-",
+        "ly-thuyet",
         "daihoc"
       ],
       "fileSize": "46.0 KB",

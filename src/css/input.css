@@ -1,5 +1,5 @@
 /* Font Import - PHẢI đặt đầu file */
-@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
 
 /* Tailwind CSS Directives */
 @tailwind base;
@@ -14,7 +14,7 @@
   /* Body base styles */
   body {
     @apply text-white font-sans antialiased;
-    background-color: #202225;
+    background-color: #000000;
     font-size: 16px;
     line-height: 2;
   }
@@ -46,11 +46,11 @@
   /* Primary Button (nút xanh chính) */
   .btn-primary {
     @apply px-6 py-3 text-white font-medium rounded-lg transition-all duration-150;
-    background-color: #5865F2;
+    background-color: #0000ff;
   }
 
   .btn-primary:hover {
-    background-color: #4752C4;
+    background-color: #00bbff;
   }
 
   .btn-primary:active {
@@ -436,17 +436,12 @@
    FONT FACE DECLARATIONS
    ======================================== */
 
-/* Imperial Script - Logo font */
-.font-script {
-  font-family: 'Imperial Script', cursive;
-}
-
-/* Cambria Math - Heading & Body */
+/* Be Vietnam Pro - Heading & Body */
 .font-math {
-  font-family: 'Libertinus Serif', 'Libertinus Math';
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 /* Fira Code - Monospace */
 .font-code {
-  font-family: 'Fira Code';
+  font-family: 'Fira Code', monospace;
 }
