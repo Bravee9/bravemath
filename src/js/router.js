@@ -2,12 +2,6 @@
  * Router Module - Client-side routing cho SPA
  */
 
-const routes = {
-    '/': 'index.html',
-    '/index.html': 'index.html',
-    '/about.html': 'about.html',
-    '/how-to-use.html': 'how-to-use.html'
-};
 
 /**
  * Lấy route từ URL
