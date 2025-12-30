@@ -207,7 +207,7 @@ body {
   /* Search Input (ô tìm kiếm đặc biệt) */
     .search-input {
       /* Thay px-4 bằng pl-10 pr-4 (để bên trái rộng hơn bên phải) */
-      @apply w-full pl-10 pr-4 py-3 rounded-lg text-white transition-all duration-300;
+      @apply w-full pl-10 pr-4 py-3 rounded-lg text-black transition-all duration-300;
   
       /* Hoặc nếu muốn dùng CSS thuần thì viết ra ngoài @apply: */
       /* padding-left: 2.5rem; */
@@ -466,3 +466,4 @@ body {
 .font-code {
   font-family: 'Fira Code', monospace;
 }
+
