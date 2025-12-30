@@ -40,62 +40,6 @@ bravemath/
 └── docs/                          # Tài liệu
 ```
 
-## Bắt Đầu
-
-### Yêu Cầu
-
-- Node.js >= 18
-- npm hoặc yarn
-- Tài khoản Cloudflare (cho triển khai Worker)
-
-### Cài đặt
-
-```bash
-# Clone repository
-git clone https://github.com/Bravee9/bravemath.git
-cd bravemath
-
-# Cài đặt dependencies
-npm install
-
-# Chạy development server
-npm run dev
-
-# Build Tailwind CSS
-npm run css:watch
-```
-
-### Deploy
-
-#### 1. Deploy frontend lên GitHub Pages
-
-```bash
-# Build production
-npm run build
-
-# Push to gh-pages branch
-git subtree push --prefix public origin gh-pages
-```
-
-#### 2. Deploy Cloudflare Worker
-
-```bash
-cd cloudflare-worker
-npm install
-npx wrangler login
-npx wrangler deploy
-```
-
-## Đóng góp
-
-Mọi đóng góp đều được chào đón! Vui lòng:
-
-1. Fork repository
-2. Tạo branch mới (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Mở Pull Request
-
 ## License
 
 MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết

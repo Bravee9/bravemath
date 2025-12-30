@@ -25,7 +25,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/pages/index.html'),
         about: resolve(__dirname, 'src/pages/about.html'),
-        subject: resolve(__dirname, 'src/pages/subject.html'),
+        howtouse: resolve(__dirname, 'src/pages/how-to-use.html'),
+        contact: resolve(__dirname, 'src/pages/contact.html')
       }
     }
   },

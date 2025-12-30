@@ -6,7 +6,7 @@ const routes = {
     '/': 'index.html',
     '/index.html': 'index.html',
     '/about.html': 'about.html',
-    '/subject.html': 'subject.html'
+    '/how-to-use.html': 'how-to-use.html'
 };
 
 /**
