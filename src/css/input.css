@@ -12,10 +12,14 @@
 
 @layer base {
   /* Body base styles */
-  body {
+body {
     @apply text-white font-sans antialiased;
-    background: linear-gradient(135deg, #04003d 0%, #2c21a8 25%, #276cdb 50%, #006cbf 100%);
-    font-size: 17px;
+    background: linear-gradient(135deg,
+        #0d0e0f 0%,
+        #111315 30%,
+        #101113 60%,
+        #0c0d0f 100%);
+    font-size: 16px;
     line-height: 1.95;
   }
 
@@ -46,12 +50,12 @@
   /* Primary Button (nút gradient tím hồng) */
   .btn-primary {
     @apply px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300;
-    background: linear-gradient(135deg, #0800ff 0%, #487cec 100%);
+    background: linear-gradient(135deg, #0080ff 0%, #1489ff 100%);
     box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+    background: linear-gradient(135deg, #1778ff 0%, #0077ff 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
   }
@@ -63,12 +67,12 @@
   /* Secondary Button (nút xám phụ) */
   .btn-secondary {
     @apply px-6 py-3 text-white font-medium rounded-lg transition-all duration-150;
-    background-color: #2f3136;
-    border: 1px solid #40444b;
+    background-color: #151719;
+    border: 1px solid #4b4f57;
   }
 
   .btn-secondary:hover {
-    background-color: #40444b;
+    background-color: #141414;
     border-color: #40444b;
   }
 
@@ -93,7 +97,7 @@
   /* Card cơ bản (khung chứa nội dung) */
   .card {
     @apply rounded-lg p-6 transition-all duration-300;
-    background-color: #3b3b50;
+    background-color: #141414;
     border: 1px solid #5c7678;
   }
 
@@ -105,7 +109,7 @@
   /* Document Card (card tài liệu đặc biệt) */
   .document-card {
     @apply rounded-lg overflow-hidden transition-all duration-300 flex flex-col;
-    background-color: #0B0B0F;
+    background-color: #141414;
     border: 2px solid #1e293b;
     padding: 0.75rem;
     height: 100%;
@@ -201,28 +205,32 @@
   }
 
   /* Search Input (ô tìm kiếm đặc biệt) */
-  .search-input {
-    @apply input-field pr-12;
-  }
+    .search-input {
+      /* Thay px-4 bằng pl-10 pr-4 (để bên trái rộng hơn bên phải) */
+      @apply w-full pl-10 pr-4 py-3 rounded-lg text-white transition-all duration-300;
+  
+      /* Hoặc nếu muốn dùng CSS thuần thì viết ra ngoài @apply: */
+      /* padding-left: 2.5rem; */
+    }
 
   /* === SECTION TITLES === */
   
   /* Section Title với gradient */
   .section-title {
     @apply text-3xl md:text-4xl font-bold font-math mb-4 bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #8b5cf6, #ec4899, #0891b2);
+    background-image: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
   }
 
   /* Section Title lớn hơn */
   .section-title-lg {
     @apply text-4xl md:text-6xl font-bold font-math mb-6 bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #a78bfa, #f472b6, #06b6d4);
+    background-image: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
   }
 
   /* Underline cho title */
   .title-underline {
     @apply w-20 h-1 mx-auto;
-    background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+    background-image: linear-gradient(to right, #ffffff, #ffffff);
   }
 
   /* === CONTAINERS === */
@@ -263,7 +271,7 @@
 
   .stat-number {
     @apply text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, #3B82F6, #06B6D4);
+    background-image: linear-gradient(to right, #0095ff, #06B6D4);
   }
 
   .stat-label {
@@ -310,44 +318,44 @@
   /* Gradient Background - Hero (JetBrains Kotlin style) */
   .gradient-hero {
     background: linear-gradient(135deg, 
-      #6b21a8 0%,   /* Deep Purple */
-      #8b5cf6 25%,  /* Purple */
-      #ec4899 50%,  /* Pink */
-      #0891b2 100%  /* Cyan */
+      #036cff 0%,   /* Deep Blue */
+      #035fff 25%,  /* Purple */
+      #0346ff 50%,  /* Pink */
+      #0368ff 100%  /* Cyan */
     );
   }
 
   /* Gradient Card Background */
   .gradient-card-blue {
-    background: linear-gradient(to bottom right, #000000, #00aaff);
+    background: linear-gradient(to bottom right, #141414, #00aaff);
   }
 
   .gradient-card-purple {
-    background: linear-gradient(to bottom right, #000000, #8c00ff);
+    background: linear-gradient(to bottom right, #141414, #8c00ff);
   }
 
   .gradient-card-green {
-    background: linear-gradient(to bottom right, #000000, #00ffaa);
+    background: linear-gradient(to bottom right, #141414, #00ffaa);
   }
 
   .gradient-card-orange {
-    background: linear-gradient(to bottom right, #000000, #ff4800);
+    background: linear-gradient(to bottom right, #141414, #ff4800);
   }
 
   .gradient-card-red {
-    background: linear-gradient(to bottom right, #000000, #ff0000);
+    background: linear-gradient(to bottom right, #141414, #ff0000);
   }
 
   .gradient-card-indigo {
-    background: linear-gradient(to bottom right, #000000, #1500ff);
+    background: linear-gradient(to bottom right, #141414, #1500ff);
   }
 
   .gradient-card-pink {
-    background: linear-gradient(to bottom right, #000000, #ff006a);
+    background: linear-gradient(to bottom right, #141414, #ff006a);
   }
 
   .gradient-card-teal {
-    background: linear-gradient(to bottom right, #000000, #0099ff);
+    background: linear-gradient(to bottom right, #141414, #0099ff);
   }
 }
 
@@ -360,12 +368,12 @@
   /* Text Gradient Utilities */
   .text-gradient-blue {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, #000000, #001aff, rgb(0, 85, 255));
+    background-image: linear-gradient(to right, #141414, #001aff, rgb(0, 85, 255));
   }
 
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, #000000, #1e00ff);
+    background-image: linear-gradient(to right, #141414, #1e00ff);
   }
 
   /* Glow Effect (KHÔNG SỬ DỤNG - giữ để tương thích) */
@@ -394,8 +402,8 @@
 
   /* Backdrop Blur */
   .backdrop-blur-header {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
   /* Smooth Shadow */
@@ -419,7 +427,7 @@
   /* Focus Visible */
   .focus-blue:focus-visible {
     @apply outline-none;
-    box-shadow: 0 0 0 2px #000000, 0 0 0 4px #006aff;
+    box-shadow: 0 0 0 2px #141414, 0 0 0 4px #006aff;
   }
 }
 

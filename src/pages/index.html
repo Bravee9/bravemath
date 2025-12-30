@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -103,145 +103,100 @@
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="../../assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg">
 
-    <!-- Tailwind CSS -->
-
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fira+Code:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <!-- Vite sẽ tự build và chèn file JS/CSS, chỉ import file nguồn khi dev -->
+    <!-- CSS and JS -->
     <link rel="stylesheet" href="../css/styles.css">
     <script type="module" src="../js/main.js"></script>
 </head>
 
-<body class="text-slate-300 min-h-screen font-sans" style="background-color: #202225;">
+<body>
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-md border-b border-slate-800"
-        style="background-color: rgba(11, 11, 15, 0.95);">
-        <nav class="container mx-auto px-4 py-4">
+    <header class="sticky top-0 z-75 backdrop-blur-header bg-custom-dark-bg/90 border-b border-custom-dark-border">
+        <nav class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between gap-6">
-                <!-- Logo -->
-                <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition">
-                    <img src="../../assets/images/bravemath-picture.png" alt="Bravemath Logo"
-                        class="h-10 w-auto">
+                <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                    <img src="../../assets/images/bravemath-picture.png" alt="Bravemath Logo" class="h-10 w-auto">
                 </a>
-
-                <!-- Search Bar (Desktop) -->
+    
                 <div class="hidden md:block flex-1 max-w-md relative">
-                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none"
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                    <input type="text" id="header-search" placeholder="Tìm kiếm tài liệu..."
-                        class="w-full pl-10 pr-4 py-2 border border-slate-700 rounded-lg text-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-transparent transition"
-                        style="background-color: #40444b; --tw-ring-color: #ffffff;">
-                    <!-- Search Results Count -->
-                    <div id="header-search-count" class="absolute top-full mt-1 text-xs text-slate-400 hidden"></div>
+                    <img src="../../assets/images/search_icon.png" alt="Search Icon"
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none opacity-50">
+    
+                    <input type="text" id="header-search" placeholder="Tìm kiếm tài liệu..." class="search-input pl-10">
                 </div>
-
-                <!-- Search Icon (Mobile) -->
-                <button id="mobile-search-btn" class="md:hidden text-slate-400 hover:text-white transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
+    
+                <button id="mobile-search-btn" class="md:hidden">
+                    <img src="../../assets/images/search_icon.png" alt="Search Icon" class="w-5 h-5 opacity-100">
                 </button>
-
-                <!-- Desktop Navigation -->
+    
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/"
-                        class="text-lg font-medium text-slate-200 hover:text-white transition-colors">Trang chủ</a>
-                    <a href="/subject.html?level=thpt"
-                        class="text-lg font-medium text-slate-200 hover:text-white transition-colors">Trung học phổ
+                    <a href="/" class="nav-link text-lg font-medium">Trang chủ</a>
+                    <a href="/subject.html?level=thpt" class="nav-link text-lg font-medium">Trung học phổ
                         thông</a>
-                    <a href="/subject.html?level=daihoc"
-                        class="text-lg font-medium text-slate-200 hover:text-white transition-colors">Đại học - Cao
+                    <a href="/subject.html?level=daihoc" class="nav-link text-lg font-medium">Đại học - Cao
                         đẳng</a>
-                    <a href="/about.html"
-                        class="text-lg font-medium text-slate-200 hover:text-white transition-colors">Giới thiệu</a>
+                    <a href="/about.html" class="nav-link text-lg font-medium">Giới thiệu</a>
                 </div>
-
-                <!-- Mobile Menu Button -->
+    
                 <button id="mobile-menu-btn" class="md:hidden">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAbUlEQVR4AeyRQQrAQAgD2/7D/z/Mh7R4G0+9zLpQKgQCgjHJdSyeX+A14I9FlJm3AeY2G1FEnAb2OaCyxVsHRsF1g881AS4s3gSMgusGn2sCXFh8VqAKMkD3sw6qIAP7HFDZ4rMdWF/zznIHDwAAAP//TZhmyQAAAAZJREFUAwAiftgx+gkGrAAAAABJRU5ErkJggg=="
-                        alt="Menu" class="w-8 h-8">
+                    <img src="../../assets/images/menu_icon.png" alt="Menu" class="w-8 h-8">
                 </button>
             </div>
-
-            <!-- Mobile Navigation -->
+    
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3">
-                <a href="/" class="block text-slate-300 hover:text-white transition font-bold">Trang chủ</a>
-                <a href="/subject.html?level=thpt"
-                    class="block text-slate-300 hover:text-white transition font-bold">THPT</a>
-                <a href="/subject.html?level=daihoc"
-                    class="block text-slate-300 hover:text-white transition font-bold">Đại học</a>
-                <a href="/about.html" class="block text-slate-300 hover:text-white transition font-bold">Giới thiệu</a>
+                <a href="/" class="mobile-nav-link font-bold">Trang chủ</a>
+                <a href="/subject.html?level=thpt" class="mobile-nav-link font-bold">THPT</a>
+                <a href="/subject.html?level=daihoc" class="mobile-nav-link font-bold">Đại học</a>
+                <a href="/about.html" class="mobile-nav-link font-bold">Giới thiệu</a>
             </div>
-
-            <!-- Mobile Search Bar -->
+    
             <div id="mobile-search" class="hidden md:hidden mt-4">
                 <div class="relative">
-                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none"
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
+                    <img src="../../assets/images/search_icon.png" alt="Search Icon"
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none opacity-50">
+    
                     <input type="text" id="header-search-mobile" placeholder="Tìm kiếm tài liệu..."
-                        class="w-full pl-10 pr-4 py-2 border border-slate-700 rounded-lg text-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-transparent transition"
-                        style="background-color: #40444b; --tw-ring-color: #ffffff;">
+                        class="search-input absolute left-3 right-3 w-full pl-10">
                 </div>
-                <div id="header-search-count-mobile" class="text-xs text-slate-400 mt-2 hidden"></div>
+                <div id="header-search-count-mobile" class="text-xs mt-2 hidden"></div>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="gradient-hero py-24 md:py-40">
-        <div class="container mx-auto px-4">
-            <!-- Title -->
-            <div class="text-center mb-12">
+    <main>
+        <!-- Hero Section -->
+        <section class="gradient-hero py-24 md:py-40">
+            <div class="container mx-auto px-4 text-center">
                 <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 font-math">
                     Bravemath - Kho tài liệu Toán miễn phí
                 </h1>
-            </div>
-
-
-
-            <!-- CTA Button -->
-            <div class="text-center">
-                <a href="#documents" class="inline-block px-8 py-4 text-white font-bold rounded-lg transition"
-                    style="background-color: #000000;">
-                    Tìm hiểu thêm
+                <p class="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-10">
+                    Nơi chia sẻ tài liệu, đề thi, và kiến thức Toán từ THPT đến Đại học.
+                </p>
+                <a href="#documents" class="btn-primary">
+                    Khám phá ngay
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section class="py-16" style="background-color: #000000;">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 font-math">Bravemath là gì?</h2>
-                <div class="w-full h-1 mx-auto" style="background: linear-gradient(to right, #5865F2, #EB459E);"></div>
+        <!-- About Section -->
+        <section class="section-container">
+            <div class="container mx-auto px-4 max-w-4xl text-center">
+                <h2 class="section-title mx-auto">Bravemath là gì?</h2>
+
+
+                <div class="card">
+                    <p class="text-lg leading-relaxed mb-6">
+                        Bravemath là một kho tài liệu Toán miễn phí cho học sinh THPT và sinh viên.
+                        Có lý thuyết, có đề, có công thức đầy đủ.
+                    </p>
+
+                    <p class="text-lg leading-relaxed">
+                        Tài liệu được chọn lọc, dễ hiểu và phù hợp từng loại chương trình học của các bạn.
+                    </p>
+                </div>
             </div>
-
-            <div class="card">
-                <p class="text-slate-300 text-lg font-bold leading-relaxed mb-6">
-                    Kho tài liệu Toán miễn phí cho học sinh THPT và sinh viên.
-                    Có lý thuyết, có đề, có công thức đầy đủ.
-                </p>
-
-                <p class="text-slate-300 text-lg font-bold leading-relaxed">
-                    Tài liệu được chọn lọc, dễ hiểu và phù hợp từng loại chương trình học của các bạn.
-                </p>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Documents Section -->
     <section id="documents" class="py-16" style="background-color: #000000;">
