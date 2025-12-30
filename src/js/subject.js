@@ -160,7 +160,7 @@ function createDocumentCard(doc) {
     card.className = 'document-card';
     
     // Thumbnail with Vite base path
-    const basePath = import.meta.env.BASE_URL || '/';
+    const basePath = import.meta.env.BASE_URL || '/bravemath/';
     const fallbackImg = `${basePath}assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg`;
     const thumbnail = doc.thumbnail || fallbackImg;
     
