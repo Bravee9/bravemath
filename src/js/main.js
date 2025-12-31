@@ -182,6 +182,7 @@ function createDocumentCard(doc) {
                 src="${escapeHtml(thumbnail)}" 
                 alt="${safeTitle}"
                 class="w-full aspect-[4/3] object-cover rounded-lg mb-2 cursor-pointer hover:opacity-80 transition-opacity"
+                loading="lazy"
                 onerror="this.onerror=null; this.src='${fallbackImg}'"
             >
             <div class="flex flex-wrap gap-1.5">

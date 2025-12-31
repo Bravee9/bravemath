@@ -240,26 +240,25 @@ body {
     @apply py-16 px-4;
   }
 
+  /* === SECTIONS === */
+  
+  /* Documents Section */
+  .documents-section {
+    background-color: #000000;
+  }
+
+  /* Footer Section */
+  .footer-section {
+    background-color: #000000;
+    border-top: 1px solid #1e293b;
+  }
+
   /* === FILTERS === */
   
-  /* Filter Button (nút lọc) */
-  .filter-btn {
-    @apply px-4 py-2 rounded-lg transition-all duration-150;
-    background-color: #6B57FF;
-    color: #ffffff;
-    border: 1px solid #beb6ff;
-  }
-
-  .filter-btn:hover {
-    background-color: #577eff;
-    color: #ffffff;
-  }
-
-  /* Filter active state */
-  .filter-btn.active {
-    background-color: #ffffff;
-    color: white;
-    border-color: #5865F2;
+  /* Filter Select */
+  .filter-select {
+    background-color: #40444b;
+    --tw-ring-color: #ffffff;
   }
 
   /* === STATS === */
@@ -366,6 +365,23 @@ body {
     background: linear-gradient(to bottom right, #141414, #1500ff);
   }
 
+  /* Document Card Gradients */
+  .gradient-purple-pink {
+    background: linear-gradient(to bottom right, #5865F2, #EB459E);
+  }
+
+  .gradient-green {
+    background: linear-gradient(to bottom right, #3BA55D, #57F287);
+  }
+
+  .gradient-orange {
+    background: linear-gradient(to bottom right, #FAA81A, #FEE75C);
+  }
+
+  .gradient-red {
+    background: linear-gradient(to bottom right, #ED4245, #F26268);
+  }
+
   .gradient-card-pink {
     background: linear-gradient(to bottom right, #141414, #ff006a);
   }
@@ -420,6 +436,7 @@ body {
   .backdrop-blur-header {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    z-index: 9999;
   }
 
   /* Smooth Shadow */
@@ -438,6 +455,15 @@ body {
 
   .hover-lift:hover {
     @apply -translate-y-1;
+  }
+
+  /* Instagram SVG Gradient on Hover */
+  .instagram-svg {
+    fill: currentColor;
+  }
+
+  .instagram-svg:hover {
+    fill: url(#instagram-gradient);
   }
 
   /* Focus Visible */
