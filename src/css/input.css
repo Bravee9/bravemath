@@ -1,5 +1,5 @@
 /* Font Import - PHẢI đặt đầu file */
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Tailwind CSS Directives */
 @tailwind base;
@@ -315,15 +315,31 @@ body {
 
   /* === GRADIENTS === */
   
-  /* Gradient Background - Hero (JetBrains Kotlin style) */
-  .gradient-hero {
-    background: linear-gradient(135deg, 
-      #036cff 0%,   /* Deep Blue */
-      #035fff 25%,  /* Purple */
-      #0346ff 50%,  /* Pink */
-      #0368ff 100%  /* Cyan */
-    );
-  }
+    /* Background Image - Hero */
+    .gradient-hero {
+      background-image: url('../../assets/images/bravemath-background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      /* Đảm bảo scroll mượt trên mobile */
+    }
+  
+    /* Hiệu ứng cho tiêu đề lớn (H1) - Giữ nguyên nếu bạn thích sự nổi bật */
+    .gradient-hero h1 {
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.3);
+    }
+  
+    /* Hiệu ứng cho đoạn văn (P) - SỬA LẠI */
+    .gradient-hero p {
+      /* Cách 1: Bỏ hoàn toàn bóng để chữ sắc nét (Khuyên dùng) */
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.3);
+  
+      /* Hoặc Cách 2: Nếu vẫn muốn glow nhẹ, hãy giảm radius xuống thật nhỏ (ví dụ 4px) */
+      /* text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); */
+    }
 
   /* Gradient Card Background */
   .gradient-card-blue {
@@ -459,11 +475,6 @@ body {
 
 /* Be Vietnam Pro - Heading & Body */
 .font-math {
-  font-family: 'Be Vietnam Pro';
-}
-
-/* Fira Code - Monospace */
-.font-code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Montserrat';
 }
 

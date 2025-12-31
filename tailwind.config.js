@@ -58,10 +58,8 @@ module.exports = {
         'focus-blue': '0 0 0 2px #000000, 0 0 0 4px #006aff',
       },
       fontFamily: {
-        sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
-        math: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
-        script: ['Imperial Script', 'cursive'],
-        mono: ['Fira Code', 'monospace']
+        sans: ['Montserrat', 'sans-serif'],
+        math: ['Montserrat', 'sans-serif']
       },
       spacing: {
         '128': '32rem',
