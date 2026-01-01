@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "bravemath",
   "version": "1.0.0",
   "description": "Platform chia sẻ tài liệu học thuật miễn phí cho học sinh THPT và sinh viên",
@@ -10,7 +11,9 @@
     "css:watch": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --watch",
     "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify",
     "update:metadata": "node scripts/update-metadata.js",
-    "add:document": "node scripts/add-document.js"
+    "add:document": "node scripts/add-document.js",
+    "server": "node scripts/server.js",
+    "admin": "node scripts/server.js"
   },
   "keywords": [
     "education",
@@ -24,6 +27,8 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
     "vite": "^5.0.0"

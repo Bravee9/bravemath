@@ -165,6 +165,7 @@ function createDocumentCard(doc) {
     
     // Level label
     const levelMap = {
+        'thcs': 'THCS',
         'thpt': 'THPT',
         'daihoc': 'Đại học'
     };
@@ -208,7 +209,7 @@ function createDocumentCard(doc) {
             <button 
                 class="btn-primary w-full download-btn text-sm py-2" 
                 data-drive-id="${escapeHtml(doc.driveId)}"
-                data-filename="${escapeHtml(doc.title.replace(/[^a-z0-9]/gi, '_'))}.pdf"
+                data-filename="${escapeHtml(doc.title)}.pdf"
             >
                 Tải xuống
             </button>

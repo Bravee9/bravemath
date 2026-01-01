@@ -209,11 +209,61 @@
       "uploadDate": "30/12/2025",
       "author": "HUS",
       "thumbnail": "https://drive.google.com/thumbnail?id=1PwRH323Ou7aAomFblP3OSR2eobyNaXxk&sz=w400"
+    },
+    {
+      "id": "doc-011",
+      "title": "Đề thi Giải tích 1 (MAT2501) - HUS - 2023 - 2024",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "de-thi",
+      "slug": "de-thi-giai-tich-1-mat2501-hus-2023-2024",
+      "driveId": "1RdDEPdQlpGO273n2F25o5Y467JrN5jgt",
+      "description": "Đề thi này là Đề số 01 của môn Giải tích 1 (Mã môn học: MAT2501) thuộc Trường Đại học Khoa Học Tự Nhiên, Đại học Quốc gia Hà Nội.",
+      "tags": [
+        "giai-tich",
+        "dai-hoc",
+        "de-thi",
+        "khmt",
+        "khdl",
+        "daihoc",
+        "toan"
+      ],
+      "fileSize": "N/A",
+      "pages": 1,
+      "uploadDate": "2/1/2026",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1RdDEPdQlpGO273n2F25o5Y467JrN5jgt&sz=w400"
+    },
+    {
+      "id": "doc-012",
+      "title": "Bài giảng Xác Suất Thống Kê (HUST) - Nguyễn Thị Thu Thuỷ",
+      "subject": "toan",
+      "level": "daihoc",
+      "category": "ly-thuyet",
+      "slug": "bai-giang-xac-suat-thong-ke-hust-nguyen-thi-thu-thuy",
+      "driveId": "1Swif7b9rkz4YQlQozhLfXsXIdFrL1Df2",
+      "description": "Bài giảng học phần Xác suất thống kê (MI2020) dành cho sinh viên đại học chính quy (không chuyên Toán Tin) Trường Đại học Bách khoa Hà Nội, biên soạn theo đề cương chi tiết, gồm 30 tiết lý thuyết và 30 tiết bài tập.",
+      "tags": [
+        "dai-hoc",
+        "xac-suat-thong-ke",
+        "xstk",
+        "hust",
+        "ly-thuyet",
+        "bai-giang",
+        "bach-khoa",
+        "daihoc",
+        "toan"
+      ],
+      "fileSize": "2.1 MB",
+      "pages": 194,
+      "uploadDate": "2/1/2026",
+      "author": "Nguyễn Thị Thu Thuỷ",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1Swif7b9rkz4YQlQozhLfXsXIdFrL1Df2&sz=w400"
     }
   ],
   "metadata": {
-    "lastUpdated": "2025-12-29T20:40:33.626Z",
-    "totalDocuments": 10,
+    "lastUpdated": "2026-01-01T18:26:10.105Z",
+    "totalDocuments": 12,
     "version": "1.0.0"
   },
   "categories": {
