@@ -5,6 +5,23 @@
 // Worker URL - ĐANG DÙNG PRODUCTION
 const WORKER_URL = 'https://bravemath-proxy.bravechien2209.workers.dev';
 
+// Allowed origins for security
+const ALLOWED_ORIGINS = [
+    'https://bravemath-proxy.bravechien2209.workers.dev',
+    'https://drive.google.com'
+];
+
+/**
+ * Validate Google Drive ID format (security)
+ * @param {string} driveId - Google Drive File ID
+ * @returns {boolean} True if valid format
+ */
+function isValidDriveId(driveId) {
+    if (!driveId || typeof driveId !== 'string') return false;
+    // Google Drive IDs: 28-44 characters, alphanumeric + dash/underscore only
+    return /^[a-zA-Z0-9_-]{28,44}$/.test(driveId);
+}
+
 /**
  * Sanitize filename để tránh lỗi encoding khi download
  * @param {string} filename - Tên file gốc
@@ -90,8 +107,15 @@ export async function loadDocuments() {
  * @param {string} filename - Tên file để tải về
  */
 export async function downloadDocument(driveId, filename) {
+    // Validate driveId before making request (security)
+    if (!isValidDriveId(driveId)) {
+        console.error('Invalid Drive ID format:', driveId);
+        alert('ID tài liệu không hợp lệ. Vui lòng thử lại.');
+        return;
+    }
+    
     try {
-        const url = `${WORKER_URL}/download/${driveId}`;
+        const url = `${WORKER_URL}/download/${encodeURIComponent(driveId)}`;
         
         // Hiển thị loading modal
         const loadingModal = document.getElementById('loading-modal');
@@ -148,8 +172,15 @@ export async function downloadDocument(driveId, filename) {
  * @param {string} driveId - Google Drive File ID
  */
 export function previewDocument(driveId) {
-    const url = `${WORKER_URL}/preview/${driveId}`;
-    window.open(url, '_blank');
+    // Validate driveId before making request (security)
+    if (!isValidDriveId(driveId)) {
+        console.error('Invalid Drive ID format:', driveId);
+        alert('ID tài liệu không hợp lệ. Vui lòng thử lại.');
+        return;
+    }
+    
+    const url = `${WORKER_URL}/preview/${encodeURIComponent(driveId)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 /**

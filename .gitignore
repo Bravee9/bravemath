@@ -44,7 +44,9 @@ yarn-error.log*
 
 # Cloudflare
 .wrangler/
+wrangler.toml
 wrangler.toml.local
+# wrangler.jsonc is tracked - contains no secrets
 
 # Assets (PDF files - not tracked in git)
 assets/**/*.pdf
