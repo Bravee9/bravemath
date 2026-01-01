@@ -9,6 +9,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <!-- Security Headers (CSP - Content Security Policy) -->
+    <!-- Note: frame-ancestors and form-action are HTTP-header-only directives, set via server config -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
@@ -16,9 +17,9 @@
         img-src 'self' https://*.google.com https://*.googleusercontent.com data: blob:;
         font-src 'self' https://fonts.gstatic.com;
         connect-src 'self' https://bravemath-proxy.bravechien2209.workers.dev https://www.google-analytics.com;
-        frame-ancestors 'none';
         base-uri 'self';
-        form-action 'self' https://formspree.io;
+        object-src 'none';
+        upgrade-insecure-requests;
     ">
 
     <!-- SEO Meta Tags -->

@@ -18,6 +18,8 @@ public/assets/css/
 # Sensitive files - NEVER COMMIT
 .github/copilot-instructions.md
 **/copilot-instructions.md
+scripts/
+docs/
 **/add-document.js
 **/update-metadata.js
 **/*.key
