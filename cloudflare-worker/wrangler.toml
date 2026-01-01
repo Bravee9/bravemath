@@ -1,9 +1,7 @@
 name = "bravemath-proxy"
 main = "src/index.js"
-compatibility_date = "2025-11-28"
-
-# Bỏ comment dòng dưới khi muốn chỉ định account ID cụ thể
-# account_id = "YOUR_ACCOUNT_ID_HERE"
+compatibility_date = "2026-01-01"
+account_id = "d18481e864512aa8dc03e59c3d1c6825"
 workers_dev = true
 
 # Route configuration (optional)
