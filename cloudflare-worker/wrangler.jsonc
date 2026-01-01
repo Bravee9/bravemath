@@ -1,0 +1,7 @@
+{
+  "name": "bravemath-proxy",
+  "main": "src/index.js",
+  "compatibility_date": "2026-01-01",
+  "account_id": "d18481e864512aa8dc03e59c3d1c6825",
+  "workers_dev": true
+}
