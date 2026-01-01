@@ -5,9 +5,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Liên hệ - Bravemath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Security Headers (CSP - Content Security Policy) -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' https://*.google.com https://*.googleusercontent.com data: blob:;
+        font-src 'self' https://fonts.gstatic.com;
+        connect-src 'self' https://bravemath-proxy.bravechien2209.workers.dev https://www.google-analytics.com;
+        frame-ancestors 'none';
+        base-uri 'self';
+        form-action 'self';
+    ">
+
+    <!-- SEO Meta Tags -->
+    <title>Liên hệ - Bravemath | Góp ý và đóng góp tài liệu toán học</title>
+    <meta name="description"
+        content="Liên hệ với Bravemath để góp ý, đóng góp tài liệu toán học hoặc báo lỗi. Chúng tôi luôn lắng nghe ý kiến từ cộng đồng.">
+    <meta name="keywords"
+        content="liên hệ bravemath, góp ý website, đóng góp tài liệu toán, báo lỗi">
+    <link rel="canonical" href="https://bravee9.github.io/bravemath/contact.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../../assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg">
+
+    <!-- CSS and JS -->
     <link rel="stylesheet" href="../css/styles.css">
-</head>
+    <script type="module" src="../js/main.js"></script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Liên hệ - Bravemath | Góp ý và đóng góp tài liệu toán học">
+    <meta property="og:description"
+        content="Liên hệ với Bravemath để góp ý, đóng góp tài liệu toán học hoặc báo lỗi. Chúng tôi luôn lắng nghe ý kiến từ cộng đồng.">
+    <meta property="og:url" content="https://bravee9.github.io/bravemath/contact.html">
+    <meta property="og:site_name" content="Bravemath">
+    <meta property="og:image" content="https://bravee9.github.io/bravemath/images/bravemath-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Liên hệ - Bravemath | Góp ý và đóng góp tài liệu toán học">
+    <meta name="twitter:description"
+        content="Liên hệ với Bravemath để góp ý, đóng góp tài liệu toán học hoặc báo lỗi. Chúng tôi luôn lắng nghe ý kiến từ cộng đồng.">
+    <meta name="twitter:image" content="https://bravee9.github.io/bravemath/images/bravemath-og.png">
 
 <body>
     
@@ -15,16 +62,17 @@
     <header class="sticky top-0 z-75 backdrop-blur-header bg-custom-dark-bg/90 border-b border-custom-dark-border">
         <nav class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between gap-6">
-                <a href="/" class="flex items-center space-x-3 hover:opacity-100 transition-opacity">
+                <a href="/bravemath/" class="flex items-center space-x-3 hover:opacity-100 transition-opacity">
                     <img src="../../assets/images/bravemath-picture.png" alt="Bravemath Logo" class="h-10 w-auto">
                 </a>
 
 
     
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/index.html" class="nav-link text-lg font-bold">Trang chủ</a>
-                    <a href="/about.html" class="nav-link text-lg font-bold">Giới thiệu</a>
-                    <a href="/how-to-use.html" class="nav-link text-lg font-bold">Hướng dẫn sử dụng</a>
+                    <a href="/bravemath/index.html" class="nav-link text-lg font-bold">Trang chủ</a>
+                    <a href="/bravemath/about.html" class="nav-link text-lg font-bold">Giới thiệu</a>
+                    <a href="/bravemath/how-to-use.html" class="nav-link text-lg font-bold">Hướng dẫn sử dụng</a>
+                    <a href="/bravemath/contact.html" class="nav-link text-lg font-bold">Liên hệ</a>
                 </div>
     
                 <button id="mobile-menu-btn" class="md:hidden">
@@ -33,9 +81,10 @@
             </div>
     
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3">
-                <a href="/index.html" class="mobile-nav-link font-bold">Trang chủ</a>
-                <a href="/about.html" class="mobile-nav-link font-bold">Giới thiệu</a>
-                <a href="/how-to-use.html" class="mobile-nav-link font-bold">Hướng dẫn sử dụng</a>
+                <a href="/bravemath/index.html" class="mobile-nav-link font-bold">Trang chủ</a>
+                <a href="/bravemath/about.html" class="mobile-nav-link font-bold">Giới thiệu</a>
+                <a href="/bravemath/how-to-use.html" class="mobile-nav-link font-bold">Hướng dẫn sử dụng</a>
+                <a href="/bravemath/contact.html" class="nav-link text-lg font-bold">Liên hệ</a>
     
             </div>
 
@@ -48,7 +97,7 @@
 
     <main class="container mx-auto px-4 py-12 max-w-lg">
         <h1 class="text-3xl font-bold mb-6">Liên hệ với tôi</h1>
-        <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4">
+        <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="space-y-4">
             <input type="text" name="name" placeholder="Tên của bạn" required class="input-field w-full">
             <input type="email" name="email" placeholder="Email của bạn" required class="input-field w-full">
             <textarea name="message" placeholder="Nội dung liên hệ" required class="input-field w-full"></textarea>

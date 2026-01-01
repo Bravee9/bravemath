@@ -79,6 +79,43 @@ Separation of Concerns with independent modules:
 - **Accessibility**: alt text, lazy loading
 - **No hardcoded content**: Render from JS
 
+### Clean Code & SOLID Principles
+**Code phải clean, dễ đọc, dễ maintain và tuân thủ SOLID principles:**
+
+- **S (Single Responsibility)**: Mỗi module/function chỉ làm 1 việc
+  - `api.js`: Chỉ xử lý API calls
+  - `search.js`: Chỉ xử lý logic search/filter
+  - Không mix DOM manipulation với business logic
+
+- **O (Open-Closed)**: Mở rộng bằng inheritance/polymorphism, không sửa code cũ
+  - Thêm filter mới bằng cách extend `filterDocuments()`, không sửa logic cũ
+
+- **L (Liskov Substitution)**: Subtypes phải thay thế được supertypes
+  - Nếu tạo class con cho Document, phải tương thích với Document base
+
+- **I (Interface Segregation)**: Interfaces nhỏ, specific
+  - Tách riêng interfaces cho download, preview, search
+
+- **D (Dependency Inversion)**: Phụ thuộc vào abstractions, không concretes
+  - Inject dependencies thay vì hardcode (VD: pass API endpoint as param)
+
+**Clean Code Practices:**
+- **Naming**: Descriptive, consistent (camelCase cho variables/functions, PascalCase cho classes)
+- **Functions**: < 20 lines, 1 responsibility, meaningful names
+- **DRY**: No duplicate code - extract common logic
+- **Error Handling**: Try-catch với meaningful messages, không silent fails
+- **Comments**: Explain why, not what (code should be self-documenting)
+- **Testing**: Unit tests cho pure functions, integration tests cho API calls
+
+### Code Review Checklist
+- [ ] No console.log in production
+- [ ] All imports used
+- [ ] No hardcoded strings (use constants)
+- [ ] Functions have JSDoc for complex logic
+- [ ] Error messages in Vietnamese
+- [ ] CSP compliant (no eval, inline scripts)
+- [ ] Accessibility: alt text, keyboard navigation
+
 ## 🔄 Development Workflow
 
 ### Local Development
@@ -115,9 +152,10 @@ GitHub Repository → GitHub Actions → GitHub Pages + Cloudflare Worker → Go
 - Committing sensitive files (.env, wrangler.toml)
 - Infinite loops in image onerror (use `onerror=null`)
 - XSS vulnerabilities (use `escapeHtml()`)
-- Modifying documents.json manually (use npm scripts)
-
+- Modifying documents.json manually (use npm scripts)- Using multiple favicon formats - always use single JPG favicon: `assets/images/thumbnails/meme-soi-co-doc-hai-huoc.jpg`
 ## 📝 Version History
+- **v1.2.2** (2026-01-01): Updated favicon to use custom meme image across all pages
+- **v1.2.1** (2026-01-01): Added QR donate Techcombank to about page, unified SEO headers across all pages
 - **v1.2.0** (2025-12-29): Security & Data Integrity Updates
 
 **Maintained by**: Bùi Quang Chiến (@Bravee9)
