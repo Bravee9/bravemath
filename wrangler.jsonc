@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
-  "name": "bravemath",
+  "name": "bravemath-proxy",
   "main": "cloudflare-worker/src/index.js",
   "compatibility_date": "2025-12-01",
   "workers_dev": true,
