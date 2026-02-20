@@ -259,11 +259,32 @@
       "uploadDate": "2/1/2026",
       "author": "Nguyễn Thị Thu Thuỷ",
       "thumbnail": "https://drive.google.com/thumbnail?id=1Swif7b9rkz4YQlQozhLfXsXIdFrL1Df2&sz=w400"
+    },
+    {
+      "id": "doc-013",
+      "title": "Các phép dời hình và biến hình",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "cac-phep-doi-hinh-va-bien-hinh",
+      "driveId": "16XkKCrHCWNglwFJuBojbFYKuhg4MhU76",
+      "description": "Các phép dời hình và biến hình do Brave 9 biên soạn nhằm cung cấp cái nhìn trực quan về mối liên hệ giữa các phép biến hình trong mặt phẳng với việc suy luận và vẽ đồ thị hàm số.",
+      "tags": [
+        "giai-tich",
+        "phep0-tinh-tien-do-thi",
+        "phep-doi-hinh",
+        "lop-11"
+      ],
+      "fileSize": "202.7 KB",
+      "pages": 31,
+      "uploadDate": "20/2/2026",
+      "author": "Bùi Quang Chiến (Brave 9)",
+      "thumbnail": "https://drive.google.com/thumbnail?id=16XkKCrHCWNglwFJuBojbFYKuhg4MhU76&sz=w400"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-01-01T18:26:10.105Z",
-    "totalDocuments": 12,
+    "lastUpdated": "2026-02-20T07:51:36.511Z",
+    "totalDocuments": 13,
     "version": "1.0.0"
   },
   "categories": {
