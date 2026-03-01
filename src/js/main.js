@@ -4,7 +4,7 @@
  */
 
 import { loadDocuments, downloadDocument, previewDocument } from './api.js';
-import { filterDocuments, getSearchSuggestions, renderSearchSuggestions, updateResultsCount } from './search.js';
+import { filterDocuments, sortDocuments, getSearchSuggestions, renderSearchSuggestions, updateResultsCount } from './search.js';
 import { setupRouter } from './router.js';
 
 // Global state
@@ -74,6 +74,9 @@ function applyFilters() {
     
     // Lọc documents
     filteredDocuments = filterDocuments(allDocuments, query, currentFilters);
+    
+    // Sắp xếp: mới nhất lên đầu
+    filteredDocuments = sortDocuments(filteredDocuments, 'date-desc');
     
     // Render
     renderDocuments(filteredDocuments);
@@ -182,7 +185,7 @@ function createDocumentCard(doc) {
             <img 
                 src="${escapeHtml(thumbnail)}" 
                 alt="${safeTitle}"
-                class="w-full aspect-[4/3] object-cover rounded-lg mb-2 cursor-pointer hover:opacity-80 transition-opacity"
+                class="w-full aspect-[3/4] object-contain rounded-lg mb-2 cursor-pointer hover:opacity-80 transition-opacity bg-slate-900"
                 loading="lazy"
                 onerror="this.onerror=null; this.src='${fallbackImg}'"
             >

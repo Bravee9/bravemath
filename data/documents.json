@@ -1,4 +1,4 @@
-{
+﻿{
   "documents": [
     {
       "id": "doc-001",
@@ -20,7 +20,7 @@
       "pages": 5,
       "uploadDate": "28/12/2025",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1LVkS0ctxyT_ydVwVmHY7IWY4EL71o1NM&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1LVkS0ctxyT_ydVwVmHY7IWY4EL71o1NM&sz=w800"
     },
     {
       "id": "doc-002",
@@ -41,7 +41,7 @@
       "pages": 16,
       "uploadDate": "28/12/2025",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=19-aYjiEcgHn5uPobkBwJmWzSC7jBxx1w&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=19-aYjiEcgHn5uPobkBwJmWzSC7jBxx1w&sz=w800"
     },
     {
       "id": "doc-003",
@@ -62,7 +62,7 @@
       "pages": 7,
       "uploadDate": "29/12/2025",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1vy0_N6-G-Ha2lNGA0dwtzKqInwGAEs0W&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1vy0_N6-G-Ha2lNGA0dwtzKqInwGAEs0W&sz=w800"
     },
     {
       "id": "doc-004",
@@ -82,7 +82,7 @@
       "pages": 13,
       "uploadDate": "29/12/2025",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1pLrr0cVOnbPsrY_IGKTE0N9fR0mlXKEf&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1pLrr0cVOnbPsrY_IGKTE0N9fR0mlXKEf&sz=w800"
     },
     {
       "id": "doc-005",
@@ -102,7 +102,7 @@
       "pages": 28,
       "uploadDate": "30/12/2025",
       "author": "Không rõ",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1sZQLReaFcVOOqscefW0TcYmqT8WGhVOp&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1sZQLReaFcVOOqscefW0TcYmqT8WGhVOp&sz=w800"
     },
     {
       "id": "doc-006",
@@ -121,7 +121,7 @@
       "pages": 5,
       "uploadDate": "30/12/2025",
       "author": "Eureka-Uni",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1e2xWILhDxT22J7iI8ne72mVixETbjmzv&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1e2xWILhDxT22J7iI8ne72mVixETbjmzv&sz=w800"
     },
     {
       "id": "doc-007",
@@ -141,7 +141,7 @@
       "pages": 259,
       "uploadDate": "30/12/2025",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1eBlQ8Ld1KtKXUsqIEpvy1naPWzFFB7_b&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1eBlQ8Ld1KtKXUsqIEpvy1naPWzFFB7_b&sz=w800"
     },
     {
       "id": "doc-008",
@@ -164,7 +164,7 @@
       "pages": 259,
       "uploadDate": "30/12/2025",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1qdMH2Ou4av_2u8za7RC3YsXaaepmTmSr&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1qdMH2Ou4av_2u8za7RC3YsXaaepmTmSr&sz=w800"
     },
     {
       "id": "doc-009",
@@ -185,7 +185,7 @@
       "pages": 1,
       "uploadDate": "30/12/2025",
       "author": "HUS",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1F2UzBwVQeINehfzCJ2wn0K-d2ctB1wQT&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1F2UzBwVQeINehfzCJ2wn0K-d2ctB1wQT&sz=w800"
     },
     {
       "id": "doc-010",
@@ -208,7 +208,7 @@
       "pages": 2,
       "uploadDate": "30/12/2025",
       "author": "HUS",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1PwRH323Ou7aAomFblP3OSR2eobyNaXxk&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1PwRH323Ou7aAomFblP3OSR2eobyNaXxk&sz=w800"
     },
     {
       "id": "doc-011",
@@ -232,7 +232,7 @@
       "pages": 1,
       "uploadDate": "2/1/2026",
       "author": "Bùi Quang Chiến",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1RdDEPdQlpGO273n2F25o5Y467JrN5jgt&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1RdDEPdQlpGO273n2F25o5Y467JrN5jgt&sz=w800"
     },
     {
       "id": "doc-012",
@@ -258,7 +258,7 @@
       "pages": 194,
       "uploadDate": "2/1/2026",
       "author": "Nguyễn Thị Thu Thuỷ",
-      "thumbnail": "https://drive.google.com/thumbnail?id=1Swif7b9rkz4YQlQozhLfXsXIdFrL1Df2&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=1Swif7b9rkz4YQlQozhLfXsXIdFrL1Df2&sz=w800"
     },
     {
       "id": "doc-013",
@@ -279,7 +279,7 @@
       "pages": 31,
       "uploadDate": "20/2/2026",
       "author": "Bùi Quang Chiến (Brave 9)",
-      "thumbnail": "https://drive.google.com/thumbnail?id=16XkKCrHCWNglwFJuBojbFYKuhg4MhU76&sz=w400"
+      "thumbnail": "https://drive.google.com/thumbnail?id=16XkKCrHCWNglwFJuBojbFYKuhg4MhU76&sz=w800"
     }
   ],
   "metadata": {

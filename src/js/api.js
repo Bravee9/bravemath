@@ -50,7 +50,9 @@ function sanitizeFilename(filename) {
         'Đ': 'D'
     };
     
-    let result = filename;
+    // Normalize to NFC để đảm bảo ký tự tiếng Việt ở dạng composed (1 codepoint)
+    // Nếu không normalize, dạng NFD (base + combining marks) sẽ không khớp vietnameseMap
+    let result = filename.normalize('NFC');
     
     // Replace Vietnamese characters
     for (const [viet, ascii] of Object.entries(vietnameseMap)) {
