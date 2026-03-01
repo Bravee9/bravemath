@@ -150,6 +150,15 @@ export async function downloadDocument(driveId, filename) {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(blobUrl);
         
+        // Track download event in Google Analytics 4
+        if (typeof gtag === 'function') {
+            gtag('event', 'file_download', {
+                file_name: safeFilename,
+                file_id: driveId,
+                content_type: 'application/pdf'
+            });
+        }
+        
         // Ẩn loading modal
         if (loadingModal) {
             loadingModal.classList.add('hidden');
