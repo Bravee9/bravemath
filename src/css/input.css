@@ -471,6 +471,50 @@ body {
     fill: url(#instagram-gradient);
   }
 
+  /* === SOCIAL LINK BUTTONS (About Section) === */
+
+  .social-link-btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300;
+    background-color: #1a1d21;
+    border: 1px solid #2a2d35;
+    color: #94a3b8;
+  }
+
+  .social-link-btn:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+
+  .social-link-facebook:hover {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    box-shadow: 0 4px 16px rgba(24, 119, 242, 0.4);
+  }
+
+  .social-link-threads:hover {
+    background-color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  }
+
+  .social-link-instagram:hover {
+    background: linear-gradient(135deg, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d);
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(193, 53, 132, 0.4);
+  }
+
+  .social-link-github:hover {
+    background-color: #333;
+    border-color: #555;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+  }
+
+  .social-link-tiktok:hover {
+    background-color: #010101;
+    border-color: #69c9d0;
+    box-shadow: 0 4px 16px rgba(105, 201, 208, 0.3);
+  }
+
   /* Focus Visible */
   .focus-blue:focus-visible {
     @apply outline-none;
