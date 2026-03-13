@@ -319,14 +319,11 @@ body {
 
   /* === GRADIENTS === */
   
-    /* Background Image - Hero */
+    /* NEAT WebGL Gradient - Hero */
     .gradient-hero {
-      background-image: url('../../assets/images/bravemath-background.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: scroll;
-      /* Đảm bảo scroll mượt trên mobile */
+      position: relative;
+      overflow: hidden;
+      background-color: #010101;
     }
   
     /* Hiệu ứng cho tiêu đề lớn (H1) - Giữ nguyên nếu bạn thích sự nổi bật */

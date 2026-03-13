@@ -6,6 +6,7 @@
 import { loadDocuments, downloadDocument, previewDocument } from './api.js';
 import { filterDocuments, sortDocuments, getSearchSuggestions, renderSearchSuggestions, updateResultsCount } from './search.js';
 import { setupRouter } from './router.js';
+import { initNeatBackground } from './neat-background.js';
 
 // Global state
 let allDocuments = [];
@@ -23,6 +24,9 @@ let currentFilters = {
 document.addEventListener('DOMContentLoaded', async () => {
     // Setup router
     setupRouter();
+    
+    // Init NEAT gradient background
+    initNeatBackground();
     
     // Setup mobile menu
     setupMobileMenu();
