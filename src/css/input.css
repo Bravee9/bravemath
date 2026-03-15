@@ -512,6 +512,117 @@ body {
     box-shadow: 0 4px 16px rgba(105, 201, 208, 0.3);
   }
 
+  /* === DOCUMENT HOVER PREVIEW POPUP === */
+
+  .doc-hover-preview {
+    position: fixed;
+    z-index: 9998;
+    width: 360px;
+    max-height: calc(100vh - 40px);
+    background-color: #16181d;
+    border: 1px solid #8b5cf6;
+    border-radius: 14px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.9), 0 0 48px rgba(139, 92, 246, 0.18);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+    transition: opacity 0.16s ease, transform 0.16s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .doc-hover-preview.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+
+  .doc-hover-preview .preview-iframe-wrap {
+    position: relative;
+    width: 100%;
+    height: 255px;
+    background: #050507;
+    flex-shrink: 0;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .doc-hover-preview .preview-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .doc-hover-preview .preview-iframe-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+
+  .doc-hover-preview .preview-body {
+    padding: 14px 16px 16px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .doc-hover-preview .preview-body::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .doc-hover-preview .preview-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .doc-hover-preview .preview-body::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+
+  .doc-hover-preview .preview-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #ffffff;
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+
+  .doc-hover-preview .preview-desc {
+    font-size: 0.77rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .doc-hover-preview .preview-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 0.73rem;
+    color: #64748b;
+    margin-bottom: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #1e293b;
+  }
+
+  .doc-hover-preview .preview-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .doc-hover-preview {
+      display: none !important;
+    }
+  }
+
   /* Focus Visible */
   .focus-blue:focus-visible {
     @apply outline-none;

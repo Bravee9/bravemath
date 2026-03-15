@@ -18,6 +18,11 @@ let currentFilters = {
     query: ''
 };
 
+// Hover preview state
+let hoverPreviewEl = null;
+let hoverShowTimer = null;
+let hoverHideTimer = null;
+
 /**
  * Khởi tạo ứng dụng khi DOM loaded
  */
@@ -27,6 +32,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Init NEAT gradient background
     initNeatBackground();
+
+    // Init hover preview popup (desktop)
+    initHoverPreview();
     
     // Setup mobile menu
     setupMobileMenu();
@@ -252,8 +260,180 @@ function createDocumentCard(doc) {
         downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
         downloadBtn.textContent = 'Chưa có sẵn';
     }
+
+    // Hover preview (desktop only - CSS hides popup on mobile)
+    card.addEventListener('mouseenter', () => {
+        clearTimeout(hoverHideTimer);
+        hoverShowTimer = setTimeout(() => showHoverPreview(doc, card), 220);
+    });
+    card.addEventListener('mouseleave', () => {
+        clearTimeout(hoverShowTimer);
+        hoverHideTimer = setTimeout(hideHoverPreview, 130);
+    });
     
     return card;
+}
+
+/**
+ * Khởi tạo singleton hover preview element
+ */
+function initHoverPreview() {
+    if (document.getElementById('doc-hover-preview')) return;
+
+    const el = document.createElement('div');
+    el.id = 'doc-hover-preview';
+    el.className = 'doc-hover-preview';
+    el.setAttribute('role', 'tooltip');
+    el.innerHTML = `
+        <div class="preview-iframe-wrap">
+            <iframe class="preview-iframe" title="Xem trước tài liệu"
+                allowfullscreen
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+            </iframe>
+            <div class="preview-iframe-placeholder">
+                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span>Đang tải...</span>
+            </div>
+        </div>
+        <div class="preview-body">
+            <div class="preview-badges mb-2"></div>
+            <h3 class="preview-title"></h3>
+            <p class="preview-desc"></p>
+            <div class="preview-meta">
+                <span class="preview-pages"></span>
+                <span class="preview-size"></span>
+            </div>
+            <div class="preview-actions">
+                <button class="btn-secondary preview-view-btn text-xs py-2 px-3">👁 Xem trước</button>
+                <button class="btn-primary preview-download-btn text-xs py-2 px-3">⬇ Tải xuống</button>
+            </div>
+        </div>
+    `;
+
+    el.addEventListener('mouseenter', () => clearTimeout(hoverHideTimer));
+    el.addEventListener('mouseleave', () => {
+        hoverHideTimer = setTimeout(hideHoverPreview, 130);
+    });
+
+    document.body.appendChild(el);
+    hoverPreviewEl = el;
+}
+
+/**
+ * Định vị popup cạnh card, tránh tràn màn hình
+ */
+function positionHoverPreview(cardEl) {
+    const rect = cardEl.getBoundingClientRect();
+    const popupW = 360;
+    const margin = 12;
+    let left, top;
+
+    if (rect.right + popupW + margin <= window.innerWidth) {
+        left = rect.right + margin;
+    } else if (rect.left - popupW - margin >= 0) {
+        left = rect.left - popupW - margin;
+    } else {
+        left = Math.max(margin, Math.round((window.innerWidth - popupW) / 2));
+    }
+
+    const estimatedH = 530;
+    top = Math.min(rect.top, window.innerHeight - estimatedH - margin);
+    top = Math.max(margin + 64, top);
+
+    hoverPreviewEl.style.left = left + 'px';
+    hoverPreviewEl.style.top = top + 'px';
+}
+
+/**
+ * Điền dữ liệu và hiển thị hover preview
+ */
+function showHoverPreview(doc, cardEl) {
+    if (!hoverPreviewEl) return;
+
+    const categoryMap = {
+        'ly-thuyet': 'Lý thuyết',
+        'de-thi': 'Đề thi',
+        'bai-tap': 'Bài tập',
+        'giai-chi-tiet': 'Giải chi tiết'
+    };
+    const levelColorMap = {
+        'thcs': 'bg-green-500/20 text-green-400',
+        'thpt': 'bg-blue-500/20 text-blue-400',
+        'daihoc': 'bg-pink-500/20 text-pink-400'
+    };
+    const levelMap = { 'thcs': 'THCS', 'thpt': 'THPT', 'daihoc': 'Đại học' };
+
+    hoverPreviewEl.querySelector('.preview-badges').innerHTML = `
+        <span class="px-2 py-0.5 ${levelColorMap[doc.level] || 'bg-slate-700/50 text-slate-300'} text-xs rounded mr-1.5">
+            ${escapeHtml(levelMap[doc.level] || doc.level || '')}
+        </span>
+        <span class="px-2 py-0.5 bg-slate-700/50 text-slate-300 text-xs rounded">
+            ${escapeHtml(categoryMap[doc.category] || doc.category || '')}
+        </span>
+    `;
+
+    hoverPreviewEl.querySelector('.preview-title').textContent = doc.title || '';
+    hoverPreviewEl.querySelector('.preview-desc').textContent = doc.description || 'Không có mô tả.';
+    hoverPreviewEl.querySelector('.preview-pages').textContent = `📄 ${doc.pages || 0} trang`;
+    hoverPreviewEl.querySelector('.preview-size').textContent = `💾 ${escapeHtml(doc.fileSize || '')}`;
+
+    const iframe = hoverPreviewEl.querySelector('.preview-iframe');
+    const placeholder = hoverPreviewEl.querySelector('.preview-iframe-placeholder');
+    const spinnerText = placeholder.querySelector('span');
+    const hasDoc = doc.driveId && doc.driveId !== 'YOUR_GOOGLE_DRIVE_FILE_ID_HERE';
+
+    placeholder.style.display = 'flex';
+    if (hasDoc) {
+        if (spinnerText) spinnerText.textContent = 'Đang tải...';
+        iframe.src = `https://drive.google.com/file/d/${encodeURIComponent(doc.driveId)}/preview`;
+        iframe.onload = () => { placeholder.style.display = 'none'; };
+    } else {
+        iframe.src = '';
+        if (spinnerText) spinnerText.textContent = 'Chưa có bản xem trước.';
+        const spinner = placeholder.querySelector('svg');
+        if (spinner) spinner.style.display = 'none';
+    }
+
+    const viewBtn = hoverPreviewEl.querySelector('.preview-view-btn');
+    const dlBtn = hoverPreviewEl.querySelector('.preview-download-btn');
+
+    viewBtn.onclick = () => { if (hasDoc) previewDocument(doc.driveId); };
+    dlBtn.onclick = async () => {
+        try { await downloadDocument(doc.driveId, `${doc.title}.pdf`); } catch (e) { console.error(e); }
+    };
+
+    [viewBtn, dlBtn].forEach(btn => {
+        if (hasDoc) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        } else {
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+    });
+
+    positionHoverPreview(cardEl);
+    hoverPreviewEl.classList.add('visible');
+}
+
+/**
+ * Ẩn hover preview
+ */
+function hideHoverPreview() {
+    if (!hoverPreviewEl) return;
+    hoverPreviewEl.classList.remove('visible');
+    // Dừng tải PDF sau khi animation fade-out kết thúc
+    setTimeout(() => {
+        if (hoverPreviewEl && !hoverPreviewEl.classList.contains('visible')) {
+            const iframe = hoverPreviewEl.querySelector('.preview-iframe');
+            if (iframe) iframe.src = '';
+            const spinner = hoverPreviewEl.querySelector('.preview-iframe-placeholder svg');
+            if (spinner) spinner.style.display = '';
+        }
+    }, 200);
 }
 
 /**
