@@ -1,4 +1,4 @@
-﻿{
+{
   "documents": [
     {
       "id": "doc-001",
@@ -280,11 +280,33 @@
       "uploadDate": "20/2/2026",
       "author": "Bùi Quang Chiến (Brave 9)",
       "thumbnail": "https://drive.google.com/thumbnail?id=16XkKCrHCWNglwFJuBojbFYKuhg4MhU76&sz=w800"
+    },
+    {
+      "id": "doc-014",
+      "title": "Tổng hợp công thức Oxyz THPTQG",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "tong-hop-cong-thuc-oxyz-thptqg",
+      "driveId": "1QjTtnVthXOzQszJ2hmeqsynKII_hqOIK",
+      "description": "Tài liệu Tổng hợp công thức Oxyz do Bùi Quang Chiến biên soạn là bản tóm tắt kiến thức hình học tọa độ trong không gian đầy đủ và chi tiết dành cho học sinh lớp 12. Nội dung tài liệu bao quát từ các khái niệm cơ bản về hệ tọa độ, vectơ, các điểm đặc biệt trong tam giác và tứ diện đến các chuyên đề nâng cao về phương trình mặt phẳng, đường thẳng và mặt cầu. Bên cạnh việc cung cấp hệ thống công thức tính diện tích, thể tích, khoảng cách và góc, tài liệu còn đặc biệt chú trọng vào các phương pháp giải nhanh cho bài toán cực trị hình học Oxyz, giúp học sinh tối ưu hóa thời gian và hiệu quả trong quá trình ôn luyện và thi cử.",
+      "tags": [
+        "oxyz",
+        "hinh-hoc-khong-gian",
+        "thptqg",
+        "lop-12",
+        "he-toa-do-khong-gian"
+      ],
+      "fileSize": "183.7 KB",
+      "pages": 30,
+      "uploadDate": "16/3/2026",
+      "author": "Bùi Quang Chiến (Brave 9)",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1QjTtnVthXOzQszJ2hmeqsynKII_hqOIK&sz=w800"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-02-20T07:51:36.511Z",
-    "totalDocuments": 13,
+    "lastUpdated": "2026-03-15T17:30:17.986Z",
+    "totalDocuments": 14,
     "version": "1.0.0"
   },
   "categories": {
