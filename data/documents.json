@@ -302,11 +302,32 @@
       "uploadDate": "16/3/2026",
       "author": "Bùi Quang Chiến (Brave 9)",
       "thumbnail": "https://drive.google.com/thumbnail?id=1QjTtnVthXOzQszJ2hmeqsynKII_hqOIK&sz=w800"
+    },
+    {
+      "id": "doc-015",
+      "title": "Toạ độ hoá - HHKG",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "toa-do-hoa-hhkg",
+      "driveId": "https://drive.google.com/file/d/1FVLyrCNe6QnchZhFkD64_qHxbCzLgtxQ/view?usp=sharing",
+      "description": "Phương pháp toạ độ hoá giải quyết rất tốt những bài toán liên quan đến hình học không gian, đặc biệt là khoảng cách, góc, tỉ lệ thể tích hay là cực trị Oxyz. Nhưng nó đòi hỏi nhiều kĩ thuật và kinh nghiệm. Không khuyến khích hay lạm dụng phương pháp này.",
+      "tags": [
+        "hhkg",
+        "toa-do-hoa",
+        "khoang-cach-trong-khong-gian-3-chieu",
+        "oxyz"
+      ],
+      "fileSize": "0 B",
+      "pages": 67,
+      "uploadDate": "14/5/2026",
+      "author": "Bùi Quang Chiến (@brave._.9)",
+      "thumbnail": "https://drive.google.com/thumbnail?id=https://drive.google.com/file/d/1FVLyrCNe6QnchZhFkD64_qHxbCzLgtxQ/view?usp=sharing&sz=w800"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-15T17:30:17.986Z",
-    "totalDocuments": 14,
+    "lastUpdated": "2026-05-14T09:22:45.209Z",
+    "totalDocuments": 15,
     "version": "1.0.0"
   },
   "categories": {
