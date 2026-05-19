@@ -17,11 +17,11 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'src/pages/index.html'),
-        about: resolve(__dirname, 'src/pages/about.html'),
-        howtouse: resolve(__dirname, 'src/pages/how-to-use.html'),
-        contact: resolve(__dirname, 'src/pages/contact.html'),
-        admin: resolve(__dirname, 'src/pages/admin.html')
+        main: resolve(__dirname, 'index.html'),
+        about: resolve(__dirname, 'about.html'),
+        howtouse: resolve(__dirname, 'how-to-use.html'),
+        contact: resolve(__dirname, 'contact.html'),
+        admin: resolve(__dirname, 'admin.html')
       }
     }
   },
