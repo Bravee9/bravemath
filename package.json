@@ -35,5 +35,9 @@
   },
   "dependencies": {
     "@firecms/neat": "^0.6.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.0.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.0.0"
   }
 }

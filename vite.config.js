@@ -8,36 +8,34 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-  // Base path cho GitHub Pages
+  // Base path for GitHub Pages
   base: '/bravemath/',
-  
-  // Root directory
-  root: 'src/pages',
-  
-  // Public directory - static assets
-  publicDir: resolve(__dirname, 'assets'),
-  
+
   // Build options
   build: {
-    outDir: '../../dist',
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/pages/index.html'),
         about: resolve(__dirname, 'src/pages/about.html'),
         howtouse: resolve(__dirname, 'src/pages/how-to-use.html'),
-        contact: resolve(__dirname, 'src/pages/contact.html')
+        contact: resolve(__dirname, 'src/pages/contact.html'),
+        admin: resolve(__dirname, 'src/pages/admin.html')
       }
     }
   },
-  
+
   // Server options
   server: {
     port: 3000,
-    open: '/index.html'
+    open: '/src/pages/index.html'
   },
-  
-  // Plugin để copy documents.json
+
+  // Public directory for static assets
+  publicDir: 'assets',
+
+  // Plugin to copy documents.json
   plugins: [{
     name: 'copy-data',
     closeBundle() {
@@ -45,19 +43,18 @@ export default defineConfig({
         const dataDir = resolve(__dirname, 'dist/data');
         const srcFile = resolve(__dirname, 'data/documents.json');
         const destFile = resolve(__dirname, 'dist/data/documents.json');
-        
+
         if (!existsSync(srcFile)) {
-          console.error('❌ Source file not found:', srcFile);
+          console.error('Source file not found:', srcFile);
           return;
         }
-        
+
         mkdirSync(dataDir, { recursive: true });
         copyFileSync(srcFile, destFile);
-        console.log('✅ Copied documents.json to dist/data/');
+        console.log('Copied documents.json to dist/data/');
       } catch (err) {
-        console.error('❌ Failed to copy documents.json:', err);
+        console.error('Failed to copy documents.json:', err);
       }
     }
   }]
 });
-

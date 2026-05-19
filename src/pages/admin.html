@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài liệu — Bravemath Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Admin-specific styles */
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        .admin-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .admin-subtitle {
+            font-size: 14px;
+            color: var(--color-text-subtle);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--color-text-subtle);
+            margin-top: 4px;
+        }
+
+        /* Drive ID drag-drop area */
+        .drive-drop-area {
+            border: 2px dashed var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background-color: var(--color-bg);
+        }
+
+        .drive-drop-area:hover,
+        .drive-drop-area.drag-over {
+            border-color: var(--color-primary);
+            background-color: var(--color-sky-tint);
+        }
+
+        .drive-drop-area p {
+            font-size: 14px;
+            color: var(--color-text-subtle);
+            margin: 0;
+        }
+
+        .drive-drop-area .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--color-primary);
+        }
+
+        /* Tags input */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            min-height: 42px;
+            align-items: center;
+            cursor: text;
+        }
+
+        .tags-container:focus-within {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+        }
+
+        .tag-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            background-color: var(--color-sky-tint);
+            color: var(--color-primary);
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: var(--radius-full);
+        }
+
+        .tag-item button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-primary);
+            font-size: 14px;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .tag-input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background: transparent;
+            flex: 1;
+            min-width: 100px;
+            font-family: var(--font-body);
+        }
+
+        /* JSON output */
+        .json-output {
+            background: var(--color-text);
+            color: #a5d6ff;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            background: var(--color-secondary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .copy-btn:hover {
+            opacity: 0.9;
+        }
+
+        .copy-btn.copied {
+            background: var(--color-text-subtle);
+        }
+
+        .preview-card-wrap {
+            margin-top: 24px;
+            max-width: 300px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--color-border);
+            margin: 32px 0;
+        }
+
+        /* Existing docs list */
+        .doc-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 8px;
+            background: var(--color-surface);
+        }
+
+        .doc-list-item .doc-info {
+            flex: 1;
+        }
+
+        .doc-list-item .doc-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .doc-list-item .doc-meta {
+            font-size: 12px;
+            color: var(--color-text-subtle);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <nav class="nav-links">
+                <a href="/bravemath/index.html" class="nav-link">Trang chủ</a>
+                <a href="/bravemath/admin.html" class="nav-link active">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="admin-container">
+            <h1 class="admin-title">Thêm tài liệu mới</h1>
+            <p class="admin-subtitle">Điền thông tin bên dưới, sau đó copy JSON và paste vào
+                <code>data/documents.json</code></p>
+
+            <form id="doc-form">
+                <!-- Title -->
+                <div class="form-group">
+                    <label class="form-label" for="doc-title">Tên tài liệu *</label>
+                    <input type="text" id="doc-title" class="input-field" placeholder="VD: Tổng hợp công thức Oxyz"
+                        required>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label class="form-label" for="doc-desc">Mô tả</label>
+                    <textarea id="doc-desc" class="input-field" rows="3"
+                        placeholder="Mô tả ngắn gọn về tài liệu..."></textarea>
+                </div>
+
+                <!-- Drive ID — drag-drop or paste -->
+                <div class="form-group">
+                    <label class="form-label">Google Drive ID *</label>
+                    <div id="drive-drop" class="drive-drop-area">
+                        <span class="icon">
+                            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.5">
+                                <path
+                                    d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H16C17.6569 21 19 19.6569 19 18V8.625M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19" />
+                            </svg>
+                        </span>
+                        <p>Kéo thả link Google Drive vào đây hoặc <strong>nhấn để dán link</strong></p>
+                    </div>
+                    <input type="text" id="doc-drive-id" class="input-field" style="margin-top:8px;"
+                        placeholder="Hoặc nhập Drive ID trực tiếp: 1LVkS0ctxyT_ydVwVmHY7IWY4EL71o1NM" required>
+                    <p class="form-hint">Lấy ID từ link: drive.google.com/file/d/<strong>[ID_Ở_ĐÂY]</strong>/view</p>
+                </div>
+
+                <!-- Level + Category -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="doc-level">Cấp độ *</label>
+                        <select id="doc-level" class="filter-select" style="width:100%;" required>
+                            <option value="">Chọn cấp độ</option>
+                            <option value="thpt">THPT</option>
+                            <option value="daihoc">Đại học</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="doc-category">Thể loại *</label>
+                        <select id="doc-category" class="filter-select" style="width:100%;" required>
+                            <option value="">Chọn thể loại</option>
+                            <option value="ly-thuyet">Lý thuyết</option>
+                            <option value="de-thi">Đề thi</option>
+                            <option value="bai-tap">Bài tập</option>
+                            <option value="giai-chi-tiet">Giải chi tiết</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Pages + File Size -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="doc-pages">Số trang</label>
+                        <input type="number" id="doc-pages" class="input-field" placeholder="VD: 30" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="doc-filesize">Dung lượng</label>
+                        <input type="text" id="doc-filesize" class="input-field" placeholder="VD: 2.5 MB">
+                    </div>
+                </div>
+
+                <!-- Author -->
+                <div class="form-group">
+                    <label class="form-label" for="doc-author">Tác giả</label>
+                    <input type="text" id="doc-author" class="input-field" placeholder="VD: Bùi Quang Chiến"
+                        value="Bùi Quang Chiến">
+                </div>
+
+                <!-- Tags -->
+                <div class="form-group">
+                    <label class="form-label">Tags</label>
+                    <div class="tags-container" id="tags-container">
+                        <input type="text" class="tag-input" id="tag-input" placeholder="Nhập tag rồi nhấn Enter...">
+                    </div>
+                    <p class="form-hint">Nhấn Enter hoặc dấu phẩy để thêm tag</p>
+                </div>
+
+                <div style="display:flex; gap:12px; margin-top:24px;">
+                    <button type="submit" class="btn-primary" style="flex:1;">Tạo JSON</button>
+                    <button type="reset" class="btn-secondary" id="reset-btn">Xoá form</button>
+                </div>
+            </form>
+
+            <!-- JSON Output -->
+            <div id="json-output-section" style="display:none;">
+                <div class="divider"></div>
+                <h2 style="font-size:18px; margin-bottom:12px;">JSON tạo ra</h2>
+                <p style="font-size:13px; color:var(--color-text-subtle); margin-bottom:12px;">
+                    Copy đoạn JSON này và thêm vào mảng <code>"documents"</code> trong file
+                    <code>data/documents.json</code>
+                </p>
+                <pre class="json-output" id="json-output"></pre>
+                <div style="margin-top:12px; display:flex; gap:12px;">
+                    <button class="copy-btn" id="copy-btn">Copy JSON</button>
+                </div>
+            </div>
+
+            <!-- Existing documents list -->
+            <div class="divider"></div>
+            <h2 style="font-size:18px; margin-bottom:16px;">Tài liệu hiện có</h2>
+            <div id="existing-docs">
+                <p style="color:var(--color-text-subtle); font-size:14px;">Đang tải...</p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        /* ========================================
+           ADMIN PAGE LOGIC
+           ======================================== */
+
+        const tags = [];
+
+        // --- Tags input ---
+        const tagInput = document.getElementById('tag-input');
+        const tagsContainer = document.getElementById('tags-container');
+
+        tagsContainer.addEventListener('click', () => tagInput.focus());
+
+        tagInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault();
+                addTag(tagInput.value.trim());
+                tagInput.value = '';
+            }
+            if (e.key === 'Backspace' && tagInput.value === '' && tags.length > 0) {
+                removeTag(tags.length - 1);
+            }
+        });
+
+        function addTag(text) {
+            if (!text || tags.includes(text)) return;
+            tags.push(text);
+            renderTags();
+        }
+
+        function removeTag(index) {
+            tags.splice(index, 1);
+            renderTags();
+        }
+
+        function renderTags() {
+            // Remove existing tag items
+            tagsContainer.querySelectorAll('.tag-item').forEach(el => el.remove());
+
+            tags.forEach((tag, i) => {
+                const el = document.createElement('span');
+                el.className = 'tag-item';
+                el.innerHTML = `${tag}<button type="button" aria-label="Xoá tag">&times;</button>`;
+                el.querySelector('button').addEventListener('click', () => removeTag(i));
+                tagsContainer.insertBefore(el, tagInput);
+            });
+        }
+
+
+        // --- Drive ID drag-and-drop ---
+        const dropArea = document.getElementById('drive-drop');
+        const driveIdInput = document.getElementById('doc-drive-id');
+
+        ['dragenter', 'dragover'].forEach(evt => {
+            dropArea.addEventListener(evt, (e) => {
+                e.preventDefault();
+                dropArea.classList.add('drag-over');
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(evt => {
+            dropArea.addEventListener(evt, () => {
+                dropArea.classList.remove('drag-over');
+            });
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const text = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('text/uri-list');
+            if (text) {
+                const id = extractDriveId(text);
+                if (id) {
+                    driveIdInput.value = id;
+                    dropArea.querySelector('p').innerHTML = `<strong style="color:var(--color-secondary);">Drive ID: ${id}</strong>`;
+                }
+            }
+        });
+
+        dropArea.addEventListener('click', async () => {
+            try {
+                const text = await navigator.clipboard.readText();
+                const id = extractDriveId(text);
+                if (id) {
+                    driveIdInput.value = id;
+                    dropArea.querySelector('p').innerHTML = `<strong style="color:var(--color-secondary);">Drive ID: ${id}</strong>`;
+                } else {
+                    alert('Không tìm thấy Drive ID trong clipboard. Hãy copy link Google Drive trước.');
+                }
+            } catch {
+                alert('Không thể đọc clipboard. Hãy paste trực tiếp vào ô bên dưới.');
+            }
+        });
+
+        function extractDriveId(url) {
+            // Match: /file/d/ID/ or /open?id=ID or just the raw ID
+            const patterns = [
+                /\/file\/d\/([a-zA-Z0-9_-]{28,44})/,
+                /[?&]id=([a-zA-Z0-9_-]{28,44})/,
+                /^([a-zA-Z0-9_-]{28,44})$/
+            ];
+            for (const p of patterns) {
+                const m = url.match(p);
+                if (m) return m[1];
+            }
+            return null;
+        }
+
+
+        // --- Form submission: generate JSON ---
+        const form = document.getElementById('doc-form');
+        const jsonSection = document.getElementById('json-output-section');
+        const jsonOutput = document.getElementById('json-output');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('doc-title').value.trim();
+            const driveId = driveIdInput.value.trim();
+            const level = document.getElementById('doc-level').value;
+            const category = document.getElementById('doc-category').value;
+
+            if (!title || !driveId || !level || !category) {
+                alert('Vui lòng điền đầy đủ các trường bắt buộc (*)');
+                return;
+            }
+
+            const slug = title
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+
+            const today = new Date();
+            const uploadDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+
+            const docCount = existingDocs.length + 1;
+            const docId = `doc-${String(docCount).padStart(3, '0')}`;
+
+            const docObj = {
+                id: docId,
+                title: title,
+                subject: "toan",
+                level: level,
+                category: category,
+                slug: slug,
+                driveId: driveId,
+                description: document.getElementById('doc-desc').value.trim() || '',
+                tags: [...tags],
+                fileSize: document.getElementById('doc-filesize').value.trim() || '0 B',
+                pages: parseInt(document.getElementById('doc-pages').value) || 0,
+                uploadDate: uploadDate,
+                author: document.getElementById('doc-author').value.trim() || 'Bùi Quang Chiến',
+                thumbnail: `https://drive.google.com/thumbnail?id=${driveId}&sz=w800`
+            };
+
+            jsonOutput.textContent = JSON.stringify(docObj, null, 2);
+            jsonSection.style.display = '';
+            jsonSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+
+        // --- Copy button ---
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            const text = jsonOutput.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy JSON';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+
+
+        // --- Reset button ---
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            tags.length = 0;
+            renderTags();
+            jsonSection.style.display = 'none';
+            dropArea.querySelector('p').innerHTML = 'Kéo thả link Google Drive vào đây hoặc <strong>nhấn để dán link</strong>';
+        });
+
+
+        // --- Load existing documents ---
+        let existingDocs = [];
+
+        async function loadExisting() {
+            try {
+                const basePath = '/bravemath/';
+                const resp = await fetch(`${basePath}data/documents.json?v=${Date.now()}`);
+                const data = await resp.json();
+                existingDocs = data.documents || [];
+                renderExistingDocs();
+            } catch (err) {
+                document.getElementById('existing-docs').innerHTML =
+                    `<p style="color:var(--color-text-subtle);">Không thể tải danh sách (${err.message})</p>`;
+            }
+        }
+
+        function renderExistingDocs() {
+            const container = document.getElementById('existing-docs');
+            if (existingDocs.length === 0) {
+                container.innerHTML = '<p style="color:var(--color-text-subtle);">Chưa có tài liệu nào.</p>';
+                return;
+            }
+            container.innerHTML = existingDocs.map(doc => `
+                <div class="doc-list-item">
+                    <div class="doc-info">
+                        <div class="doc-title">${doc.title}</div>
+                        <div class="doc-meta">${doc.level} | ${doc.category} | ${doc.pages || 0} trang | ${doc.fileSize || ''}</div>
+                    </div>
+                    <span class="badge badge-${doc.level === 'thpt' ? 'thpt' : 'daihoc'}">${doc.level === 'thpt' ? 'THPT' : 'ĐH'}</span>
+                </div>
+            `).join('');
+        }
+
+        loadExisting();
+    </script>
+</body>
+
+</html>
