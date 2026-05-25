@@ -323,11 +323,31 @@
       "uploadDate": "14/5/2026",
       "author": "Bùi Quang Chiến (@brave._.9)",
       "thumbnail": "https://drive.google.com/thumbnail?id=https://drive.google.com/file/d/1FVLyrCNe6QnchZhFkD64_qHxbCzLgtxQ/view?usp=sharing&sz=w800"
+    },
+    {
+      "id": "doc-016",
+      "title": "Mặt Cầu Ngoại Tiếp Hình Chóp",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "mat-cau-ngoai-tiep-hinh-chop",
+      "driveId": "1uVNTIulSv3XiYMBoyl1sk9q8IAkM34hL",
+      "description": "Tài liệu này là một hướng dẫn ôn thi THPT Quốc gia chuyên sâu về chủ đề mặt cầu ngoại tiếp hình chóp. Nội dung bao gồm hệ thống lý thuyết về kiến thức nền tảng, các mô hình xác định nhanh tâm và bán kính mặt cầu cho từng dạng hình chóp cụ thể (như hình chóp đều, chóp có cạnh bên hoặc mặt bên vuông góc với đáy), kèm theo các ví dụ minh họa chi tiết và bài tập tự luyện từ cơ bản đến nâng cao.",
+      "tags": [
+        "hinh-hoc-khong-gian",
+        "mat-cau-ngoai-tiep-hinh-chop",
+        "cong-thuc-tinh-nhanh"
+      ],
+      "fileSize": "299.9 KB",
+      "pages": 30,
+      "uploadDate": "25/5/2026",
+      "author": "Bùi Quang Chiến",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1uVNTIulSv3XiYMBoyl1sk9q8IAkM34hL&sz=w800"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-05-14T09:22:45.209Z",
-    "totalDocuments": 15,
+    "lastUpdated": "2026-05-25T04:16:29.115Z",
+    "totalDocuments": 16,
     "version": "1.0.0"
   },
   "categories": {
