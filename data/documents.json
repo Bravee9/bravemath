@@ -343,11 +343,29 @@
       "uploadDate": "25/5/2026",
       "author": "Bùi Quang Chiến",
       "thumbnail": "https://drive.google.com/thumbnail?id=1uVNTIulSv3XiYMBoyl1sk9q8IAkM34hL&sz=w800"
+    },
+    {
+      "id": "doc-017",
+      "title": "ĐỀ THI THỬ THPTQG 2026",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "de-thi",
+      "slug": "de-thi-thu-thptqg-2026",
+      "driveId": "1Rvw2XPgwysOs9yjQ7EjWs3HopSyFiSkU",
+      "description": "Đề được tạo ra bởi Bùi Quang Chiến (brave._.9) nhằm phục vụ mục đích thi THPTQG, hỗ trợ cũng như là khắc phục những mảng kiến thức mà các bạn học sinh còn yếu.",
+      "tags": [
+        "de-thi"
+      ],
+      "fileSize": "155.5 KB",
+      "pages": 5,
+      "uploadDate": "8/6/2026",
+      "author": "Bùi Quang Chiến (brave._.9)",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1Rvw2XPgwysOs9yjQ7EjWs3HopSyFiSkU&sz=w800"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-05-25T04:16:29.115Z",
-    "totalDocuments": 16,
+    "lastUpdated": "2026-06-07T18:14:50.095Z",
+    "totalDocuments": 17,
     "version": "1.0.0"
   },
   "categories": {
