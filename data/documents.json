@@ -361,11 +361,35 @@
       "uploadDate": "8/6/2026",
       "author": "Bùi Quang Chiến (brave._.9)",
       "thumbnail": "https://drive.google.com/thumbnail?id=1Rvw2XPgwysOs9yjQ7EjWs3HopSyFiSkU&sz=w800"
+    },
+    {
+      "id": "doc-018",
+      "title": "Khảo Sát Hàm Số & Các Chuyên Đề Nâng Cao",
+      "subject": "toan",
+      "level": "thpt",
+      "category": "ly-thuyet",
+      "slug": "khao-sat-ham-so-cac-chuyen-de-nang-cao",
+      "driveId": "1tM-dD9MhzQx_WIJwZIuxonhTHeBsBQYX",
+      "description": "Tài liệu tổng hợp lý thuyết và bài tập Giải tích lớp 10, 11, 12, tập trung vào khảo sát hàm số và các chuyên đề nâng cao, hỗ trợ ôn luyện các kỳ thi ĐGNL 2027.",
+      "tags": [
+        "khao-sat-ham-so",
+        "giai-tich",
+        "lop-10",
+        "lop-11",
+        "lop-12",
+        "chuyen-de-nang-cao",
+        "dgnl-2027"
+      ],
+      "fileSize": "9.8 MB",
+      "pages": 435,
+      "uploadDate": "9/9/2026",
+      "author": "Bùi Quang Chiến (@brave._.9)",
+      "thumbnail": "https://drive.google.com/thumbnail?id=1tM-dD9MhzQx_WIJwZIuxonhTHeBsBQYX&sz=w800"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-06-07T18:14:50.095Z",
-    "totalDocuments": 17,
+    "lastUpdated": "2026-09-09T00:00:00.000Z",
+    "totalDocuments": 18,
     "version": "1.0.0"
   },
   "categories": {
