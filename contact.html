@@ -7,7 +7,6 @@
     <title>Liên hệ — Bravemath</title>
     <meta name="description" content="Liên hệ với Bravemath để góp ý, đóng góp tài liệu toán học hoặc báo lỗi.">
     <link rel="canonical" href="https://bravee9.github.io/bravemath/contact.html">
-    <link rel="stylesheet" href="./src/css/styles.css">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXJXVDWLCG"></script>
@@ -16,6 +15,16 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date()); gtag('config', 'G-PXJXVDWLCG');
     </script>
+
+    <!-- Dark mode init -->
+    <script>
+        (function () {
+            const t = localStorage.getItem('bravemath-theme');
+            if (t === 'dark') document.documentElement.classList.add('dark');
+        })();
+    </script>
+
+    <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
 <body>
@@ -34,7 +43,7 @@
                 </button>
             </nav>
             <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
-                <svg width="24" height="24" fill="none" stroke="#3c4043" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
             </button>
         </div>
         <div id="mobile-menu" class="mobile-menu">
@@ -48,8 +57,8 @@
     <!-- Main -->
     <main class="site-section">
         <div class="site-container" style="max-width:520px;">
-            <h1 style="font-size:28px; margin-bottom:8px;">Liên hệ</h1>
-            <p style="color:var(--color-text-subtle); margin-bottom:24px;">
+            <div class="section-title">Liên hệ</div>
+            <p style="font-size:14px; color:var(--c-muted); margin-bottom:24px; line-height:1.7;">
                 Có câu hỏi hoặc góp ý? Gửi tin nhắn cho mình bên dưới.
             </p>
 
@@ -57,7 +66,7 @@
                 <input type="text" name="name" placeholder="Tên của bạn" required class="input-field">
                 <input type="email" name="email" placeholder="Email của bạn" required class="input-field">
                 <textarea name="message" placeholder="Nội dung liên hệ" required class="input-field"></textarea>
-                <button type="submit" class="btn-primary" style="width:100%; margin-top:4px;">Gửi liên hệ</button>
+                <button type="submit" class="btn-primary" style="align-self:flex-start; padding:10px 32px;">Gửi liên hệ</button>
             </form>
         </div>
     </main>
@@ -75,14 +84,12 @@
     <script>
         document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
             const menu = document.getElementById('mobile-menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menu.classList.toggle('open');
         });
-        const saved = localStorage.getItem('bravemath-theme');
-        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
         document.getElementById('theme-toggle')?.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('bravemath-theme', 'light'); }
-            else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('bravemath-theme', 'dark'); }
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) { document.documentElement.classList.remove('dark'); localStorage.setItem('bravemath-theme', 'light'); }
+            else { document.documentElement.classList.add('dark'); localStorage.setItem('bravemath-theme', 'dark'); }
         });
     </script>
 </body>

@@ -7,7 +7,6 @@
     <title>Giới thiệu — Bravemath</title>
     <meta name="description" content="Tìm hiểu về Bravemath — nền tảng chia sẻ tài liệu toán học miễn phí cho học sinh THPT và sinh viên đại học Việt Nam.">
     <link rel="canonical" href="https://bravee9.github.io/bravemath/about.html">
-    <link rel="stylesheet" href="./src/css/styles.css">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Giới thiệu — Bravemath">
@@ -22,6 +21,16 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date()); gtag('config', 'G-PXJXVDWLCG');
     </script>
+
+    <!-- Dark mode init -->
+    <script>
+        (function () {
+            const t = localStorage.getItem('bravemath-theme');
+            if (t === 'dark') document.documentElement.classList.add('dark');
+        })();
+    </script>
+
+    <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
 <body>
@@ -40,7 +49,7 @@
                 </button>
             </nav>
             <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
-                <svg width="24" height="24" fill="none" stroke="#3c4043" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
             </button>
         </div>
         <div id="mobile-menu" class="mobile-menu">
@@ -54,47 +63,42 @@
     <!-- Main -->
     <main class="site-section">
         <div class="site-container" style="max-width:720px;">
-            <h1 style="font-size:28px; margin-bottom:24px;">Giới thiệu về Bravemath</h1>
+            <div class="section-title">Giới thiệu về Bravemath</div>
 
-            <div style="font-size:16px; line-height:1.7; color:var(--color-text-secondary);">
-                <p style="margin-bottom:16px;">
-                    Chào mừng bạn đến với <strong style="color:var(--color-text);">Bravemath</strong> — nền tảng chia sẻ tài liệu học thuật miễn phí dành cho học sinh THPT và sinh viên đại học tại Việt Nam, tập trung vào môn Toán học.
+            <div class="prose">
+                <p>
+                    Bravemath là một trang web cá nhân, website tĩnh được thiết kế để chia sẻ tài liệu học thuật, tập trung vào môn Toán.
+                    Tài liệu được lưu trữ trên Google Drive và cung cấp trực tiếp, hoàn toàn miễn phí.
                 </p>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">Mục tiêu</h2>
-                <p style="margin-bottom:16px;">
-                    Bravemath cung cấp nguồn tài liệu chất lượng cao, dễ tiếp cận. Kiến thức toán học nên được chia sẻ tự do, không giới hạn.
+                <h2>Dành cho học sinh THPT</h2>
+                <p>
+                    Bravemath cung cấp tài liệu ôn tập toán cấp 3 một cách hệ thống và chọn lọc: lý thuyết, đề thi thử THPTQG,
+                    bài tập nâng cao và các chuyên đề trọng tâm. Tất cả đều phù hợp với chương trình hiện hành.
                 </p>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">Nội dung</h2>
-                <ul style="padding-left:20px; margin-bottom:24px;">
-                    <li style="margin-bottom:8px;"><strong>THPT:</strong> Đề thi, chuyên đề, công thức, bài tập</li>
-                    <li style="margin-bottom:8px;"><strong>Đại học:</strong> Giải tích, Đại số, XSTK, Toán rời rạc</li>
-                    <li><strong>Tham khảo:</strong> Sách giáo khoa, bài giảng</li>
-                </ul>
+                <h2>Dành cho sinh viên Đại học</h2>
+                <p>
+                    Với sinh viên năm nhất và năm hai, Bravemath có tài liệu Giải tích 1, 2 — Xác suất thống kê —
+                    Toán rời rạc từ nhiều trường đại học lớn: HUS, HUST, và các bài giảng tham khảo đa dạng.
+                </p>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">Ủng hộ phát triển</h2>
-                <div class="donate-card">
-                    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:center;">
-                        <div style="flex:1; min-width:240px;">
-                            <p style="margin-bottom:12px;">
-                                Bravemath hoàn toàn miễn phí. Nếu bạn thấy hữu ích, hãy quét mã QR để donate qua Techcombank.
-                            </p>
-                            <div style="font-size:14px; color:var(--color-text-subtle);">
-                                <p><strong>Ngân hàng:</strong> Techcombank</p>
-                                <p><strong>Chủ TK:</strong> BUI QUANG CHIEN</p>
-                                <p><strong>Số TK:</strong> 888 2209 2005</p>
-                            </div>
-                        </div>
-                        <div style="flex-shrink:0; background:#fff; padding:16px; border-radius:8px; box-shadow:var(--shadow-sm);">
-                            <img src="./assets/images/qr_techcombank_bui_quang_chien.jpg"
-                                 alt="QR Code donate Techcombank"
-                                 class="qr-code"
-                                 onerror="this.style.display='none'">
-                            <p style="text-align:center; font-size:12px; color:var(--color-text-subtle); margin-top:8px;">Quét mã QR</p>
-                        </div>
-                    </div>
+                <h2>Về tác giả</h2>
+                <p>
+                    Trang web được xây dựng và duy trì bởi <strong>Bùi Quang Chiến (Brave 9)</strong> — sinh viên ngành
+                    Khoa học dữ liệu. Tất cả tài liệu được biên soạn hoặc tuyển chọn kỹ lưỡng từ nhiều nguồn
+                    đáng tin cậy nhằm hỗ trợ cộng đồng học tập.
+                </p>
+
+                <h2>Cam kết</h2>
+                <div class="note-box">
+                    <p>Tài liệu luôn miễn phí, không quảng cáo, không yêu cầu đăng nhập.
+                    Nếu bạn tìm thấy tài liệu hữu ích, hãy chia sẻ với bạn bè — đó là cách tốt nhất để ủng hộ dự án.</p>
                 </div>
+
+                <p>
+                    Để đóng góp tài liệu hoặc báo lỗi, vui lòng liên hệ qua trang <a href="/bravemath/contact.html">Liên hệ</a>.
+                </p>
             </div>
         </div>
     </main>
@@ -102,14 +106,6 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="site-container">
-            <p style="text-align:center; font-size:14px; color:var(--color-text-secondary); font-weight:500; margin-bottom:16px;">Kết nối qua mạng xã hội</p>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                <a href="https://www.threads.com/@brave._.9" target="_blank" rel="noopener noreferrer" aria-label="Threads"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 00-2.215-.221z"/></svg></a>
-                <a href="https://www.instagram.com/brave._.9" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                <a href="https://github.com/Bravee9" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                <a href="https://tiktok.com/@brave._.9" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.17a8.16 8.16 0 004.76 1.53v-3.5a4.84 4.84 0 01-1-.51z"/></svg></a>
-            </div>
             <div class="footer-copy">
                 <p>&copy; 2025 Bravemath</p>
                 <p>Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a></p>
@@ -120,15 +116,12 @@
     <script>
         document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
             const menu = document.getElementById('mobile-menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menu.classList.toggle('open');
         });
-        // Dark mode
-        const saved = localStorage.getItem('bravemath-theme');
-        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
         document.getElementById('theme-toggle')?.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('bravemath-theme', 'light'); }
-            else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('bravemath-theme', 'dark'); }
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) { document.documentElement.classList.remove('dark'); localStorage.setItem('bravemath-theme', 'light'); }
+            else { document.documentElement.classList.add('dark'); localStorage.setItem('bravemath-theme', 'dark'); }
         });
     </script>
 </body>

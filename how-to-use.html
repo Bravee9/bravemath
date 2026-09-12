@@ -7,7 +7,6 @@
     <title>Hướng dẫn sử dụng — Bravemath</title>
     <meta name="description" content="Hướng dẫn chi tiết cách sử dụng Bravemath: tìm kiếm, tải và sử dụng tài liệu toán học miễn phí.">
     <link rel="canonical" href="https://bravee9.github.io/bravemath/how-to-use.html">
-    <link rel="stylesheet" href="./src/css/styles.css">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXJXVDWLCG"></script>
@@ -16,6 +15,16 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date()); gtag('config', 'G-PXJXVDWLCG');
     </script>
+
+    <!-- Dark mode init -->
+    <script>
+        (function () {
+            const t = localStorage.getItem('bravemath-theme');
+            if (t === 'dark') document.documentElement.classList.add('dark');
+        })();
+    </script>
+
+    <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
 <body>
@@ -34,7 +43,7 @@
                 </button>
             </nav>
             <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
-                <svg width="24" height="24" fill="none" stroke="#3c4043" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
             </button>
         </div>
         <div id="mobile-menu" class="mobile-menu">
@@ -48,43 +57,50 @@
     <!-- Main -->
     <main class="site-section">
         <div class="site-container" style="max-width:720px;">
-            <h1 style="font-size:28px; margin-bottom:24px;">Hướng dẫn sử dụng</h1>
+            <div class="section-title">Hướng dẫn sử dụng</div>
 
-            <div style="font-size:16px; line-height:1.7; color:var(--color-text-secondary);">
+            <div class="prose">
 
-                <h2 style="font-size:20px; margin:0 0 12px; color:var(--color-text);">1. Tìm kiếm tài liệu</h2>
-                <p style="margin-bottom:8px;">Bạn có thể tìm kiếm theo nhiều cách:</p>
-                <ul style="padding-left:20px; margin-bottom:24px;">
-                    <li style="margin-bottom:6px;"><strong>Từ khoá:</strong> Nhập tên chủ đề, công thức, hoặc khái niệm toán học</li>
-                    <li style="margin-bottom:6px;"><strong>Bộ lọc:</strong> Lọc theo cấp học (THPT/Đại học), môn học, và loại tài liệu</li>
-                    <li><strong>Duyệt:</strong> Xem tất cả tài liệu theo danh mục</li>
+                <h2>1. Tìm kiếm tài liệu</h2>
+                <p>Bạn có thể tìm kiếm theo nhiều cách:</p>
+                <ul>
+                    <li><strong>Từ khoá:</strong> Nhập tên chủ đề, công thức, hoặc khái niệm toán học vào ô tìm kiếm trên thanh header.</li>
+                    <li><strong>Bộ lọc:</strong> Lọc theo cấp học (THPT / Đại học), loại tài liệu (Lý thuyết, Đề thi, Bài tập, Giải chi tiết).</li>
+                    <li><strong>Duyệt danh sách:</strong> Xem toàn bộ tài liệu mới nhất trên trang chủ.</li>
                 </ul>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">2. Xem trước tài liệu</h2>
-                <p style="margin-bottom:24px;">
-                    Nhấp vào thumbnail của tài liệu để xem trước nội dung trong cửa sổ mới. Trên desktop, di chuột qua thẻ tài liệu sẽ hiện popup xem trước.
+                <h2>2. Xem trước tài liệu</h2>
+                <p>
+                    Nhấp vào ảnh bìa của tài liệu để mở bản xem trước trong tab mới.
+                    Trên desktop, di chuột qua thẻ tài liệu để hiện popup xem trước nhanh.
                 </p>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">3. Tải tài liệu</h2>
-                <ol style="padding-left:20px; margin-bottom:24px;">
-                    <li style="margin-bottom:6px;">Tìm tài liệu bạn cần</li>
-                    <li style="margin-bottom:6px;">Nhấp nút <strong>"Tải xuống"</strong></li>
-                    <li style="margin-bottom:6px;">Chọn vị trí lưu trên thiết bị</li>
-                    <li>File sẽ được tải về dạng PDF</li>
+                <h2>3. Tải tài liệu</h2>
+                <ol>
+                    <li>Tìm tài liệu bạn cần.</li>
+                    <li>Nhấp nút <strong>"Tải xuống"</strong> ở dưới cùng thẻ tài liệu.</li>
+                    <li>Trình duyệt sẽ mở Google Drive — chọn tải file về máy.</li>
                 </ol>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">4. Lưu ý</h2>
-                <div class="card" style="background-color:var(--color-amber-glaze); border:none;">
-                    <ul style="padding-left:20px; color:var(--color-text-secondary); margin:0;">
-                        <li style="margin-bottom:6px;">Tất cả tài liệu đều miễn phí, chỉ phục vụ mục đích học tập</li>
-                        <li style="margin-bottom:6px;">Vui lòng tôn trọng bản quyền</li>
-                        <li>Nếu phát hiện lỗi, hãy <a href="/bravemath/contact.html">liên hệ</a> với mình</li>
+                <h2>4. Chế độ sáng / tối</h2>
+                <p>
+                    Bấm vào biểu tượng mặt trăng / mặt trời ở góc phải header để chuyển đổi giữa Light Mode và Dark Mode.
+                    Tuỳ chọn được lưu lại cho lần sau.
+                </p>
+
+                <h2>5. Lưu ý khi sử dụng</h2>
+                <div class="note-box">
+                    <ul>
+                        <li>Tất cả tài liệu đều miễn phí, chỉ phục vụ mục đích học tập.</li>
+                        <li>Vui lòng tôn trọng bản quyền tác giả.</li>
+                        <li>Nếu phát hiện lỗi hoặc tài liệu cần cập nhật, hãy <a href="/bravemath/contact.html">liên hệ</a> với mình.</li>
                     </ul>
                 </div>
 
-                <h2 style="font-size:20px; margin:32px 0 12px; color:var(--color-text);">5. Đóng góp tài liệu</h2>
+                <h2>6. Đóng góp tài liệu</h2>
                 <p>
-                    Bạn có tài liệu toán học hữu ích? Hãy đóng góp cho cộng đồng qua trang <a href="/bravemath/contact.html">Liên hệ</a>.
+                    Bạn có tài liệu toán học hữu ích muốn chia sẻ? Hãy gửi qua trang <a href="/bravemath/contact.html">Liên hệ</a> —
+                    mình sẽ xem xét và thêm vào kho tài liệu.
                 </p>
             </div>
         </div>
@@ -103,14 +119,12 @@
     <script>
         document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
             const menu = document.getElementById('mobile-menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menu.classList.toggle('open');
         });
-        const saved = localStorage.getItem('bravemath-theme');
-        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
         document.getElementById('theme-toggle')?.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            if (isDark) { document.documentElement.removeAttribute('data-theme'); localStorage.setItem('bravemath-theme', 'light'); }
-            else { document.documentElement.setAttribute('data-theme', 'dark'); localStorage.setItem('bravemath-theme', 'dark'); }
+            const isDark = document.documentElement.classList.contains('dark');
+            if (isDark) { document.documentElement.classList.remove('dark'); localStorage.setItem('bravemath-theme', 'light'); }
+            else { document.documentElement.classList.add('dark'); localStorage.setItem('bravemath-theme', 'dark'); }
         });
     </script>
 </body>

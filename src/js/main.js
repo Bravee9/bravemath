@@ -165,7 +165,7 @@ function createDocumentCard(doc) {
             onerror="this.onerror=null; this.src='${fallbackImg}'"
         >
         <div class="card-body">
-            <div style="display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap;">
+            <div class="card-badges">
                 <span class="badge ${levelBadge}">${escapeHtml(levelLabel)}</span>
                 <span class="badge ${categoryBadge}">${escapeHtml(categoryLabel)}</span>
             </div>
@@ -177,7 +177,6 @@ function createDocumentCard(doc) {
             </div>
             <button
                 class="btn-primary download-btn"
-                style="width:100%; font-size:13px; padding:8px 16px;"
                 data-drive-id="${escapeHtml(doc.driveId)}"
                 data-filename="${escapeHtml(doc.title)}.pdf"
             >
@@ -195,16 +194,12 @@ function createDocumentCard(doc) {
         });
     }
 
-    // Download button
+    // Download button — direct Google Drive link (no Worker)
     const downloadBtn = card.querySelector('.download-btn');
     if (downloadBtn && doc.driveId) {
-        downloadBtn.addEventListener('click', async (e) => {
+        downloadBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            try {
-                await downloadDocument(doc.driveId, `${doc.title}.pdf`);
-            } catch (error) {
-                console.error('Download error:', error);
-            }
+            downloadDocument(doc.driveId, `${doc.title}.pdf`);
         });
     } else if (downloadBtn) {
         downloadBtn.disabled = true;
@@ -450,10 +445,10 @@ function setupClearFilters() {
    ======================================== */
 
 function setupDarkMode() {
-    // Restore saved theme preference
+    // Restore saved theme — uses .dark class for Tailwind compatibility
     const saved = localStorage.getItem('bravemath-theme');
     if (saved === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.classList.add('dark');
     }
 
     // Toggle button
@@ -461,12 +456,12 @@ function setupDarkMode() {
     if (!toggleBtn) return;
 
     toggleBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const isDark = document.documentElement.classList.contains('dark');
         if (isDark) {
-            document.documentElement.removeAttribute('data-theme');
+            document.documentElement.classList.remove('dark');
             localStorage.setItem('bravemath-theme', 'light');
         } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark');
             localStorage.setItem('bravemath-theme', 'dark');
         }
     });
