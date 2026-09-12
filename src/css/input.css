@@ -17,7 +17,7 @@
 :root {
   /* Primary Ocean colours — fixed across modes */
   --c-primary:    #0D5C75;
-  --c-secondary:  #639FAD;
+  --c-secondary:  #3B7383;
   --c-light:      #D6E8ED;
 
   /* Semantic tokens — Light Mode */
@@ -25,7 +25,7 @@
   --c-surface:    #FFFFFF;
   --c-border:     #C9D8DD;
   --c-text:       #081E26;
-  --c-muted:      #639FAD;
+  --c-muted:      #4A8292;
 
   /* Transitions */
   --t-base: 200ms ease;
@@ -33,11 +33,12 @@
 
 /* Dark Mode overrides via .dark class on <html> */
 html.dark {
+  --c-secondary:  #90C0CD;
   --c-bg:         #051014;
   --c-surface:    #0A1C23;
   --c-border:     #16323D;
   --c-text:       #D6E8ED;
-  --c-muted:      rgba(99, 159, 173, 0.75);
+  --c-muted:      rgba(144, 192, 205, 0.8);
 }
 
 /* ============================================================

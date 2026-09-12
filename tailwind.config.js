@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         /* Ocean Design System — ui-ocean-design.md */
         oceanPrimary:      '#0D5C75',
-        oceanSecondary:    '#639FAD',
+        oceanSecondary:    '#3B7383',
         oceanLight:        '#D6E8ED',
         oceanDarkBg:       '#051014',
         oceanDarkSurface:  '#0A1C23',
