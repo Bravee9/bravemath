@@ -54,6 +54,7 @@ async function loadAndRenderDocuments() {
         const data = await loadDocuments();
         allDocuments = data.documents || [];
         applyFilters();
+        renderBookmarkedDocuments();
     } catch (error) {
         console.error('Error loading documents:', error);
         hideSkeletonLoading();
@@ -155,6 +156,9 @@ function createDocumentCard(doc) {
     const categoryLabel = CATEGORY_LABELS[doc.category] || doc.category;
     const levelBadge = LEVEL_BADGE_CLASS[doc.level] || 'badge-thpt';
     const categoryBadge = CATEGORY_BADGE_CLASS[doc.category] || 'badge-theory';
+    
+    const isBookmarked = getBookmarks().includes(doc.driveId);
+    const bookmarkActive = isBookmarked ? 'active' : '';
 
     card.innerHTML = `
         <img
@@ -164,6 +168,11 @@ function createDocumentCard(doc) {
             loading="lazy"
             onerror="this.onerror=null; this.src='${fallbackImg}'"
         >
+        <button class="bookmark-btn ${bookmarkActive}" data-id="${doc.driveId}" aria-label="Lưu tài liệu" title="Lưu tài liệu">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+        </button>
         <div class="card-body">
             <div class="card-badges">
                 <span class="badge ${levelBadge}">${escapeHtml(levelLabel)}</span>
@@ -208,6 +217,15 @@ function createDocumentCard(doc) {
         downloadBtn.textContent = 'Chưa có sẵn';
     }
 
+    // Bookmark button
+    const bookmarkBtn = card.querySelector('.bookmark-btn');
+    if (bookmarkBtn && doc.driveId) {
+        bookmarkBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleBookmark(doc.driveId);
+        });
+    }
+
     // Hover preview (desktop only)
     card.addEventListener('mouseenter', () => {
         clearTimeout(hoverHideTimer);
@@ -219,6 +237,81 @@ function createDocumentCard(doc) {
     });
 
     return card;
+}
+
+/* ========================================
+   BOOKMARKS
+   ======================================== */
+
+function getBookmarks() {
+    try {
+        return JSON.parse(localStorage.getItem('bravemath-bookmarks') || '[]');
+    } catch(e) {
+        return [];
+    }
+}
+
+function toggleBookmark(driveId) {
+    let bookmarks = getBookmarks();
+    const index = bookmarks.indexOf(driveId);
+    if (index > -1) {
+        bookmarks.splice(index, 1);
+    } else {
+        bookmarks.push(driveId);
+    }
+    localStorage.setItem('bravemath-bookmarks', JSON.stringify(bookmarks));
+    
+    // Update all matching buttons in UI
+    const btns = document.querySelectorAll(`.bookmark-btn[data-id="${driveId}"]`);
+    btns.forEach(btn => {
+        if (index > -1) {
+            btn.classList.remove('active');
+        } else {
+            btn.classList.add('active');
+        }
+    });
+
+    renderBookmarkedDocuments();
+}
+
+function renderBookmarkedDocuments() {
+    const listEl = document.getElementById('bookmarked-list');
+    if (!listEl) return;
+    
+    const bookmarks = getBookmarks();
+    if (bookmarks.length === 0) {
+        listEl.innerHTML = '<div class="empty-bookmark">Chưa có tài liệu nào được ghim.</div>';
+        return;
+    }
+
+    const bookmarkedDocs = allDocuments.filter(doc => bookmarks.includes(doc.driveId));
+    
+    if (bookmarkedDocs.length === 0) {
+        listEl.innerHTML = '<div class="empty-bookmark">Chưa có tài liệu nào được ghim.</div>';
+        return;
+    }
+
+    listEl.innerHTML = '';
+    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23f1f3f4'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='24' fill='%239aa0a6' text-anchor='middle' dy='.3em'%3ET%C3%A0i%20li%E1%BB%87u%3C/text%3E%3C/svg%3E";
+
+    bookmarkedDocs.forEach(doc => {
+        const thumbnail = doc.thumbnail || fallbackImg;
+        const item = document.createElement('div');
+        item.className = 'bookmarked-item';
+        item.style.cursor = 'pointer';
+        item.innerHTML = \`
+            <img src="\${escapeHtml(thumbnail)}" alt="\${escapeHtml(doc.title)}" onerror="this.onerror=null; this.src='\${fallbackImg}'">
+            <div class="bookmarked-item-info">
+                <div class="bookmarked-item-title">\${escapeHtml(doc.title)}</div>
+                <div class="bookmarked-item-meta">\${doc.pages || 0} trang • \${escapeHtml(doc.fileSize || '')}</div>
+            </div>
+        \`;
+        
+        item.addEventListener('click', () => {
+            previewDocument(doc.driveId);
+        });
+        listEl.appendChild(item);
+    });
 }
 
 

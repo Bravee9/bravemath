@@ -401,10 +401,106 @@ main .btn-primary:not(.hero-section .btn-primary):hover {
   background-color: var(--c-bg);
 }
 
+.documents-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+@media (min-width: 1024px) {
+  .documents-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .documents-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .documents-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+  }
+}
+
+/* Sidebar Styles */
+.sidebar-widget {
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  padding: 20px;
+}
+
+.widget-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-text);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.widget-title svg {
+  color: var(--c-secondary);
+}
+
+.bookmarked-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-bookmark {
+  font-size: 12px;
+  color: var(--c-muted);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.bookmarked-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--c-border);
+}
+.bookmarked-item:last-child {
+  border-bottom: none;
+}
+.bookmarked-item img {
+  width: 48px;
+  height: 68px;
+  object-fit: contain;
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-border);
+}
+.bookmarked-item-info {
+  flex: 1;
+  min-width: 0;
+}
+.bookmarked-item-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.bookmarked-item-meta {
+  font-size: 10px;
+  color: var(--c-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
 /* 1px border-gap grid (Swiss) */
 .documents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
 }
 
@@ -419,16 +515,50 @@ main .btn-primary:not(.hero-section .btn-primary):hover {
   flex-direction: column;
   transition: background-color var(--t-base), border-color var(--t-base);
   cursor: default;
+  position: relative;
 }
 
 .document-card:hover {
   border-color: var(--c-secondary);
 }
 
+.bookmark-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--t-base);
+  z-index: 10;
+  padding: 0;
+}
+
+.bookmark-btn:hover {
+  color: var(--c-primary);
+  border-color: var(--c-primary);
+}
+
+.bookmark-btn.active {
+  color: #eab308; /* Yellow 500 */
+  border-color: #eab308;
+}
+
+.bookmark-btn.active svg {
+  fill: currentColor;
+}
+
 .card-thumbnail {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  aspect-ratio: 1 / 1.414;
+  object-fit: contain;
+  background-color: var(--c-bg);
   border-bottom: 1px solid var(--c-border);
   transition: opacity var(--t-base);
   cursor: pointer;
