@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupFilters();
     setupClearFilters();
     initHoverPreview();
+    setupFeaturedDocument();
 
     try {
         await loadAndRenderDocuments();
@@ -299,13 +300,13 @@ function renderBookmarkedDocuments() {
         const item = document.createElement('div');
         item.className = 'bookmarked-item';
         item.style.cursor = 'pointer';
-        item.innerHTML = \`
-            <img src="\${escapeHtml(thumbnail)}" alt="\${escapeHtml(doc.title)}" onerror="this.onerror=null; this.src='\${fallbackImg}'">
+        item.innerHTML = `
+            <img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(doc.title)}" onerror="this.onerror=null; this.src='${fallbackImg}'">
             <div class="bookmarked-item-info">
-                <div class="bookmarked-item-title">\${escapeHtml(doc.title)}</div>
-                <div class="bookmarked-item-meta">\${doc.pages || 0} trang • \${escapeHtml(doc.fileSize || '')}</div>
+                <div class="bookmarked-item-title">${escapeHtml(doc.title)}</div>
+                <div class="bookmarked-item-meta">${doc.pages || 0} trang • ${escapeHtml(doc.fileSize || '')}</div>
             </div>
-        \`;
+        `;
         
         item.addEventListener('click', () => {
             previewDocument(doc.driveId);
@@ -530,6 +531,26 @@ function setupClearFilters() {
 
         applyFilters();
     });
+}
+
+function setupFeaturedDocument() {
+    const featuredDoc = document.querySelector('.featured-document');
+    if (!featuredDoc) return;
+    
+    const driveId = featuredDoc.getAttribute('data-drive-id');
+    if (!driveId) return;
+
+    featuredDoc.addEventListener('click', () => {
+        previewDocument(driveId);
+    });
+
+    const viewBtn = featuredDoc.querySelector('.btn-primary');
+    if (viewBtn) {
+        viewBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            previewDocument(driveId);
+        });
+    }
 }
 
 
