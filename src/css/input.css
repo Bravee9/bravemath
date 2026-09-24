@@ -1022,11 +1022,20 @@ form .btn-primary:hover {
    ============================================================ */
 
 @media (max-width: 768px) {
+  .header-inner {
+    gap: 12px;
+  }
+  .nav-links {
+    margin-left: auto;
+  }
   .nav-links .nav-link,
   .header-search-wrap {
     display: none !important;
   }
-  .mobile-menu-btn { display: flex; }
+  .mobile-menu-btn {
+    display: flex;
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 640px) {
