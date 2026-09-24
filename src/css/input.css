@@ -111,7 +111,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 200;
-  background-color: var(--c-primary);
+  background-color: #051014;
   border-bottom: 1px solid rgba(99, 159, 173, 0.25);
 }
 
