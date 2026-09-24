@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupClearFilters();
     initHoverPreview();
     setupFeaturedDocument();
+    setupScrollHeader();
 
     try {
         await loadAndRenderDocuments();
@@ -42,6 +43,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         showError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
     }
 });
+
+function setupScrollHeader() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
 
 
 /* ========================================
