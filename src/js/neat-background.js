@@ -8,11 +8,11 @@ import { NeatGradient } from '@firecms/neat';
 
 const NEAT_CONFIG = {
     colors: [
-        { color: '#000000', enabled: true },
-        { color: '#000205', enabled: true },
-        { color: '#000000', enabled: true },
+        { color: '#071A2C', enabled: true },
+        { color: '#0A233A', enabled: true },
+        { color: '#0E3D60', enabled: true },
         { color: '#6E313D', enabled: false },
-        { color: '#00429B', enabled: true },
+        { color: '#1A659E', enabled: true },
     ],
     speed: 2,
     horizontalPressure: 4,
@@ -26,7 +26,7 @@ const NEAT_CONFIG = {
     colorSaturation: -1,
     wireframe: false,
     colorBlending: 7,
-    backgroundColor: '#010101',
+    backgroundColor: '#071A2C',
     backgroundAlpha: 1,
     grainScale: 2,
     grainSparsity: 0,

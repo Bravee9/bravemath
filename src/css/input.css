@@ -16,16 +16,16 @@
 
 :root {
   /* Primary Ocean colours — fixed across modes */
-  --c-primary:    #0D5C75;
-  --c-secondary:  #3B7383;
-  --c-light:      #D6E8ED;
+  --c-primary:    #1A659E;
+  --c-secondary:  #346FA3;
+  --c-light:      #EAF2F8;
 
   /* Semantic tokens — Light Mode */
-  --c-bg:         #F0F5F7;
+  --c-bg:         #EAF2F8;
   --c-surface:    #FFFFFF;
-  --c-border:     #C9D8DD;
-  --c-text:       #081E26;
-  --c-muted:      #4A8292;
+  --c-border:     #C5D9EA;
+  --c-text:       #0A233A;
+  --c-muted:      #4A6F8F;
 
   /* Transitions */
   --t-base: 200ms ease;
@@ -33,12 +33,12 @@
 
 /* Dark Mode overrides via .dark class on <html> */
 html.dark {
-  --c-secondary:  #90C0CD;
-  --c-bg:         #051014;
-  --c-surface:    #0A1C23;
-  --c-border:     #16323D;
-  --c-text:       #D6E8ED;
-  --c-muted:      rgba(144, 192, 205, 0.8);
+  --c-secondary:  #8DB8DF;
+  --c-bg:         #071A2C;
+  --c-surface:    #0A233A;
+  --c-border:     #173B5C;
+  --c-text:       #EAF2F8;
+  --c-muted:      rgba(141, 184, 223, 0.8);
 }
 
 /* ============================================================
@@ -123,7 +123,7 @@ img {
 }
 
 html.dark .site-header.scrolled {
-  background-color: rgba(10, 28, 35, 0.85);
+  background-color: rgba(10, 35, 58, 0.85);
 }
 
 .header-inner {
@@ -270,7 +270,7 @@ html.dark .icon-moon { display: none; }
 .hero-section {
   background-color: var(--c-primary);
   padding: 72px 0 60px;
-  border-bottom: 1px solid rgba(99, 159, 173, 0.25);
+  border-bottom: 1px solid rgba(91, 146, 194, 0.25);
 }
 
 .hero-section h1 {
@@ -284,7 +284,7 @@ html.dark .icon-moon { display: none; }
 
 .hero-subtitle {
   font-size: 15px;
-  color: rgba(214, 232, 237, 0.6);
+  color: rgba(234, 242, 248, 0.6);
   margin-bottom: 36px;
   max-width: 520px;
   line-height: 1.7;
@@ -321,8 +321,8 @@ html.dark .icon-moon { display: none; }
 }
 
 .btn-primary:hover {
-  background-color: rgba(214, 232, 237, 0.85);
-  border-color: rgba(214, 232, 237, 0.85);
+  background-color: rgba(234, 242, 248, 0.85);
+  border-color: rgba(234, 242, 248, 0.85);
 }
 
 /* Primary on light bg (inside cards) */
@@ -350,8 +350,8 @@ main .btn-primary:not(.hero-section .btn-primary):hover {
   gap: 6px;
   padding: 10px 24px;
   background-color: transparent;
-  border: 1px solid rgba(214, 232, 237, 0.5);
-  color: rgba(214, 232, 237, 0.8);
+  border: 1px solid rgba(234, 242, 248, 0.5);
+  color: rgba(234, 242, 248, 0.8);
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 700;
@@ -657,9 +657,9 @@ main .btn-primary:not(.hero-section .btn-primary):hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border: 1px solid #0096C7;
-  color: #0096C7;
-  background-color: rgba(0, 150, 199, 0.1);
+  border: 1px solid #1A659E;
+  color: #1A659E;
+  background-color: rgba(26, 101, 158, 0.1);
   line-height: 1.6;
 }
 
@@ -692,7 +692,7 @@ main .btn-primary:not(.hero-section .btn-primary):hover {
   letter-spacing: 0.07em;
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23639FAD' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235B92C2' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
   outline: none;
@@ -862,7 +862,7 @@ main .btn-primary:not(.hero-section .btn-primary):hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(5, 16, 20, 0.75);
+  background: rgba(7, 26, 44, 0.75);
   backdrop-filter: blur(4px);
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;

@@ -13,16 +13,19 @@ module.exports = {
     extend: {
       colors: {
         /* Ocean Design System — ui-ocean-design.md */
-        oceanPrimary:      '#0D5C75',
-        oceanSecondary:    '#3B7383',
-        oceanLight:        '#D6E8ED',
-        oceanDarkBg:       '#051014',
-        oceanDarkSurface:  '#0A1C23',
-        oceanDarkBorder:   '#16323D',
-        oceanLightBg:      '#F0F5F7',
+        oceanPrimary:      '#1A659E',
+        oceanSecondary:    '#346FA3',
+        oceanLight:        '#EAF2F8',
+        oceanDarkBg:       '#071A2C',
+        oceanDarkSurface:  '#0A233A',
+        oceanDarkBorder:   '#173B5C',
+        oceanLightBg:      '#EAF2F8',
         oceanLightSurface: '#FFFFFF',
-        oceanLightBorder:  '#C9D8DD',
-        oceanLightText:    '#081E26',
+        oceanLightBorder:  '#C5D9EA',
+        oceanLightText:    '#0A233A',
+        /* Bảng màu xanh dương hàn lâm (đồng bộ LaTeX) */
+        oceanAccent:       '#5B92C2', /* OceanBlueSecondary */
+        oceanDeep:         '#0E3D60', /* OceanBlueDark */
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
