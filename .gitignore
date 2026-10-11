@@ -70,3 +70,5 @@ coverage/
 *.tmp
 *.temp
 .cache/
+.agents/
+skills-lock.json

@@ -50,6 +50,3 @@ MIT License - xem file [LICENSE](LICENSE) để biết thêm chi tiết
 
 - GitHub: [@Bravee9](https://github.com/Bravee9)
 
----
-
-Made with love for Vietnamese students <3
