@@ -51,5 +51,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # Worker deployment handled by Cloudflare Git Integration
-  # See: https://dash.cloudflare.com Workers & Pages > bravemath-proxy > Settings
