@@ -246,8 +246,8 @@ export function renderCountdownTick(now = new Date()) {
 
     if (badgeEl) {
         badgeEl.textContent = phase === 'ongoing'
-            ? `ĐANG DIỄN RA KỲ THI THPTQG ${activeExam.year}`
-            : `ĐẾM NGƯỢC KỲ THI THPT QUỐC GIA ${activeExam.year}`;
+            ? `Đang diễn ra kỳ thi THPTQG ${activeExam.year}`
+            : `Đếm ngược kỳ thi THPT Quốc gia ${activeExam.year}`;
     }
 
     if (titleYearEl) {

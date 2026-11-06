@@ -82,7 +82,7 @@
     <!-- Main -->
     <main class="site-section">
         <div class="site-container" style="max-width:680px;">
-            <nav style="display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:var(--c-muted); margin-bottom:24px;" aria-label="Breadcrumb">
+            <nav style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--c-muted); margin-bottom:24px;" aria-label="Breadcrumb">
                 <a href="/bravemath/index.html" style="color:var(--c-muted); text-decoration:none;">Trang chủ</a>
                 <span>/</span>
                 <span style="color:var(--c-accent);">Liên hệ</span>
@@ -90,7 +90,7 @@
 
             <header style="padding-bottom:28px; margin-bottom:32px; border-bottom:1px solid var(--c-border);">
                 <div class="section-tag">Kết nối &amp; Đóng góp</div>
-                <h1 class="section-title" style="font-size:clamp(28px, 4vw, 38px); margin-bottom:12px;">Liên hệ với Bravemath</h1>
+                <h1 class="section-title" style="font-size:clamp(26px, 3.5vw, 36px); margin-bottom:12px;">Liên hệ với Bravemath</h1>
                 <p style="font-size:15px; color:var(--c-text-body); line-height:1.7;">
                     Gửi góp ý, đóng góp tài liệu học thuật mới hoặc báo cáo sự cố liên kết thông qua biểu mẫu bên dưới.
                 </p>
@@ -99,15 +99,15 @@
             <div class="card">
                 <form action="https://formspree.io/f/xjgkkqzp" method="POST" style="display:flex; flex-direction:column; gap:18px;">
                     <div>
-                        <label for="contact-name" style="display:block; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--c-muted); margin-bottom:8px;">Họ và tên *</label>
+                        <label for="contact-name" class="input-label">Họ và tên *</label>
                         <input id="contact-name" type="text" name="name" placeholder="Nhập họ và tên của bạn" required class="input-field">
                     </div>
                     <div>
-                        <label for="contact-email" style="display:block; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--c-muted); margin-bottom:8px;">Địa chỉ Email *</label>
+                        <label for="contact-email" class="input-label">Địa chỉ Email *</label>
                         <input id="contact-email" type="email" name="email" placeholder="name@example.com" required class="input-field">
                     </div>
                     <div>
-                        <label for="contact-message" style="display:block; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--c-muted); margin-bottom:8px;">Nội dung phản hồi *</label>
+                        <label for="contact-message" class="input-label">Nội dung phản hồi *</label>
                         <textarea id="contact-message" name="message" placeholder="Mô tả tài liệu muốn đóng góp, câu hỏi hoặc báo lỗi..." required class="input-field"></textarea>
                     </div>
                     <button type="submit" class="btn-primary" style="align-self:flex-start; padding:12px 32px;">

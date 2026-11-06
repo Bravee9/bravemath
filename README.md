@@ -57,8 +57,8 @@ Bravemath implements the **Ocean Swiss Minimalist** design system unified with t
 1. **Swiss Structural Grid**: Sharp geometric edges (`border-radius: 0`), exposed `1px` structural hairlines, and high-density typographic hierarchy.
 2. **Ocean Dark-First Palette**: Deep abyssal navy backgrounds (`#060d18`, `#0a1628`, `#0f2847`) paired with cyan/sky accents (`#0ea5e9`, `#38bdf8`, `#06b6d4`) and a full Light Mode counterpart (`#f8fafc`).
 3. **Typography**:
-   - **Display and UI**: `Be Vietnam Pro` and `Inter` for clean Vietnamese diacritic rendering.
-   - **Monospace Metadata and Numerals**: `JetBrains Mono` with `font-variant-numeric: tabular-nums` to guarantee zero layout shift on counters and numeric metrics.
+   - **Display and UI**: `Inter` for clean, modern typographic hierarchy and optimal Vietnamese diacritic rendering.
+   - **Tabular Numerals**: `Inter` with `font-variant-numeric: tabular-nums` to guarantee zero layout shift on countdown counters and numeric metrics.
 
 ---
 
