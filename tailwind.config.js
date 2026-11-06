@@ -42,8 +42,8 @@ export default {
         oceanDeep:         '#0E3D60',
       },
       fontFamily: {
-        sans: ['"Be Vietnam Pro"', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         none: '0px',

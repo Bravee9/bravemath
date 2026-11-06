@@ -3,7 +3,7 @@
    Integrated from Bravechat Design System
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -70,7 +70,7 @@
   --color-text-secondary: var(--c-text-body);
   --color-text-subtle:    var(--c-muted);
   --color-sky-tint:       rgba(26, 101, 158, 0.08);
-  --font-body:            'Be Vietnam Pro', 'Inter', sans-serif;
+  --font-body:            'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --radius-md:            0px;
   --radius-full:          0px;
   --transition-fast:      200ms ease;
@@ -138,7 +138,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Be Vietnam Pro', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 15px;
   line-height: 1.65;
   background-color: var(--c-bg);
@@ -318,12 +318,11 @@ html.dark .text-gradient-ocean {
   border: 1px solid var(--c-section-tag-border);
   background-color: var(--c-section-tag-bg);
   color: var(--c-section-tag-text);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding: 6px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 5px 12px;
   margin-bottom: 16px;
 }
 
@@ -409,11 +408,11 @@ html.dark .site-header.scrolled {
 }
 
 .brand-logo-text {
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--c-text);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .brand-logo-accent {
@@ -438,8 +437,8 @@ html.dark .brand-logo-accent {
   background: var(--c-bg);
   border: 1px solid var(--c-border);
   color: var(--c-text);
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 13.5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
   outline: none;
   transition: border-color var(--t-base), background var(--t-base), box-shadow var(--t-base);
 }
@@ -463,11 +462,9 @@ html.dark .brand-logo-accent {
 
 .nav-link {
   position: relative;
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--c-muted);
   padding: 6px 0;
   transition: color var(--t-base);
@@ -584,11 +581,9 @@ html.dark .icon-moon { display: none; }
 .mobile-nav-link {
   display: block;
   padding: 14px 24px;
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--c-muted);
   border-left: 2px solid transparent;
   border-bottom: 1px solid var(--c-border);
@@ -631,56 +626,14 @@ html.dark .icon-moon { display: none; }
   text-align: center;
 }
 
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(134, 184, 222, 0.35);
-  background: rgba(134, 184, 222, 0.10);
-  color: #86B8DE;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  padding: 6px 14px;
-  margin-bottom: 24px;
-}
-
-.hero-tag-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #38BDF8;
-}
-
 .hero-section h1 {
-  font-size: clamp(34px, 6vw, 68px);
-  font-weight: 900;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700;
   color: #EAF2F8;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-}
-
-.hero-typewriter {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 500;
-  color: #86B8DE;
-  min-height: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   margin-bottom: 20px;
-  letter-spacing: 0.03em;
-}
-
-.hero-caret {
-  color: #38BDF8;
-  animation: caret-blink 1s step-end infinite;
-}
-
-@keyframes caret-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  text-transform: none;
 }
 
 .hero-subtitle {
@@ -698,42 +651,6 @@ html.dark .icon-moon { display: none; }
   justify-content: center;
 }
 
-/* Bravechat Swiss 1px Border Stats Bar inside Hero */
-.hero-stats-bar {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(140px, 1fr));
-  border: 1px solid #173B5C;
-  background-color: #173B5C;
-  gap: 1px;
-  width: 100%;
-  max-width: 820px;
-}
-
-.hero-stat-item {
-  background-color: rgba(10, 35, 58, 0.9);
-  padding: 20px 24px;
-  text-align: center;
-}
-
-.hero-stat-value {
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 900;
-  color: #EAF2F8;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-}
-
-.hero-stat-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #86B8DE;
-  margin-top: 6px;
-}
-
 /* ============================================================
    BUTTONS — Bravechat Ocean Buttons
    ============================================================ */
@@ -743,15 +660,13 @@ html.dark .icon-moon { display: none; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 32px;
+  padding: 13px 28px;
   background-color: #1A659E;
   border: 1px solid #2A7AB8;
   color: #FFFFFF;
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--t-base);
   white-space: nowrap;
@@ -769,15 +684,13 @@ html.dark .icon-moon { display: none; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 32px;
+  padding: 13px 28px;
   background-color: rgba(10, 35, 58, 0.6);
   border: 1px solid #275885;
   color: #86B8DE;
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--t-base);
   white-space: nowrap;
@@ -805,11 +718,9 @@ form .btn-primary {
   background-color: var(--c-btn-primary-bg);
   border: 1px solid var(--c-btn-primary-border);
   color: var(--c-btn-primary-text);
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--t-base);
   white-space: nowrap;
@@ -840,11 +751,9 @@ main .btn-secondary:not(.hero-section .btn-secondary) {
   background-color: transparent;
   border: 1px solid var(--c-border-strong);
   color: var(--c-text);
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--t-base);
   white-space: nowrap;
@@ -869,12 +778,11 @@ main .btn-secondary:not(.hero-section .btn-secondary):hover {
 }
 
 .section-heading {
-  font-size: clamp(24px, 3.5vw, 36px);
-  font-weight: 900;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
   color: var(--c-text);
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
 .section-desc {
@@ -886,11 +794,9 @@ main .btn-secondary:not(.hero-section .btn-secondary):hover {
 }
 
 .section-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
   color: var(--c-section-title);
   margin-bottom: 24px;
   padding-bottom: 12px;
@@ -1063,11 +969,9 @@ html.dark .swiss-feature-card::before {
 }
 
 .widget-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
   color: var(--c-text);
   margin-bottom: 16px;
   padding-bottom: 12px;
@@ -1139,10 +1043,10 @@ html.dark .swiss-feature-card::before {
 }
 
 .bookmarked-item-meta {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   color: var(--c-muted-subtle);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1280,8 +1184,8 @@ html.dark .document-card::before {
 .card-meta {
   display: flex;
   justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   font-weight: 500;
   color: var(--c-muted-subtle);
   padding-top: 10px;
@@ -1304,11 +1208,9 @@ html.dark .document-card::before {
 .badge {
   display: inline-block;
   padding: 3px 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
   border: 1px solid var(--c-badge-border);
   color: var(--c-badge-text);
   background-color: var(--c-badge-bg);
@@ -1410,11 +1312,9 @@ html.dark .badge-solution {
   background-color: var(--c-bg);
   border: 1px solid var(--c-border);
   color: var(--c-text);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231A659E' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
@@ -1435,12 +1335,10 @@ html.dark .filter-select {
 }
 
 .results-count {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--c-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   margin-left: auto;
   font-variant-numeric: tabular-nums;
 }
@@ -1464,10 +1362,9 @@ html.dark .filter-select {
 }
 
 .empty-state h3 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--c-text);
   margin-bottom: 8px;
 }
@@ -1537,10 +1434,8 @@ html.dark .filter-select {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   color: var(--c-muted);
   background-color: var(--c-bg);
 }
@@ -1570,8 +1465,8 @@ html.dark .filter-select {
 .preview-meta {
   display: flex;
   gap: 12px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   font-weight: 500;
   color: var(--c-muted-subtle);
   margin-bottom: 12px;
@@ -1589,14 +1484,12 @@ html.dark .filter-select {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px;
+  padding: 8px 16px;
   border: 1px solid var(--c-border);
   color: var(--c-text-body);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
   transition: border-color var(--t-base), color var(--t-base), background-color var(--t-base);
   background-color: var(--c-surface);
 }
@@ -1643,14 +1536,45 @@ html.dark .filter-select {
   max-width: 340px;
 }
 
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--c-border);
+  background-color: var(--c-surface-card);
+  color: var(--c-muted);
+  transition: color var(--t-base), border-color var(--t-base), background-color var(--t-base);
+}
+
+.footer-social a:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  background-color: var(--c-accent-glow);
+}
+
+.footer-social a svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
 .footer-col-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
   color: var(--c-text);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .footer-links-list {
@@ -1688,8 +1612,8 @@ html.dark .filter-select {
 }
 
 .footer-copy {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   color: var(--c-muted);
   display: flex;
   flex-wrap: wrap;
@@ -1711,8 +1635,8 @@ html.dark .filter-select {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   color: var(--c-muted);
 }
 
@@ -1735,13 +1659,11 @@ html.dark .filter-select {
 
 .input-label {
   display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--c-muted);
-  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 6px;
 }
 
 .input-field {
@@ -1751,7 +1673,7 @@ html.dark .filter-select {
   background-color: var(--c-bg);
   border: 1px solid var(--c-border);
   color: var(--c-text);
-  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   outline: none;
   transition: border-color var(--t-base), background-color var(--t-base), box-shadow var(--t-base);
@@ -1781,8 +1703,8 @@ textarea.input-field {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   color: var(--c-muted);
   margin-bottom: 24px;
 }
@@ -1798,11 +1720,10 @@ textarea.input-field {
 }
 
 .docs-title {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 900;
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
   color: var(--c-text);
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
+  letter-spacing: -0.015em;
 }
 
 .docs-subtitle {
@@ -1819,11 +1740,9 @@ textarea.input-field {
 }
 
 .prose h2 {
-  font-size: 15px;
-  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
   color: var(--c-text);
   margin: 36px 0 14px;
   padding-bottom: 10px;
@@ -1902,11 +1821,9 @@ textarea.input-field {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--c-accent);
 }
 
@@ -1914,22 +1831,23 @@ textarea.input-field {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
   color: var(--c-muted);
-  font-variant-numeric: tabular-nums;
 }
 
 .exam-countdown-meta-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border: 1px solid var(--c-border);
   background-color: var(--c-surface);
   color: var(--c-text);
-  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
 }
 
 .exam-countdown-grid {
@@ -1956,25 +1874,19 @@ textarea.input-field {
 }
 
 .exam-countdown-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(28px, 4vw, 44px);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(32px, 4.5vw, 48px);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 55%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--c-text);
 }
 
 .exam-countdown-label {
-  margin-top: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
+  margin-top: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--c-muted);
 }
 
@@ -1983,37 +1895,6 @@ textarea.input-field {
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.exam-progress-bar-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.exam-progress-track {
-  flex: 1;
-  height: 4px;
-  background-color: var(--c-border);
-  position: relative;
-  overflow: hidden;
-}
-
-.exam-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 60%, #06b6d4 100%);
-  transition: width 0.6s ease;
-}
-
-.exam-progress-pct {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--c-accent);
-  font-variant-numeric: tabular-nums;
-  min-width: 44px;
-  text-align: right;
 }
 
 .exam-countdown-subfooter {
@@ -2027,8 +1908,8 @@ textarea.input-field {
 }
 
 .exam-rollover-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
   color: var(--c-accent);
   display: inline-flex;
   align-items: center;

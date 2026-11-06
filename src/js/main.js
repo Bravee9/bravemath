@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupFeaturedDocument();
     setupScrollHeader();
     setupScrollbarAutohide();
-    setupHeroTypewriter();
     initExamCountdown();
 
     try {
@@ -71,49 +70,6 @@ function setupScrollbarAutohide() {
     }, { passive: true });
 }
 
-function setupHeroTypewriter() {
-    const target = document.getElementById('hero-typewriter');
-    if (!target) return;
-
-    const phrases = [
-        'Chuyên đề Toán THPT Quốc Gia & Đại Học',
-        'Giải tích 1, 2 • Đại số tuyến tính • Xác suất thống kê',
-        'Toán rời rạc • Tối ưu hóa • Hình học giải tích Oxyz',
-        'Tải xuống trực tiếp PDF — 100% Miễn phí & Không Quảng Cáo'
-    ];
-
-    let phraseIndex = 0;
-    let charIndex = phrases[0].length;
-    let isDeleting = true;
-
-    function tick() {
-        const currentPhrase = phrases[phraseIndex];
-
-        if (!isDeleting) {
-            charIndex++;
-            target.textContent = currentPhrase.slice(0, charIndex);
-            if (charIndex === currentPhrase.length) {
-                isDeleting = true;
-                setTimeout(tick, 2400);
-                return;
-            }
-            setTimeout(tick, 45);
-        } else {
-            charIndex--;
-            target.textContent = currentPhrase.slice(0, charIndex);
-            if (charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(tick, 260);
-                return;
-            }
-            setTimeout(tick, 22);
-        }
-    }
-
-    setTimeout(tick, 2400);
-}
-
 /* ========================================
    DOCUMENT LOADING & RENDERING
    ======================================== */
@@ -124,30 +80,12 @@ async function loadAndRenderDocuments() {
     try {
         const data = await loadDocuments();
         allDocuments = data.documents || [];
-        updateHeroStats(allDocuments);
         applyFilters();
         renderBookmarkedDocuments();
     } catch (error) {
         console.error('Error loading documents:', error);
         hideSkeletonLoading();
         showError('Không thể tải danh sách tài liệu.');
-    }
-}
-
-function updateHeroStats(docs) {
-    if (!Array.isArray(docs) || docs.length === 0) return;
-
-    const totalDocsEl = document.getElementById('stat-total-docs');
-    const totalPagesEl = document.getElementById('stat-total-pages');
-
-    if (totalDocsEl) {
-        totalDocsEl.textContent = `${docs.length}+`;
-    }
-    if (totalPagesEl) {
-        const sumPages = docs.reduce((acc, d) => acc + (Number(d.pages) || 0), 0);
-        if (sumPages > 0) {
-            totalPagesEl.textContent = `${sumPages.toLocaleString('vi-VN')}+`;
-        }
     }
 }
 
