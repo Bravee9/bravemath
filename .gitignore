@@ -15,9 +15,12 @@ public/assets/css/
 .env.production
 .env.*.local
 
-# Sensitive files - NEVER COMMIT
+# Sensitive and template markdown files - NEVER COMMIT
 .github/copilot-instructions.md
 **/copilot-instructions.md
+.github/PULL_REQUEST_TEMPLATE.md
+.github/*.md
+assets/images/*.md
 scripts/*
 !scripts/update-exam-year.js
 docs/

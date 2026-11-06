@@ -67,11 +67,10 @@ Bravemath implements the **Ocean Swiss Minimalist** design system unified with t
 ```text
 bravemath/
 ├── .github/
-│   ├── workflows/
-│   │   ├── ci.yml                # Continuous Integration for main and development
-│   │   ├── deploy.yml            # GitHub Pages production deployment
-│   │   └── update-exam-date.yml  # Scheduled daily THPTQG exam year rollover
-│   └── PULL_REQUEST_TEMPLATE.md  # Standardized Pull Request checklist
+│   └── workflows/
+│       ├── ci.yml                # Continuous Integration for main and development
+│       ├── deploy.yml            # GitHub Pages production deployment
+│       └── update-exam-date.yml  # Scheduled daily THPTQG exam year rollover
 ├── assets/
 │   └── images/                   # Static brand icons and OpenGraph assets
 ├── data/
