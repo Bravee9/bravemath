@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import { copyFileSync, mkdirSync, existsSync } from 'fs';
+import { resolve, dirname } from 'path';
+import { copyFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -29,31 +28,31 @@ export default defineConfig({
   // Server options
   server: {
     port: 3000,
-    open: '/src/pages/index.html'
+    open: '/index.html'
   },
 
   // Public directory for static assets
   publicDir: 'assets',
 
-  // Plugin to copy documents.json
+  // Plugin to copy all JSON data files from data/ to dist/data/
   plugins: [{
     name: 'copy-data',
     closeBundle() {
       try {
-        const dataDir = resolve(__dirname, 'dist/data');
-        const srcFile = resolve(__dirname, 'data/documents.json');
-        const destFile = resolve(__dirname, 'dist/data/documents.json');
+        const srcDir = resolve(__dirname, 'data');
+        const destDir = resolve(__dirname, 'dist/data');
 
-        if (!existsSync(srcFile)) {
-          console.error('Source file not found:', srcFile);
+        if (!existsSync(srcDir)) {
           return;
         }
 
-        mkdirSync(dataDir, { recursive: true });
-        copyFileSync(srcFile, destFile);
-        console.log('Copied documents.json to dist/data/');
+        mkdirSync(destDir, { recursive: true });
+        const files = readdirSync(srcDir).filter(f => f.endsWith('.json'));
+        for (const file of files) {
+          copyFileSync(resolve(srcDir, file), resolve(destDir, file));
+        }
       } catch (err) {
-        console.error('Failed to copy documents.json:', err);
+        console.error('Failed to copy data files:', err);
       }
     }
   }]

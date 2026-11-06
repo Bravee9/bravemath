@@ -20,7 +20,6 @@ let hoverPreviewEl = null;
 let hoverShowTimer = null;
 let hoverHideTimer = null;
 
-
 /* ========================================
    APP INITIALIZATION
    ======================================== */
@@ -32,9 +31,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupSearch();
     setupFilters();
     setupClearFilters();
+    setupQuickFooterFilters();
     initHoverPreview();
     setupFeaturedDocument();
     setupScrollHeader();
+    setupScrollbarAutohide();
+    setupHeroTypewriter();
 
     try {
         await loadAndRenderDocuments();
@@ -53,9 +55,62 @@ function setupScrollHeader() {
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    }, { passive: true });
 }
 
+function setupScrollbarAutohide() {
+    let scrollTimer = null;
+    window.addEventListener('scroll', () => {
+        document.documentElement.classList.add('is-scrolling');
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            document.documentElement.classList.remove('is-scrolling');
+        }, 1000);
+    }, { passive: true });
+}
+
+function setupHeroTypewriter() {
+    const target = document.getElementById('hero-typewriter');
+    if (!target) return;
+
+    const phrases = [
+        'Chuyên đề Toán THPT Quốc Gia & Đại Học',
+        'Giải tích 1, 2 • Đại số tuyến tính • Xác suất thống kê',
+        'Toán rời rạc • Tối ưu hóa • Hình học giải tích Oxyz',
+        'Tải xuống trực tiếp PDF — 100% Miễn phí & Không Quảng Cáo'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = true;
+
+    function tick() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (!isDeleting) {
+            charIndex++;
+            target.textContent = currentPhrase.slice(0, charIndex);
+            if (charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(tick, 2400);
+                return;
+            }
+            setTimeout(tick, 45);
+        } else {
+            charIndex--;
+            target.textContent = currentPhrase.slice(0, charIndex);
+            if (charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(tick, 260);
+                return;
+            }
+            setTimeout(tick, 22);
+        }
+    }
+
+    setTimeout(tick, 2400);
+}
 
 /* ========================================
    DOCUMENT LOADING & RENDERING
@@ -67,12 +122,30 @@ async function loadAndRenderDocuments() {
     try {
         const data = await loadDocuments();
         allDocuments = data.documents || [];
+        updateHeroStats(allDocuments);
         applyFilters();
         renderBookmarkedDocuments();
     } catch (error) {
         console.error('Error loading documents:', error);
         hideSkeletonLoading();
         showError('Không thể tải danh sách tài liệu.');
+    }
+}
+
+function updateHeroStats(docs) {
+    if (!Array.isArray(docs) || docs.length === 0) return;
+
+    const totalDocsEl = document.getElementById('stat-total-docs');
+    const totalPagesEl = document.getElementById('stat-total-pages');
+
+    if (totalDocsEl) {
+        totalDocsEl.textContent = `${docs.length}+`;
+    }
+    if (totalPagesEl) {
+        const sumPages = docs.reduce((acc, d) => acc + (Number(d.pages) || 0), 0);
+        if (sumPages > 0) {
+            totalPagesEl.textContent = `${sumPages.toLocaleString('vi-VN')}+`;
+        }
     }
 }
 
@@ -117,7 +190,6 @@ function renderDocuments(documents) {
     });
 }
 
-
 /* ========================================
    DOCUMENT CARD CREATION
    ======================================== */
@@ -161,7 +233,7 @@ function createDocumentCard(doc) {
     const card = document.createElement('div');
     card.className = 'document-card';
 
-    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23f1f3f4'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='24' fill='%239aa0a6' text-anchor='middle' dy='.3em'%3ET%C3%A0i%20li%E1%BB%87u%3C/text%3E%3C/svg%3E";
+    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%230a1628'/%3E%3Ctext x='50%25' y='50%25' font-family='monospace' font-size='20' fill='%2338bdf8' text-anchor='middle' dy='.3em'%3EBRAVEMATH%20PDF%3C/text%3E%3C/svg%3E";
     const thumbnail = doc.thumbnail || fallbackImg;
 
     const safeTitle = escapeHtml(doc.title);
@@ -170,7 +242,7 @@ function createDocumentCard(doc) {
     const categoryLabel = CATEGORY_LABELS[doc.category] || doc.category;
     const levelBadge = LEVEL_BADGE_CLASS[doc.level] || 'badge-thpt';
     const categoryBadge = CATEGORY_BADGE_CLASS[doc.category] || 'badge-theory';
-    
+
     const isBookmarked = getBookmarks().includes(doc.driveId);
     const bookmarkActive = isBookmarked ? 'active' : '';
 
@@ -182,9 +254,9 @@ function createDocumentCard(doc) {
             loading="lazy"
             onerror="this.onerror=null; this.src='${fallbackImg}'"
         >
-        <button class="bookmark-btn ${bookmarkActive}" data-id="${doc.driveId}" aria-label="Lưu tài liệu" title="Lưu tài liệu">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+        <button class="bookmark-btn ${bookmarkActive}" data-id="${escapeHtml(doc.driveId)}" aria-label="Lưu tài liệu" title="Lưu tài liệu">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="square" stroke-linejoin="miter" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
             </svg>
         </button>
         <div class="card-body">
@@ -203,12 +275,15 @@ function createDocumentCard(doc) {
                 data-drive-id="${escapeHtml(doc.driveId)}"
                 data-filename="${escapeHtml(doc.title)}.pdf"
             >
-                Tải xuống
+                <span>Tải xuống</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                </svg>
             </button>
         </div>
     `;
 
-    // Thumbnail click → preview
+    // Thumbnail click -> preview
     const thumbnailImg = card.querySelector('img');
     if (thumbnailImg && doc.driveId) {
         thumbnailImg.addEventListener('click', (e) => {
@@ -217,7 +292,7 @@ function createDocumentCard(doc) {
         });
     }
 
-    // Download button — direct Google Drive link (no Worker)
+    // Download button — direct Google Drive link
     const downloadBtn = card.querySelector('.download-btn');
     if (downloadBtn && doc.driveId) {
         downloadBtn.addEventListener('click', (e) => {
@@ -242,6 +317,7 @@ function createDocumentCard(doc) {
 
     // Hover preview (desktop only)
     card.addEventListener('mouseenter', () => {
+        if (window.innerWidth < 1024) return;
         clearTimeout(hoverHideTimer);
         hoverShowTimer = setTimeout(() => showHoverPreview(doc, card), 220);
     });
@@ -260,13 +336,13 @@ function createDocumentCard(doc) {
 function getBookmarks() {
     try {
         return JSON.parse(localStorage.getItem('bravemath-bookmarks') || '[]');
-    } catch(e) {
+    } catch {
         return [];
     }
 }
 
 function toggleBookmark(driveId) {
-    let bookmarks = getBookmarks();
+    const bookmarks = getBookmarks();
     const index = bookmarks.indexOf(driveId);
     if (index > -1) {
         bookmarks.splice(index, 1);
@@ -274,8 +350,7 @@ function toggleBookmark(driveId) {
         bookmarks.push(driveId);
     }
     localStorage.setItem('bravemath-bookmarks', JSON.stringify(bookmarks));
-    
-    // Update all matching buttons in UI
+
     const btns = document.querySelectorAll(`.bookmark-btn[data-id="${driveId}"]`);
     btns.forEach(btn => {
         if (index > -1) {
@@ -291,22 +366,22 @@ function toggleBookmark(driveId) {
 function renderBookmarkedDocuments() {
     const listEl = document.getElementById('bookmarked-list');
     if (!listEl) return;
-    
+
     const bookmarks = getBookmarks();
     if (bookmarks.length === 0) {
-        listEl.innerHTML = '<div class="empty-bookmark">Chưa có tài liệu nào được ghim.</div>';
+        listEl.innerHTML = '<div class="empty-bookmark">Chưa có tài liệu nào được ghim. Nhấn biểu tượng ngôi sao trên thẻ tài liệu để lưu nhanh.</div>';
         return;
     }
 
     const bookmarkedDocs = allDocuments.filter(doc => bookmarks.includes(doc.driveId));
-    
+
     if (bookmarkedDocs.length === 0) {
-        listEl.innerHTML = '<div class="empty-bookmark">Chưa có tài liệu nào được ghim.</div>';
+        listEl.innerHTML = '<div class="empty-bookmark">Chưa có tài liệu nào được ghim. Nhấn biểu tượng ngôi sao trên thẻ tài liệu để lưu nhanh.</div>';
         return;
     }
 
     listEl.innerHTML = '';
-    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%23f1f3f4'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='24' fill='%239aa0a6' text-anchor='middle' dy='.3em'%3ET%C3%A0i%20li%E1%BB%87u%3C/text%3E%3C/svg%3E";
+    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='100%25' height='100%25' fill='%230a1628'/%3E%3Ctext x='50%25' y='50%25' font-family='monospace' font-size='20' fill='%2338bdf8' text-anchor='middle' dy='.3em'%3EBRAVEMATH%20PDF%3C/text%3E%3C/svg%3E";
 
     bookmarkedDocs.forEach(doc => {
         const thumbnail = doc.thumbnail || fallbackImg;
@@ -320,14 +395,13 @@ function renderBookmarkedDocuments() {
                 <div class="bookmarked-item-meta">${doc.pages || 0} trang • ${escapeHtml(doc.fileSize || '')}</div>
             </div>
         `;
-        
+
         item.addEventListener('click', () => {
             previewDocument(doc.driveId);
         });
         listEl.appendChild(item);
     });
 }
-
 
 /* ========================================
    HOVER PREVIEW POPUP
@@ -363,8 +437,8 @@ function initHoverPreview() {
                 <span class="preview-size"></span>
             </div>
             <div class="preview-actions">
-                <button class="btn-secondary preview-view-btn" style="font-size:12px; padding:6px 12px;">Xem trước</button>
-                <button class="btn-primary preview-download-btn" style="font-size:12px; padding:6px 12px;">Tải xuống</button>
+                <button class="btn-secondary preview-view-btn" style="font-size:11px; padding:8px 12px;">Xem trước</button>
+                <button class="btn-primary preview-download-btn" style="font-size:11px; padding:8px 12px;">Tải xuống</button>
             </div>
         </div>
     `;
@@ -446,7 +520,8 @@ function positionHoverPreview(cardEl) {
     const rect = cardEl.getBoundingClientRect();
     const popupW = 340;
     const margin = 12;
-    let left, top;
+    let left;
+    let top;
 
     if (rect.right + popupW + margin <= window.innerWidth) {
         left = rect.right + margin;
@@ -460,10 +535,9 @@ function positionHoverPreview(cardEl) {
     top = Math.min(rect.top, window.innerHeight - estimatedH - margin);
     top = Math.max(margin + 64, top);
 
-    hoverPreviewEl.style.left = left + 'px';
-    hoverPreviewEl.style.top = top + 'px';
+    hoverPreviewEl.style.left = `${left}px`;
+    hoverPreviewEl.style.top = `${top}px`;
 }
-
 
 /* ========================================
    UI SETUP FUNCTIONS
@@ -477,9 +551,12 @@ function setupMobileMenu() {
 
     if (menuBtn && menu) {
         menuBtn.addEventListener('click', () => {
-            const isOpen = menu.classList.contains('open');
             menu.classList.toggle('open');
-            menu.style.display = isOpen ? 'none' : 'block';
+        });
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+            });
         });
     }
 
@@ -510,7 +587,7 @@ function setupSearchInput(inputId) {
         timeout = setTimeout(() => {
             currentFilters.query = e.target.value;
             applyFilters();
-        }, 300);
+        }, 250);
     });
 }
 
@@ -526,6 +603,32 @@ function setupFilters() {
                 applyFilters();
             });
         }
+    });
+}
+
+function setupQuickFooterFilters() {
+    document.querySelectorAll('[data-quick-level]').forEach(link => {
+        link.addEventListener('click', () => {
+            const level = link.getAttribute('data-quick-level');
+            const levelSelect = document.getElementById('filter-level');
+            if (levelSelect && level) {
+                levelSelect.value = level;
+                currentFilters.level = level;
+                applyFilters();
+            }
+        });
+    });
+
+    document.querySelectorAll('[data-quick-subject]').forEach(link => {
+        link.addEventListener('click', () => {
+            const subject = link.getAttribute('data-quick-subject');
+            const subjectSelect = document.getElementById('filter-subject');
+            if (subjectSelect && subject) {
+                subjectSelect.value = subject;
+                currentFilters.subject = subject;
+                applyFilters();
+            }
+        });
     });
 }
 
@@ -549,7 +652,7 @@ function setupClearFilters() {
 function setupFeaturedDocument() {
     const featuredDoc = document.querySelector('.featured-document');
     if (!featuredDoc) return;
-    
+
     const driveId = featuredDoc.getAttribute('data-drive-id');
     if (!driveId) return;
 
@@ -566,23 +669,19 @@ function setupFeaturedDocument() {
     }
 }
 
-
 /* ========================================
-   DARK MODE
+   DARK MODE (Ocean Dark Default)
    ======================================== */
 
 function setupDarkMode() {
-    // Restore saved theme — uses .dark class for Tailwind compatibility
     const saved = localStorage.getItem('bravemath-theme');
-    if (saved === 'dark') {
+    if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+    } else {
         document.documentElement.classList.add('dark');
     }
 
-    // Toggle button
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
-
-    toggleBtn.addEventListener('click', () => {
+    function toggleTheme() {
         const isDark = document.documentElement.classList.contains('dark');
         if (isDark) {
             document.documentElement.classList.remove('dark');
@@ -591,9 +690,14 @@ function setupDarkMode() {
             document.documentElement.classList.add('dark');
             localStorage.setItem('bravemath-theme', 'dark');
         }
-    });
-}
+    }
 
+    const toggleBtn = document.getElementById('theme-toggle');
+    const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
+
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+    if (toggleBtnMobile) toggleBtnMobile.addEventListener('click', toggleTheme);
+}
 
 /* ========================================
    LOADING & ERROR STATES

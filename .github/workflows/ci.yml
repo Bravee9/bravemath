@@ -1,0 +1,64 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main, development ]
+
+jobs:
+  build-and-verify:
+    name: Build, Validate Data, and Verify Bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate JSON data schema
+        run: |
+          node -e "
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('data/documents.json', 'utf8'));
+            if (!Array.isArray(data.documents) || data.documents.length === 0) {
+              throw new Error('data/documents.json must contain a non-empty documents array');
+            }
+            for (const doc of data.documents) {
+              if (!doc.id || !doc.title || !doc.driveId || !doc.level || !doc.category) {
+                throw new Error('Invalid document entry: ' + JSON.stringify(doc));
+              }
+            }
+            console.log('Validated ' + data.documents.length + ' documents successfully.');
+          "
+
+      - name: Build CSS and Vite production bundle
+        run: npm run build
+
+      - name: Verify production output artifacts
+        run: |
+          node -e "
+            const fs = require('fs');
+            const requiredFiles = [
+              'dist/index.html',
+              'dist/about.html',
+              'dist/how-to-use.html',
+              'dist/contact.html',
+              'dist/admin.html',
+              'dist/data/documents.json'
+            ];
+            for (const file of requiredFiles) {
+              if (!fs.existsSync(file)) {
+                throw new Error('Missing expected build output: ' + file);
+              }
+            }
+            console.log('All production artifacts verified.');
+          "
