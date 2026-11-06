@@ -1,0 +1,54 @@
+name: Automated THPTQG Exam Year Rollover
+
+on:
+  schedule:
+    # Runs daily at 00:00 Vietnam Time (17:00 UTC)
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+    inputs:
+      simulate_date:
+        description: 'Optional ISO date to simulate rollover (e.g., 2027-06-26T00:00:00+07:00)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  rollover-exam-year:
+    name: Check and Rollover THPTQG Exam Year
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run THPTQG Exam Year Rollover Check
+        env:
+          SIMULATE_DATE: ${{ github.event.inputs.simulate_date }}
+        run: |
+          if [ -n "$SIMULATE_DATE" ]; then
+            node scripts/update-exam-year.js --simulate-date "$SIMULATE_DATE"
+          else
+            node scripts/update-exam-year.js
+          fi
+
+      - name: Commit and Push if Exam Year Rolled Over
+        run: |
+          if [ -n "$(git status --porcelain data/exam-schedule.json)" ]; then
+            ACTIVE_YEAR=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/exam-schedule.json', 'utf8')).activeYear)")
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/exam-schedule.json
+            git commit -m "chore(exam): automatically roll over THPTQG countdown to ${ACTIVE_YEAR}"
+            git push
+          else
+            echo "No schedule changes detected."
+          fi

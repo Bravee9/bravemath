@@ -38,7 +38,15 @@ jobs:
               }
             }
             console.log('Validated ' + data.documents.length + ' documents successfully.');
+            const examData = JSON.parse(fs.readFileSync('data/exam-schedule.json', 'utf8'));
+            if (!examData.activeYear || !Array.isArray(examData.schedules) || examData.schedules.length === 0) {
+              throw new Error('data/exam-schedule.json must define activeYear and a non-empty schedules array');
+            }
+            console.log('Validated THPTQG exam schedule configuration (activeYear=' + examData.activeYear + ').');
           "
+
+      - name: Verify THPTQG Exam Year Rollover Script
+        run: node scripts/update-exam-year.js --dry-run --simulate-date 2027-06-26T00:00:00+07:00
 
       - name: Build CSS and Vite production bundle
         run: npm run build
@@ -53,7 +61,8 @@ jobs:
               'dist/how-to-use.html',
               'dist/contact.html',
               'dist/admin.html',
-              'dist/data/documents.json'
+              'dist/data/documents.json',
+              'dist/data/exam-schedule.json'
             ];
             for (const file of requiredFiles) {
               if (!fs.existsSync(file)) {
