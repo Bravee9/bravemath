@@ -48,7 +48,6 @@ export async function loadDocuments() {
         const basePath = import.meta.env.BASE_URL || '/';
         const timestamp = new Date().getTime();
         const url = `${basePath}data/documents.json?v=${timestamp}`;
-        console.log('Fetching documents from:', url);
 
         const response = await fetch(url);
         if (!response.ok) {

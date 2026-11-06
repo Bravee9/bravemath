@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <!-- SEO -->
-    <title>Bravemath — Tài liệu Toán học miễn phí cho học sinh</title>
+    <title>Bravemath — Kho Tài Liệu Toán Học Mở Cho Học Sinh & Sinh Viên</title>
     <link rel="icon" href="./assets/images/favicon.png" type="image/png">
     <meta name="description"
         content="Tải tài liệu Toán THPT và Đại học miễn phí. Đề thi, chuyên đề, công thức, giải tích, XSTK, toán rời rạc. Cập nhật liên tục.">
@@ -18,7 +18,7 @@
     <!-- Open Graph -->
     <meta property="og:locale" content="vi_VN">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Bravemath — Tài liệu Toán học miễn phí cho học sinh">
+    <meta property="og:title" content="Bravemath — Kho Tài Liệu Toán Học Mở Cho Học Sinh & Sinh Viên">
     <meta property="og:description"
         content="Tải tài liệu Toán THPT và Đại học miễn phí. Đề thi, chuyên đề, công thức, giải tích, XSTK, toán rời rạc.">
     <meta property="og:url" content="https://bravee9.github.io/bravemath/">
@@ -29,7 +29,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bravemath — Tài liệu Toán học miễn phí cho học sinh">
+    <meta name="twitter:title" content="Bravemath — Kho Tài Liệu Toán Học Mở Cho Học Sinh & Sinh Viên">
     <meta name="twitter:description"
         content="Tải tài liệu Toán THPT và Đại học miễn phí. Đề thi, chuyên đề, công thức, giải tích, XSTK, toán rời rạc.">
     <meta name="twitter:image" content="https://bravee9.github.io/bravemath/images/bravemath-logo.png">
@@ -51,7 +51,7 @@
                 "@type": "WebPage",
                 "@id": "https://bravee9.github.io/bravemath/",
                 "url": "https://bravee9.github.io/bravemath/",
-                "name": "Bravemath — Tài liệu Toán học miễn phí cho học sinh",
+                "name": "Bravemath — Kho Tài Liệu Toán Học Mở Cho Học Sinh & Sinh Viên",
                 "isPartOf": {"@id": "https://bravee9.github.io/bravemath/#website"},
                 "inLanguage": "vi"
             }
@@ -59,11 +59,15 @@
     }
     </script>
 
-    <!-- Dark mode init (must be before CSS paint to prevent flash) -->
+    <!-- Theme init (Ocean Dark default, supports Light toggle without flash) -->
     <script>
         (function () {
             const t = localStorage.getItem('bravemath-theme');
-            if (t === 'dark') document.documentElement.classList.add('dark');
+            if (t === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
         })();
     </script>
 
@@ -75,7 +79,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXJXVDWLCG"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-PXJXVDWLCG');
     </script>
@@ -83,53 +87,86 @@
 
 <body>
 
+    <!-- ===== OCEAN SWISS MINIMALIST BACKGROUND ===== -->
+    <div class="ocean-bg-wrapper" aria-hidden="true">
+        <div class="bg-ocean-animated"></div>
+        <div class="ocean-grid-overlay"></div>
+        <div class="ocean-orb-1"></div>
+        <div class="ocean-orb-2"></div>
+    </div>
+
     <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="header-inner">
             <!-- Brand Logo -->
-            <a href="/bravemath/index.html" style="display:flex; align-items:center; margin-right: 16px; gap: 10px;">
-                <img src="./assets/images/favicon.png" alt="Bravemath Icon" style="height: 32px; width: 32px; object-fit: contain;">
-                <span style="font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 800; color: var(--c-text); letter-spacing: -0.5px;">Bravemath</span>
+            <a href="/bravemath/index.html" class="brand-logo" style="margin-right: 16px;">
+                <img src="./assets/images/favicon.png" alt="Bravemath Icon" style="height: 30px; width: 30px; object-fit: contain;">
+                <span class="brand-logo-text">Brave<span class="brand-logo-accent">math</span></span>
             </a>
+
             <!-- Search (desktop) -->
             <div class="header-search-wrap">
-                <svg style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:15px; height:15px; pointer-events:none; color:var(--c-muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                <svg style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; pointer-events:none; color:var(--c-muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
                 </svg>
-                <input type="text" id="header-search" placeholder="Tìm kiếm tài liệu..." class="search-input">
+                <input type="text" id="header-search" placeholder="Tìm kiếm chuyên đề, đề thi, giáo trình..." class="search-input" aria-label="Tìm kiếm tài liệu">
             </div>
 
             <!-- Navigation (desktop) -->
-            <nav class="nav-links">
+            <nav class="nav-links" aria-label="Điều hướng chính">
                 <a href="/bravemath/index.html" class="nav-link active">Trang chủ</a>
+                <a href="#documents" class="nav-link">Tài liệu</a>
                 <a href="/bravemath/about.html" class="nav-link">Giới thiệu</a>
                 <a href="/bravemath/how-to-use.html" class="nav-link">Hướng dẫn</a>
                 <a href="/bravemath/contact.html" class="nav-link">Liên hệ</a>
-                <button id="theme-toggle" class="theme-toggle" aria-label="Chuyển chế độ sáng/tối">
-                    <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-                    <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Chuyển chế độ sáng/tối" title="Chuyển chế độ sáng/tối">
+                    <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                    <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
                 </button>
             </nav>
 
-            <!-- Mobile menu button -->
-            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-            </button>
+            <!-- Mobile Action Controls -->
+            <div class="mobile-controls">
+                <button id="mobile-search-btn" class="mobile-action-btn" aria-label="Tìm kiếm">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                </button>
+                <button id="theme-toggle-mobile" class="mobile-action-btn" aria-label="Chuyển chế độ sáng/tối">
+                    <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="width:18px;height:18px;">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                    </svg>
+                </button>
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M3 6h18M3 12h18M3 18h18" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile search -->
-        <div id="mobile-search" style="display:none; padding:0 16px 12px;">
+        <div id="mobile-search" style="display:none; padding:12px 16px; border-top: 1px solid var(--c-border); background: var(--c-surface);">
             <div style="position:relative;">
-                <svg style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:15px; height:15px; pointer-events:none; color:var(--c-muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                <svg style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; pointer-events:none; color:var(--c-muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
                 </svg>
-                <input type="text" id="header-search-mobile" placeholder="Tìm kiếm tài liệu..." class="search-input" style="max-width:100%;">
+                <input type="text" id="header-search-mobile" placeholder="Tìm kiếm tài liệu..." class="search-input" style="max-width:100%;" aria-label="Tìm kiếm tài liệu trên di động">
             </div>
         </div>
 
         <!-- Mobile menu -->
         <div id="mobile-menu" class="mobile-menu">
             <a href="/bravemath/index.html" class="mobile-nav-link">Trang chủ</a>
+            <a href="#documents" class="mobile-nav-link">Kho tài liệu</a>
             <a href="/bravemath/about.html" class="mobile-nav-link">Giới thiệu</a>
             <a href="/bravemath/how-to-use.html" class="mobile-nav-link">Hướng dẫn sử dụng</a>
             <a href="/bravemath/contact.html" class="mobile-nav-link">Liên hệ</a>
@@ -137,79 +174,150 @@
     </header>
 
     <main>
-        <!-- ===== HERO ===== -->
+        <!-- ===== HERO SECTION (Bravechat Ocean Swiss Style) ===== -->
         <section class="hero-section">
-            <div class="site-container" style="max-width:860px;">
-                <h1>Kho tài liệu Toán<br>miễn phí cho học sinh</h1>
+            <div class="site-container" style="max-width:960px;">
+                <div class="hero-tag">
+                    <span class="status-dot"></span>
+                    <span>Kho lưu trữ học thuật mở — 100% Miễn phí</span>
+                </div>
+
+                <h1>
+                    Kho tài liệu Toán học<br>
+                    <span class="text-gradient-ocean">chuẩn mực &amp; hệ thống</span>
+                </h1>
+
+                <div class="hero-typewriter-wrap" aria-live="polite">
+                    <span id="hero-typewriter">Chuyên đề Toán THPT Quốc Gia &amp; Đại Học</span>
+                    <span class="typewriter-cursor"></span>
+                </div>
+
                 <p class="hero-subtitle">
-                    Tài liệu Toán THPT và Đại học được chọn lọc kỹ lưỡng. Lý thuyết, đề thi, bài tập — tải trực tiếp, hoàn toàn miễn phí.
+                    Tổng hợp lý thuyết chuyên sâu, đề thi chuẩn cấu trúc, bài tập vận dụng cao và giáo trình Toán đại cương từ các trường đại học hàng đầu. Xem trước trực tiếp và tải xuống hoàn toàn miễn phí.
                 </p>
+
                 <div class="hero-actions">
-                    <a href="#documents" class="btn-primary">Khám phá ngay</a>
-                    <a href="/bravemath/about.html" class="btn-secondary">Tìm hiểu thêm</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== ABOUT ===== -->
-        <section class="about-section site-section">
-            <div class="site-container" style="max-width:720px;">
-                <div class="section-title">Bravemath là gì?</div>
-                <div class="card">
-                    <p class="about-text">
-                        Bravemath là kho tài liệu Toán miễn phí dành cho học sinh THPT và sinh viên đại học. Có lý thuyết, đề thi, công thức đầy đủ.
-                    </p>
-                    <p class="about-text">
-                        Tài liệu được chọn lọc, dễ hiểu và phù hợp từng chương trình học.
-                    </p>
+                    <a href="#documents" class="btn-primary">
+                        <span>Khám phá kho tài liệu</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="square" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                    <a href="/bravemath/how-to-use.html" class="btn-secondary">Hướng dẫn tra cứu</a>
                 </div>
 
-                <!-- Social links -->
-                <div style="margin-top:28px;">
-                    <p style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--c-muted); margin-bottom:12px;">Kết nối qua mạng xã hội</p>
-                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                        <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer" class="social-link-btn" aria-label="Facebook">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                            <span>Facebook</span>
-                        </a>
-                        <a href="https://www.threads.com/@brave._.9" target="_blank" rel="noopener noreferrer" class="social-link-btn" aria-label="Threads">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 00-2.215-.221z"/></svg>
-                            <span>Threads</span>
-                        </a>
-                        <a href="https://www.instagram.com/brave._.9" target="_blank" rel="noopener noreferrer" class="social-link-btn" aria-label="Instagram">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://github.com/Bravee9" target="_blank" rel="noopener noreferrer" class="social-link-btn" aria-label="GitHub">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://tiktok.com/@brave._.9" target="_blank" rel="noopener noreferrer" class="social-link-btn" aria-label="TikTok">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.17a8.16 8.16 0 004.76 1.53v-3.5a4.84 4.84 0 01-1-.51z"/></svg>
-                            <span>TikTok</span>
-                        </a>
+                <!-- Swiss 1px Border Stats Bar -->
+                <div class="hero-stats-bar">
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value" id="stat-total-docs">10+</span>
+                        <span class="hero-stat-label">Chuyên đề &amp; Giáo trình</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value" id="stat-total-pages">990+</span>
+                        <span class="hero-stat-label">Trang tài liệu PDF</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value">THPT &amp; ĐH</span>
+                        <span class="hero-stat-label">Cấp độ đào tạo</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value">100%</span>
+                        <span class="hero-stat-label">Miễn phí &amp; Không QC</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== DOCUMENTS ===== -->
+        <!-- ===== THPTQG EXAM COUNTDOWN SECTION ===== -->
+        <section id="thptqg-countdown" class="exam-countdown-section" aria-label="Đếm ngược kỳ thi THPT Quốc gia">
+            <div class="site-container">
+                <div class="exam-countdown-card">
+                    <div class="exam-countdown-header">
+                        <div class="exam-countdown-badge">
+                            <span class="status-dot"></span>
+                            <span id="cd-exam-badge">ĐẾM NGƯỢC KỲ THI THPT QUỐC GIA 2027</span>
+                        </div>
+                        <div class="exam-countdown-meta-group">
+                            <span class="exam-countdown-meta-pill" title="Ngày khai mạc kỳ thi">
+                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="0" />
+                                    <path d="M16 2v4M8 2v4M3 10h18" />
+                                </svg>
+                                <span id="cd-exam-date">24/06/2027 • 07:30 GMT+7</span>
+                            </span>
+                            <span class="exam-countdown-meta-pill" title="Lịch thi môn Toán">
+                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <path d="M12 7v5l3 3" />
+                                </svg>
+                                <span id="cd-math-slot">Môn Toán: 14:20 — 24/06/2027</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="exam-countdown-grid">
+                        <div class="exam-countdown-unit">
+                            <span class="exam-countdown-value" id="cd-days">00</span>
+                            <span class="exam-countdown-label">Ngày</span>
+                        </div>
+                        <div class="exam-countdown-unit">
+                            <span class="exam-countdown-value" id="cd-hours">00</span>
+                            <span class="exam-countdown-label">Giờ</span>
+                        </div>
+                        <div class="exam-countdown-unit">
+                            <span class="exam-countdown-value" id="cd-minutes">00</span>
+                            <span class="exam-countdown-label">Phút</span>
+                        </div>
+                        <div class="exam-countdown-unit">
+                            <span class="exam-countdown-value" id="cd-seconds">00</span>
+                            <span class="exam-countdown-label">Giây</span>
+                        </div>
+                    </div>
+
+                    <div class="exam-countdown-footer">
+                        <div class="exam-progress-bar-wrap" title="Tiến độ chu kỳ ôn thi năm học">
+                            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:var(--c-muted);">Tiến độ năm học</span>
+                            <div class="exam-progress-track">
+                                <div class="exam-progress-fill" id="cd-progress-fill" style="width: 40%;"></div>
+                            </div>
+                            <span class="exam-progress-pct" id="cd-progress-pct">40.0%</span>
+                        </div>
+                        <div class="exam-countdown-subfooter">
+                            <span id="cd-exam-note">Lịch thi dự kiến ngày 24–25/06/2027 theo khung kế hoạch năm học của Bộ GD&amp;ĐT.</span>
+                            <span class="exam-rollover-tag">
+                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="square" d="M4 4v5h5M20 20v-5h-5M4 9a9 9 0 0114.65-3.65L20 7M20 15a9 9 0 01-14.65 3.65L4 17" />
+                                </svg>
+                                <span id="cd-rollover-info">Tự động chuyển sang kỳ thi 2028 sau 25/06/2027</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DOCUMENTS SECTION ===== -->
         <section id="documents" class="documents-section site-section">
             <div class="site-container">
                 <div class="documents-layout">
-                    <!-- Cột Trái: Danh sách chính -->
+                    <!-- Left Column: Document Catalog -->
                     <div class="documents-main">
-                        <div class="section-title">Tài liệu mới nhất</div>
+                        <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:24px;">
+                            <div>
+                                <div class="section-tag">Thư viện số</div>
+                                <h2 class="section-title" style="margin-bottom:0;">Tài liệu mới nhất</h2>
+                            </div>
+                        </div>
 
                         <!-- Filters -->
                         <div class="filters-bar">
-                            <select id="filter-level" class="filter-select">
+                            <select id="filter-level" class="filter-select" aria-label="Lọc theo cấp độ">
                                 <option value="">Tất cả cấp độ</option>
                                 <option value="thpt">THPT</option>
                                 <option value="daihoc">Đại học</option>
                             </select>
 
-                            <select id="filter-subject" class="filter-select">
+                            <select id="filter-subject" class="filter-select" aria-label="Lọc theo môn học">
                                 <option value="">Tất cả môn học</option>
                                 <option value="giai-tich">Giải tích</option>
                                 <option value="xac-suat-thong-ke">Xác suất thống kê</option>
@@ -219,7 +327,7 @@
                                 <option value="toi-uu">Tối ưu hoá</option>
                             </select>
 
-                            <select id="filter-category" class="filter-select">
+                            <select id="filter-category" class="filter-select" aria-label="Lọc theo thể loại">
                                 <option value="">Tất cả thể loại</option>
                                 <option value="ly-thuyet">Lý thuyết</option>
                                 <option value="de-thi">Đề thi</option>
@@ -235,87 +343,209 @@
                         <!-- Empty State -->
                         <div id="empty-state" class="empty-state" style="display:none;">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5"
+                                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <h3>Không tìm thấy tài liệu</h3>
-                            <p id="empty-state-message">Không có tài liệu nào phù hợp với bộ lọc của bạn</p>
+                            <p id="empty-state-message">Không có tài liệu nào phù hợp với bộ lọc hiện tại của bạn.</p>
                             <button id="clear-filters-btn" class="btn-primary">Xóa bộ lọc</button>
                         </div>
 
                         <!-- Loading skeleton -->
                         <div id="loading-skeleton" class="documents-grid">
-                            <div class="document-card"><div class="skeleton" style="height:200px;"></div><div class="card-body"><div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div><div class="skeleton" style="height:12px; width:60%;"></div></div></div>
-                            <div class="document-card"><div class="skeleton" style="height:200px;"></div><div class="card-body"><div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div><div class="skeleton" style="height:12px; width:60%;"></div></div></div>
-                            <div class="document-card"><div class="skeleton" style="height:200px;"></div><div class="card-body"><div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div><div class="skeleton" style="height:12px; width:60%;"></div></div></div>
-                            <div class="document-card"><div class="skeleton" style="height:200px;"></div><div class="card-body"><div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div><div class="skeleton" style="height:12px; width:60%;"></div></div></div>
+                            <div class="document-card">
+                                <div class="skeleton" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div>
+                                    <div class="skeleton" style="height:12px; width:60%;"></div>
+                                </div>
+                            </div>
+                            <div class="document-card">
+                                <div class="skeleton" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div>
+                                    <div class="skeleton" style="height:12px; width:60%;"></div>
+                                </div>
+                            </div>
+                            <div class="document-card">
+                                <div class="skeleton" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div>
+                                    <div class="skeleton" style="height:12px; width:60%;"></div>
+                                </div>
+                            </div>
+                            <div class="document-card">
+                                <div class="skeleton" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <div class="skeleton" style="height:16px; width:80%; margin-bottom:8px;"></div>
+                                    <div class="skeleton" style="height:12px; width:60%;"></div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Documents Grid (JS populates this) -->
                         <div id="documents-grid" class="documents-grid" style="display:none;"></div>
                     </div>
 
-                    <!-- Cột Phải: Sidebar -->
+                    <!-- Right Column: Sidebar -->
                     <aside class="documents-sidebar">
-                        <div class="sidebar-widget" style="margin-bottom: 24px;">
+                        <div class="sidebar-widget">
                             <div class="widget-title">
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="square" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                                 </svg>
-                                Tài liệu nổi bật
+                                <span>Tài liệu tiêu điểm</span>
                             </div>
                             <div class="featured-document" data-drive-id="1tM-dD9MhzQx_WIJwZIuxonhTHeBsBQYX" style="cursor: pointer;">
-                                <img src="https://drive.google.com/thumbnail?id=1tM-dD9MhzQx_WIJwZIuxonhTHeBsBQYX&sz=w800" alt="Khảo Sát Hàm Số & Các Chuyên Đề Nâng Cao" style="width: 100%; aspect-ratio: 1/1.414; object-fit: contain; background-color: var(--c-bg); border: 1px solid var(--c-border); margin-bottom: 12px; transition: opacity var(--t-base);">
-                                <div class="bookmarked-item-title" style="font-size: 14px; margin-bottom: 6px;">Khảo Sát Hàm Số & Các Chuyên Đề Nâng Cao</div>
-                                <div class="bookmarked-item-meta">435 trang • 7.7 MB</div>
-                                <button class="btn-primary" style="width: 100%; margin-top: 12px; padding: 10px; font-size: 11px;">Xem ngay</button>
+                                <img src="https://drive.google.com/thumbnail?id=1tM-dD9MhzQx_WIJwZIuxonhTHeBsBQYX&sz=w800" alt="Khảo Sát Hàm Số & Các Chuyên Đề Nâng Cao" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; background-color: var(--c-bg); border: 1px solid var(--c-border); margin-bottom: 14px;">
+                                <div class="bookmarked-item-title" style="font-size: 14px; margin-bottom: 6px;">Khảo Sát Hàm Số &amp; Các Chuyên Đề Nâng Cao</div>
+                                <div class="bookmarked-item-meta">435 trang • 7.7 MB • THPT</div>
+                                <button class="btn-primary" style="width: 100%; margin-top: 14px; padding: 10px; font-size: 11px;">Xem bản đọc thử</button>
                             </div>
                         </div>
 
                         <div class="sidebar-widget">
                             <div class="widget-title">
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="square" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
                                 </svg>
-                                Tài liệu đã lưu
+                                <span>Tài liệu đã ghim</span>
                             </div>
                             <div id="bookmarked-list" class="bookmarked-list">
-                                <!-- JS populates this -->
-                                <div class="empty-bookmark">Chưa có tài liệu nào được ghim.</div>
+                                <div class="empty-bookmark">Chưa có tài liệu nào được ghim. Nhấn biểu tượng ngôi sao trên thẻ tài liệu để lưu nhanh.</div>
                             </div>
                         </div>
                     </aside>
                 </div>
             </div>
         </section>
+
+        <!-- ===== FEATURES / ARCHITECTURE SECTION (Bravechat Swiss Grid) ===== -->
+        <section class="about-section site-section">
+            <div class="site-container">
+                <div style="max-width: 640px; margin-bottom: 48px;">
+                    <div class="section-tag">Giá trị cốt lõi</div>
+                    <h2 class="section-title">Thiết kế tối giản cho việc tự học hiệu quả</h2>
+                    <p style="font-size: 15px; color: var(--c-text-body); line-height: 1.7;">
+                        Bravemath loại bỏ mọi rào cản quảng cáo và đăng nhập phức tạp, tập trung hoàn toàn vào trải nghiệm tra cứu, xem trước và tải xuống tài liệu học thuật chất lượng cao.
+                    </p>
+                </div>
+
+                <div class="swiss-grid-3">
+                    <div class="swiss-feature-card">
+                        <div class="feature-icon-box">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                                <path stroke-linecap="square" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Tuyển chọn &amp; Hệ thống</h3>
+                        <p class="feature-desc">
+                            Bao phủ kiến thức Toán THPT Quốc gia (Khảo sát hàm số, Hình học Oxyz, Nguyên hàm - Tích phân) và Toán Đại học (Giải tích, Đại số tuyến tính, Xác suất thống kê, Toán rời rạc, Tối ưu hóa).
+                        </p>
+                    </div>
+
+                    <div class="swiss-feature-card">
+                        <div class="feature-icon-box">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                                <path stroke-linecap="square" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Truy cập &amp; Xem trước tức thì</h3>
+                        <p class="feature-desc">
+                            Tích hợp trình xem trước tài liệu trực tiếp trên giao diện (Hover Preview trên máy tính) và liên kết tải xuống trực tiếp từ Google Drive với tốc độ tối đa, không qua trung gian.
+                        </p>
+                    </div>
+
+                    <div class="swiss-feature-card">
+                        <div class="feature-icon-box">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                                <path stroke-linecap="square" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Lưu trữ cá nhân hóa</h3>
+                        <p class="feature-desc">
+                            Ghim các tài liệu đang ôn tập vào bộ nhớ trình duyệt để truy cập lại ngay lập tức. Hỗ trợ chuyển đổi giao diện Ocean Dark / Light bảo vệ thị lực khi học đêm.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER (Bravechat 4-Column Swiss Footer) ===== -->
     <footer class="site-footer">
         <div class="site-container">
-            <div class="footer-social">
-                <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://www.threads.com/@brave._.9" target="_blank" rel="noopener noreferrer" aria-label="Threads">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 00-2.215-.221z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/brave._.9" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-                <a href="https://github.com/Bravee9" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="https://tiktok.com/@brave._.9" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.17a8.16 8.16 0 004.76 1.53v-3.5a4.84 4.84 0 01-1-.51z"/></svg>
-                </a>
+            <div class="footer-grid">
+                <div>
+                    <a href="/bravemath/index.html" class="brand-logo" style="margin-bottom: 16px;">
+                        <img src="./assets/images/favicon.png" alt="Bravemath Icon" style="height: 28px; width: 28px; object-fit: contain;">
+                        <span class="brand-logo-text">Brave<span class="brand-logo-accent">math</span></span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Nền tảng chia sẻ tài liệu Toán học mở dành cho học sinh THPT và sinh viên Đại học Việt Nam. Miễn phí, chuẩn mực và cập nhật liên tục.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.threads.com/@brave._.9" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 00-2.215-.221z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/brave._.9" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://github.com/Bravee9/bravemath" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="https://tiktok.com/@brave._.9" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.17a8.16 8.16 0 004.76 1.53v-3.5a4.84 4.84 0 01-1-.51z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-col-title">Điều hướng</h3>
+                    <ul class="footer-links">
+                        <li><a href="/bravemath/index.html">Trang chủ</a></li>
+                        <li><a href="#documents">Kho tài liệu</a></li>
+                        <li><a href="/bravemath/about.html">Giới thiệu</a></li>
+                        <li><a href="/bravemath/how-to-use.html">Hướng dẫn sử dụng</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-col-title">Chuyên mục</h3>
+                    <ul class="footer-links">
+                        <li><a href="#documents" data-quick-level="thpt">Toán THPT Quốc gia</a></li>
+                        <li><a href="#documents" data-quick-subject="giai-tich">Giải tích Đại học</a></li>
+                        <li><a href="#documents" data-quick-subject="xac-suat-thong-ke">Xác suất thống kê</a></li>
+                        <li><a href="#documents" data-quick-subject="toan-roi-rac">Toán rời rạc &amp; Tối ưu</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-col-title">Hệ sinh thái</h3>
+                    <ul class="footer-links">
+                        <li><a href="/bravemath/contact.html">Liên hệ &amp; Đóng góp</a></li>
+                        <li><a href="https://github.com/Bravee9/bravemath" target="_blank" rel="noopener noreferrer">Mã nguồn GitHub</a></li>
+                        <li><a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a></li>
+                        <li><a href="/bravemath/admin.html">Quản trị tài liệu</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-copy">
-                <p>&copy; Bravemath 2025 - 2026</p>
-                <p>Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a></p>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <p>&copy; 2025 - 2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
+                </div>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>Hệ thống hoạt động bình thường</span>
+                </div>
             </div>
         </div>
     </footer>
 
 </body>
+
 </html>

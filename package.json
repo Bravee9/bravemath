@@ -1,16 +1,17 @@
 {
   "type": "module",
   "name": "bravemath",
-  "version": "1.0.0",
-  "description": "Platform chia sẻ tài liệu học thuật miễn phí cho học sinh THPT và sinh viên",
+  "version": "2.0.0",
+  "description": "Open academic mathematics repository for high school and university students",
   "main": "src/js/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run css:build && vite build",
     "preview": "vite preview",
     "css:watch": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --watch",
     "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify",
     "update:metadata": "node scripts/update-metadata.js",
+    "update:exam-year": "node scripts/update-exam-year.js",
     "add:document": "node scripts/add-document.js",
     "server": "node scripts/server.js",
     "admin": "node scripts/server.js"
