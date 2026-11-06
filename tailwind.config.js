@@ -6,7 +6,6 @@ export default {
     "./about.html",
     "./contact.html",
     "./how-to-use.html",
-    "./admin.html",
   ],
   darkMode: 'class',
   theme: {

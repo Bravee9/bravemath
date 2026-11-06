@@ -19,8 +19,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         about: resolve(__dirname, 'about.html'),
         howtouse: resolve(__dirname, 'how-to-use.html'),
-        contact: resolve(__dirname, 'contact.html'),
-        admin: resolve(__dirname, 'admin.html')
+        contact: resolve(__dirname, 'contact.html')
       }
     }
   },

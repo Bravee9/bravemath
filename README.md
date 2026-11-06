@@ -32,7 +32,6 @@ Key capabilities include:
 - **THPTQG Examination Countdown with Automatic Year Rollover**: Live second-by-second countdown to the upcoming Vietnam National High School Graduation Examination (currently **THPTQG 2027**), featuring automatic transition to **2028** and subsequent years upon completion.
 - **Interactive Hover Preview**: Desktop hover popover with embedded Google Drive PDF preview and instant download triggers.
 - **Local Bookmarking**: Persistent client-side document pinning stored via `localStorage`.
-- **Metadata Administration Console**: Built-in `admin.html` utility with Google Drive URL drag-and-drop ID extraction and automated JSON schema generation.
 
 ---
 
@@ -78,7 +77,6 @@ bravemath/
 │   └── exam-schedule.json        # THPTQG examination dates and rollover metadata
 ├── scripts/
 │   ├── add-document.js           # CLI helper for appending document metadata
-│   ├── server.js                 # Local Express utility server for admin operations
 │   ├── update-exam-year.js       # Automated THPTQG examination year rollover script
 │   └── update-metadata.js        # Automated Google Drive metadata synchronization
 ├── src/
@@ -95,7 +93,6 @@ bravemath/
 ├── about.html                    # Platform overview and academic mission
 ├── how-to-use.html               # User documentation and search guide
 ├── contact.html                  # Feedback and document submission form
-├── admin.html                    # Metadata generator and catalog inspector
 ├── tailwind.config.js            # Tailwind CSS configuration with Ocean palette
 ├── vite.config.js                # Vite multi-page bundler configuration
 └── package.json                  # Build scripts and package dependencies
