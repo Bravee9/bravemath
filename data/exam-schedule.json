@@ -1,0 +1,67 @@
+{
+  "activeYear": 2027,
+  "timezone": "Asia/Ho_Chi_Minh",
+  "utcOffset": "+07:00",
+  "lastChecked": "2026-11-06T00:00:00+07:00",
+  "autoRollover": true,
+  "defaultRule": {
+    "month": 6,
+    "nthThursday": 4,
+    "startTime": "07:30:00",
+    "mathStartTime": "14:20:00",
+    "endTime": "17:00:00",
+    "durationDays": 2
+  },
+  "schedules": [
+    {
+      "year": 2026,
+      "label": "Kỳ thi Tốt nghiệp THPT Quốc gia 2026",
+      "examDate": "2026-06-11T07:30:00+07:00",
+      "mathExamDate": "2026-06-11T14:20:00+07:00",
+      "endDate": "2026-06-12T17:00:00+07:00",
+      "status": "completed",
+      "isOfficial": true,
+      "note": "Kỳ thi THPT Quốc gia 2026 đã hoàn thành (11/06/2026 - 12/06/2026)."
+    },
+    {
+      "year": 2027,
+      "label": "Kỳ thi Tốt nghiệp THPT Quốc gia 2027",
+      "examDate": "2027-06-24T07:30:00+07:00",
+      "mathExamDate": "2027-06-24T14:20:00+07:00",
+      "endDate": "2027-06-25T17:00:00+07:00",
+      "status": "upcoming",
+      "isOfficial": false,
+      "note": "Lịch thi dự kiến ngày 24–25/06/2027 theo khung kế hoạch năm học của Bộ GD&ĐT."
+    },
+    {
+      "year": 2028,
+      "label": "Kỳ thi Tốt nghiệp THPT Quốc gia 2028",
+      "examDate": "2028-06-22T07:30:00+07:00",
+      "mathExamDate": "2028-06-22T14:20:00+07:00",
+      "endDate": "2028-06-23T17:00:00+07:00",
+      "status": "scheduled",
+      "isOfficial": false,
+      "note": "Lịch thi dự kiến ngày 22–23/06/2028 theo khung kế hoạch năm học của Bộ GD&ĐT."
+    },
+    {
+      "year": 2029,
+      "label": "Kỳ thi Tốt nghiệp THPT Quốc gia 2029",
+      "examDate": "2029-06-21T07:30:00+07:00",
+      "mathExamDate": "2029-06-21T14:20:00+07:00",
+      "endDate": "2029-06-22T17:00:00+07:00",
+      "status": "scheduled",
+      "isOfficial": false,
+      "note": "Lịch thi dự kiến ngày 21–22/06/2029 theo khung kế hoạch năm học của Bộ GD&ĐT."
+    },
+    {
+      "year": 2030,
+      "label": "Kỳ thi Tốt nghiệp THPT Quốc gia 2030",
+      "examDate": "2030-06-27T07:30:00+07:00",
+      "mathExamDate": "2030-06-27T14:20:00+07:00",
+      "endDate": "2030-06-28T17:00:00+07:00",
+      "status": "scheduled",
+      "isOfficial": false,
+      "note": "Lịch thi dự kiến ngày 27–28/06/2030 theo khung kế hoạch năm học của Bộ GD&ĐT."
+    }
+  ]
+}

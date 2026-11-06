@@ -6,6 +6,7 @@
 import { loadDocuments, downloadDocument, previewDocument } from './api.js';
 import { filterDocuments, sortDocuments, updateResultsCount } from './search.js';
 import { setupRouter } from './router.js';
+import { initExamCountdown } from './countdown.js';
 
 /* ========================================
    GLOBAL STATE
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupScrollHeader();
     setupScrollbarAutohide();
     setupHeroTypewriter();
+    initExamCountdown();
 
     try {
         await loadAndRenderDocuments();

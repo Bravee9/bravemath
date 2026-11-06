@@ -12,6 +12,7 @@
 
   <p>
     <a href="#overview">Overview</a> |
+    <a href="#thptqg-examination-countdown-and-auto-rollover">THPTQG Countdown</a> |
     <a href="#design-system">Design System</a> |
     <a href="#system-architecture">Architecture</a> |
     <a href="#git-workflow-and-branches">Git Workflow</a> |
@@ -28,9 +29,24 @@
 
 Key capabilities include:
 - **Real-Time Multi-Faceted Search and Filtering**: Instant client-side filtering across education levels (`thpt`, `daihoc`), academic subjects (Calculus, Linear Algebra, Probability and Statistics, Discrete Mathematics, Geometry, Optimization), and document categories.
+- **THPTQG Examination Countdown with Automatic Year Rollover**: Live second-by-second countdown to the upcoming Vietnam National High School Graduation Examination (currently **THPTQG 2027**), featuring automatic transition to **2028** and subsequent years upon completion.
 - **Interactive Hover Preview**: Desktop hover popover with embedded Google Drive PDF preview and instant download triggers.
 - **Local Bookmarking**: Persistent client-side document pinning stored via `localStorage`.
 - **Metadata Administration Console**: Built-in `admin.html` utility with Google Drive URL drag-and-drop ID extraction and automated JSON schema generation.
+
+---
+
+## THPTQG Examination Countdown and Auto-Rollover
+
+Bravemath includes an automated dual-layer countdown engine tracking the annual Vietnam National High School Graduation Examination (THPTQG):
+
+1. **Client-Side Real-Time Rollover (`src/js/countdown.js`)**:
+   - Displays remaining Days, Hours, Minutes, and Seconds (`font-variant-numeric: tabular-nums`), the exact Mathematics examination slot, and the academic year progress bar.
+   - Evaluates the current timestamp against `endDate` on every 1-second tick. The instant the active examination concludes (for example, when **THPTQG 2027** finishes on `2027-06-25T17:00:00+07:00`), the UI automatically switches to **THPTQG 2028** without requiring a page refresh or manual code deployment.
+   - Includes a deterministic fallback generator (fourth Thursday of June at `07:30 GMT+7`) for any future year beyond the pre-populated schedule table.
+2. **Automated Repository Rollover (`scripts/update-exam-year.js` and `.github/workflows/update-exam-date.yml`)**:
+   - A scheduled GitHub Actions workflow executes daily at `00:00 GMT+7` (`0 17 * * *` UTC) and supports manual `workflow_dispatch`.
+   - When the current `activeYear` examination ends, the script advances `activeYear` in `data/exam-schedule.json` to the next year (`2027` -> `2028`), appends future schedule entries, and commits the update directly to the repository.
 
 ---
 
@@ -53,15 +69,18 @@ bravemath/
 ├── .github/
 │   ├── workflows/
 │   │   ├── ci.yml                # Continuous Integration for main and development
-│   │   └── deploy.yml            # GitHub Pages production deployment
+│   │   ├── deploy.yml            # GitHub Pages production deployment
+│   │   └── update-exam-date.yml  # Scheduled daily THPTQG exam year rollover
 │   └── PULL_REQUEST_TEMPLATE.md  # Standardized Pull Request checklist
 ├── assets/
 │   └── images/                   # Static brand icons and OpenGraph assets
 ├── data/
-│   └── documents.json            # Master catalog of academic PDF documents
+│   ├── documents.json            # Master catalog of academic PDF documents
+│   └── exam-schedule.json        # THPTQG examination dates and rollover metadata
 ├── scripts/
 │   ├── add-document.js           # CLI helper for appending document metadata
 │   ├── server.js                 # Local Express utility server for admin operations
+│   ├── update-exam-year.js       # Automated THPTQG examination year rollover script
 │   └── update-metadata.js        # Automated Google Drive metadata synchronization
 ├── src/
 │   ├── css/
@@ -69,6 +88,7 @@ bravemath/
 │   │   └── styles.css            # Compiled and minified Tailwind CSS output
 │   └── js/
 │       ├── api.js                # Google Drive direct download and preview integration
+│       ├── countdown.js          # Real-time THPTQG countdown and auto-rollover engine
 │       ├── main.js               # Core application state, DOM rendering, and theme logic
 │       ├── router.js             # Client-side navigation handler
 │       └── search.js             # Filtering, sorting, and query matching engine

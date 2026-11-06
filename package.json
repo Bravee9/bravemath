@@ -11,6 +11,7 @@
     "css:watch": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --watch",
     "css:build": "tailwindcss -i ./src/css/input.css -o ./src/css/styles.css --minify",
     "update:metadata": "node scripts/update-metadata.js",
+    "update:exam-year": "node scripts/update-exam-year.js",
     "add:document": "node scripts/add-document.js",
     "server": "node scripts/server.js",
     "admin": "node scripts/server.js"
