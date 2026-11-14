@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên hệ — Bravemath</title>
     <link rel="icon" href="./assets/images/favicon.png" type="image/png">
-    <meta name="description" content="Liên hệ với Bravemath để góp ý, đóng góp tài liệu toán học hoặc báo lỗi.">
+    <meta name="description" content="Liên hệ với Bravemath để đóng góp tài liệu, góp ý hoặc báo liên kết hỏng.">
     <link rel="canonical" href="https://bravee9.github.io/bravemath/contact.html">
 
     <!-- Google Analytics -->
@@ -16,33 +16,13 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date()); gtag('config', 'G-PXJXVDWLCG');
     </script>
-
-    <!-- Theme init -->
-    <script>
-        (function () {
-            const t = localStorage.getItem('bravemath-theme');
-            if (t === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
+    <script>if (localStorage.getItem('bravemath-theme') === 'dark') document.documentElement.classList.add('dark');</script>
 
     <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
-<body>
-
-    <!-- ===== OCEAN SWISS MINIMALIST BACKGROUND ===== -->
-    <div class="ocean-bg-wrapper" aria-hidden="true">
-        <div class="bg-ocean-animated"></div>
-        <div class="ocean-grid-overlay"></div>
-        <div class="ocean-orb-1"></div>
-        <div class="ocean-orb-2"></div>
-    </div>
-
-    <!-- Header -->
+<body class="docs-page contact-page">
+<!-- Header -->
     <header class="site-header">
         <div class="header-inner">
             <a href="/bravemath/index.html" class="brand-logo" style="margin-right: 16px;">
@@ -70,7 +50,7 @@
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                     </svg>
                 </button>
-                <button id="mobile-menu-btn" class="mobile-action-btn" aria-label="Menu" title="Menu">
+                <button id="mobile-menu-btn" class="mobile-action-btn" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
@@ -79,50 +59,71 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="/bravemath/index.html" class="mobile-nav-link">Trang chủ</a>
+            <a href="/bravemath/index.html#documents" class="mobile-nav-link">Kho tài liệu</a>
             <a href="/bravemath/about.html" class="mobile-nav-link">Giới thiệu</a>
             <a href="/bravemath/how-to-use.html" class="mobile-nav-link">Hướng dẫn sử dụng</a>
-            <a href="/bravemath/contact.html" class="mobile-nav-link">Liên hệ</a>
+            <a href="/bravemath/contact.html" class="mobile-nav-link active">Liên hệ</a>
         </div>
     </header>
 
     <!-- Main -->
     <main class="site-section">
-        <div class="site-container" style="max-width:680px;">
-            <nav style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--c-muted); margin-bottom:24px;" aria-label="Breadcrumb">
-                <a href="/bravemath/index.html" style="color:var(--c-muted); text-decoration:none;">Trang chủ</a>
-                <span>/</span>
-                <span style="color:var(--c-accent);">Liên hệ</span>
+        <div class="docs-container contact-container">
+            <nav class="docs-breadcrumb" aria-label="Đường dẫn">
+                <a href="/bravemath/index.html">Trang chủ</a>
+                <span aria-hidden="true">/</span>
+                <span>Liên hệ</span>
             </nav>
 
-            <header style="padding-bottom:28px; margin-bottom:32px; border-bottom:1px solid var(--c-border);">
-                <div class="section-tag">Kết nối &amp; Đóng góp</div>
-                <h1 class="section-title" style="font-size:clamp(26px, 3.5vw, 36px); margin-bottom:12px;">Liên hệ với Bravemath</h1>
-                <p style="font-size:15px; color:var(--c-text-body); line-height:1.7;">
-                    Gửi góp ý, đóng góp tài liệu học thuật mới hoặc báo cáo sự cố liên kết thông qua biểu mẫu bên dưới.
-                </p>
+            <header class="docs-header">
+                <h1 class="docs-title">Liên hệ</h1>
+                <p class="docs-subtitle">Gửi góp ý, tài liệu mới hoặc báo liên kết hỏng.</p>
             </header>
 
-            <div class="card">
-                <form action="https://formspree.io/f/xjgkkqzp" method="POST" style="display:flex; flex-direction:column; gap:18px;">
-                    <div>
-                        <label for="contact-name" class="input-label">Họ và tên *</label>
-                        <input id="contact-name" type="text" name="name" placeholder="Nhập họ và tên của bạn" required class="input-field">
-                    </div>
-                    <div>
-                        <label for="contact-email" class="input-label">Địa chỉ Email *</label>
-                        <input id="contact-email" type="email" name="email" placeholder="name@example.com" required class="input-field">
-                    </div>
-                    <div>
-                        <label for="contact-message" class="input-label">Nội dung phản hồi *</label>
-                        <textarea id="contact-message" name="message" placeholder="Mô tả tài liệu muốn đóng góp, câu hỏi hoặc báo lỗi..." required class="input-field"></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="align-self:flex-start; padding:12px 32px;">
-                        <span>Gửi thông điệp</span>
-                        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="square" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </button>
-                </form>
+            <div class="contact-layout">
+                <div class="contact-info prose">
+                    <h2>Trước khi gửi</h2>
+                    <p>Vui lòng chọn đúng loại liên hệ và ghi rõ tài liệu liên quan. Nếu báo lỗi, hãy gửi kèm tên tài liệu và mô tả vấn đề.</p>
+                    <h2>Có thể liên hệ về</h2>
+                    <ul>
+                        <li>Đóng góp tài liệu</li>
+                        <li>Báo liên kết hỏng</li>
+                        <li>Góp ý về nội dung hoặc giao diện</li>
+                        <li>Vấn đề bản quyền</li>
+                    </ul>
+                    <p class="contact-note">Biểu mẫu được gửi qua Formspree. Không gửi mật khẩu hoặc thông tin nhạy cảm.</p>
+                </div>
+
+                <div class="contact-form-panel">
+                    <form action="https://formspree.io/f/xjgkkqzp" method="POST" class="contact-form">
+                        <input type="hidden" name="_subject" value="Liên hệ từ Bravemath">
+                        <div>
+                            <label for="contact-topic" class="input-label">Loại liên hệ</label>
+                            <select id="contact-topic" name="topic" class="input-field" required>
+                                <option value="">Chọn một mục</option>
+                                <option value="dong-gop-tai-lieu">Đóng góp tài liệu</option>
+                                <option value="bao-lien-ket-hong">Báo liên kết hỏng</option>
+                                <option value="gop-y">Góp ý</option>
+                                <option value="ban-quyen">Bản quyền</option>
+                                <option value="khac">Khác</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="contact-name" class="input-label">Họ và tên</label>
+                            <input id="contact-name" type="text" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required class="input-field">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="input-label">Email</label>
+                            <input id="contact-email" type="email" name="email" autocomplete="email" placeholder="name@example.com" required class="input-field">
+                        </div>
+                        <div>
+                            <label for="contact-message" class="input-label">Nội dung</label>
+                            <textarea id="contact-message" name="message" placeholder="Nhập nội dung cần gửi" required class="input-field"></textarea>
+                            <p class="input-help">Hãy ghi tên tài liệu nếu nội dung liên quan đến một tệp cụ thể.</p>
+                        </div>
+                        <button type="submit" class="btn-primary contact-submit">Gửi</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
@@ -137,11 +138,11 @@
                         <span class="brand-logo-text">Brave<span class="brand-logo-accent">math</span></span>
                     </a>
                     <p class="footer-brand-desc">
-                        Nền tảng chia sẻ tài liệu Toán học mở dành cho học sinh THPT và sinh viên Đại học Việt Nam. Miễn phí, chuẩn mực và cập nhật liên tục.
+                        Tài liệu Toán cho học sinh và sinh viên.
                     </p>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Điều hướng</h3>
+                    <h3 class="footer-col-title">Trang</h3>
                     <ul class="footer-links">
                         <li><a href="/bravemath/index.html">Trang chủ</a></li>
                         <li><a href="/bravemath/index.html#documents">Kho tài liệu</a></li>
@@ -150,53 +151,27 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Chuyên mục</h3>
+                    <h3 class="footer-col-title">Cấp học</h3>
                     <ul class="footer-links">
-                        <li><a href="/bravemath/index.html#documents">Toán THPT Quốc gia</a></li>
-                        <li><a href="/bravemath/index.html#documents">Giải tích Đại học</a></li>
-                        <li><a href="/bravemath/index.html#documents">Xác suất thống kê</a></li>
-                        <li><a href="/bravemath/index.html#documents">Toán rời rạc &amp; Tối ưu</a></li>
+                        <li><a href="/bravemath/index.html#documents">Toán THPT</a></li>
+                        <li><a href="/bravemath/index.html#documents">Toán Đại học</a></li>
+                        <li><a href="/bravemath/index.html#documents">Giải tích</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Hệ sinh thái</h3>
+                    <h3 class="footer-col-title">Kết nối</h3>
                     <ul class="footer-links">
-                        <li><a href="/bravemath/contact.html">Liên hệ &amp; Đóng góp</a></li>
+                        <li><a href="/bravemath/contact.html">Liên hệ &amp; đóng góp</a></li>
                         <li><a href="https://github.com/Bravee9/bravemath" target="_blank" rel="noopener noreferrer">Mã nguồn GitHub</a></li>
-                        <li><a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-copy">
-                    <p>&copy; 2025 - 2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
-                </div>
-                <div class="footer-status">
-                    <span class="status-dot"></span>
-                    <span>Hệ thống hoạt động bình thường</span>
-                </div>
+                <p class="footer-copy">&copy; 2025–2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
+                <span class="footer-status"><span class="status-dot"></span>Hệ thống hoạt động bình thường</span>
             </div>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('open');
-        });
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('bravemath-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('bravemath-theme', 'dark');
-            }
-        }
-        document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-        document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-    </script>
+    <script type="module" src="./src/js/site.js"></script>
 </body>
-
 </html>

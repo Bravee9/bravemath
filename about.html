@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,12 @@
     <title>Giới thiệu — Bravemath</title>
     <link rel="icon" href="./assets/images/favicon.png" type="image/png">
     <meta name="description"
-        content="Tìm hiểu về Bravemath — nền tảng chia sẻ tài liệu toán học miễn phí cho học sinh THPT và sinh viên đại học Việt Nam.">
+        content="Thông tin về Bravemath, kho tài liệu Toán cho học sinh THPT và sinh viên đại học.">
     <link rel="canonical" href="https://bravee9.github.io/bravemath/about.html">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Giới thiệu — Bravemath">
-    <meta property="og:description" content="Nền tảng chia sẻ tài liệu toán học miễn phí cho học sinh Việt Nam.">
+    <meta property="og:description" content="Kho tài liệu Toán cho học sinh THPT và sinh viên đại học.">
     <meta property="og:url" content="https://bravee9.github.io/bravemath/about.html">
     <meta property="og:image" content="https://bravee9.github.io/bravemath/images/bravemath-logo.png">
 
@@ -23,33 +23,13 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date()); gtag('config', 'G-PXJXVDWLCG');
     </script>
-
-    <!-- Theme init -->
-    <script>
-        (function () {
-            const t = localStorage.getItem('bravemath-theme');
-            if (t === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
+    <script>if (localStorage.getItem('bravemath-theme') === 'dark') document.documentElement.classList.add('dark');</script>
 
     <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
-<body>
-
-    <!-- ===== OCEAN SWISS MINIMALIST BACKGROUND ===== -->
-    <div class="ocean-bg-wrapper" aria-hidden="true">
-        <div class="bg-ocean-animated"></div>
-        <div class="ocean-grid-overlay"></div>
-        <div class="ocean-orb-1"></div>
-        <div class="ocean-orb-2"></div>
-    </div>
-
-    <!-- Header -->
+<body class="docs-page about-page">
+<!-- Header -->
     <header class="site-header">
         <div class="header-inner">
             <a href="/bravemath/index.html" class="brand-logo" style="margin-right: 16px;">
@@ -82,7 +62,7 @@
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                     </svg>
                 </button>
-                <button id="mobile-menu-btn" class="mobile-action-btn" aria-label="Menu" title="Menu">
+                <button id="mobile-menu-btn" class="mobile-action-btn" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
@@ -91,7 +71,8 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="/bravemath/index.html" class="mobile-nav-link">Trang chủ</a>
-            <a href="/bravemath/about.html" class="mobile-nav-link">Giới thiệu</a>
+            <a href="/bravemath/index.html#documents" class="mobile-nav-link">Kho tài liệu</a>
+            <a href="/bravemath/about.html" class="mobile-nav-link active">Giới thiệu</a>
             <a href="/bravemath/how-to-use.html" class="mobile-nav-link">Hướng dẫn sử dụng</a>
             <a href="/bravemath/contact.html" class="mobile-nav-link">Liên hệ</a>
         </div>
@@ -99,54 +80,50 @@
 
     <!-- Main (Bravechat DocsLayout Style) -->
     <main class="site-section">
-        <div class="site-container" style="max-width:820px;">
-            <nav style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--c-muted); margin-bottom:24px;" aria-label="Breadcrumb">
-                <a href="/bravemath/index.html" style="color:var(--c-muted); text-decoration:none;">Trang chủ</a>
-                <span>/</span>
-                <span style="color:var(--c-accent);">Giới thiệu</span>
+        <div class="docs-container">
+            <nav class="docs-breadcrumb" aria-label="Đường dẫn">
+                <a href="/bravemath/index.html">Trang chủ</a>
+                <span aria-hidden="true">/</span>
+                <span>Giới thiệu</span>
             </nav>
 
-            <header style="padding-bottom:32px; margin-bottom:36px; border-bottom:1px solid var(--c-border);">
-                <div class="section-tag">Thông tin dự án</div>
-                <h1 class="section-title" style="font-size:clamp(28px, 4vw, 40px); margin-bottom:12px;">Giới thiệu về Bravemath</h1>
-                <p style="font-size:16px; color:var(--c-text-body); line-height:1.7;">
-                    Kho lưu trữ và chia sẻ tài liệu Toán học mở dành cho cộng đồng học sinh THPT và sinh viên Đại học tại Việt Nam.
-                </p>
+            <header class="docs-header">
+                <h1 class="docs-title">Giới thiệu</h1>
+                <p class="docs-subtitle">Bravemath là kho tài liệu Toán dành cho học sinh THPT và sinh viên đại học.</p>
             </header>
 
-            <div class="card">
-                <div class="prose">
-                    <p>
-                        Bravemath là nền tảng lưu trữ học thuật tĩnh được thiết kế theo triết lý <strong>Swiss Minimalist</strong>, tập trung chuyên sâu vào bộ môn Toán học. Toàn bộ tài liệu được lưu trữ trên hạ tầng Google Drive và phân phối trực tiếp đến người học hoàn toàn miễn phí.
-                    </p>
+            <article class="prose page-prose">
+                <section class="content-section">
+                    <h2>Bravemath là gì?</h2>
+                    <p>Bravemath tập hợp giáo trình, bài giảng, bài tập và đề thi. Tài liệu được lưu trên Google Drive và có thể xem hoặc tải mà không cần đăng nhập.</p>
+                </section>
 
-                    <h2>Dành cho học sinh THPT</h2>
-                    <p>
-                        Bravemath cung cấp lộ trình ôn tập Toán cấp 3 một cách hệ thống và chọn lọc: tóm tắt lý thuyết trọng tâm, đề thi thử THPT Quốc gia từ các trường chuyên, bài tập vận dụng - vận dụng cao và chuyên đề giải chi tiết phù hợp với chương trình Giáo dục phổ thông mới.
-                    </p>
+                <section class="content-section">
+                    <h2>Nội dung</h2>
+                    <ul>
+                        <li><strong>THPT:</strong> chuyên đề, bài tập, tài liệu ôn tập và đề thi.</li>
+                        <li><strong>Đại học:</strong> Giải tích, Đại số tuyến tính, Xác suất thống kê, Toán rời rạc và Tối ưu hóa.</li>
+                    </ul>
+                    <p>Danh sách tài liệu được cập nhật trực tiếp trong <a href="/bravemath/index.html#documents">kho tài liệu</a>.</p>
+                </section>
 
-                    <h2>Dành cho sinh viên Đại học</h2>
-                    <p>
-                        Đối với sinh viên đại cương và chuyên ngành kỹ thuật - công nghệ, Bravemath tổng hợp giáo trình và bài giảng Giải tích 1, 2, Đại số tuyến tính, Xác suất thống kê, Toán rời rạc và Tối ưu hóa từ các trường đại học lớn như ĐHKHTN - ĐHQGHN (HUS), ĐHBK Hà Nội (HUST) và các nguồn học liệu chuẩn quốc tế.
-                    </p>
+                <section class="content-section">
+                    <h2>Cách sử dụng</h2>
+                    <p>Tìm theo tên hoặc tác giả, sau đó lọc theo cấp học, môn học và loại tài liệu. Bạn cũng có thể lưu tài liệu trên trình duyệt để xem lại.</p>
+                    <p>Xem chi tiết tại trang <a href="/bravemath/how-to-use.html">Hướng dẫn sử dụng</a>.</p>
+                </section>
 
-                    <h2>Về tác giả</h2>
-                    <p>
-                        Dự án được khởi xướng, xây dựng và duy trì bởi <strong>Bùi Quang Chiến</strong> (@brave._.9) — sinh viên ngành Khoa học máy tính và thông tin, Trường Đại học Khoa học Tự nhiên, ĐHQGHN (HUS - VNU). Mọi tài liệu đều được biên soạn và kiểm duyệt kỹ lưỡng nhằm mang lại giá trị thực tiễn cao nhất cho cộng đồng tự học.
-                    </p>
+                <section class="content-section">
+                    <h2>Người thực hiện</h2>
+                    <p>Bravemath do <strong>Bùi Quang Chiến</strong>, sinh viên Trường Đại học Khoa học Tự nhiên, ĐHQGHN, xây dựng và duy trì.</p>
+                </section>
 
-                    <h2>Cam kết học thuật mở</h2>
-                    <div class="note-box">
-                        <p>
-                            Tài liệu trên Bravemath luôn miễn phí 100%, không chứa quảng cáo gây xao nhãng và không yêu cầu tạo tài khoản đăng nhập. Nếu bạn tìm thấy tài liệu hữu ích, hãy chia sẻ trang web với bạn bè — đó là cách thiết thực nhất để đồng hành cùng dự án.
-                        </p>
-                    </div>
-
-                    <p style="margin-top:24px;">
-                        Để đóng góp thêm học liệu hoặc báo cáo liên kết hỏng, vui lòng gửi thông tin qua trang <a href="/bravemath/contact.html">Liên hệ</a>.
-                    </p>
-                </div>
-            </div>
+                <section class="content-section">
+                    <h2>Đóng góp và báo lỗi</h2>
+                    <p>Nếu muốn gửi tài liệu, góp ý hoặc báo liên kết hỏng, hãy dùng trang Liên hệ.</p>
+                    <a class="btn-secondary page-link-button" href="/bravemath/contact.html">Mở trang Liên hệ</a>
+                </section>
+            </article>
         </div>
     </main>
 
@@ -160,11 +137,11 @@
                         <span class="brand-logo-text">Brave<span class="brand-logo-accent">math</span></span>
                     </a>
                     <p class="footer-brand-desc">
-                        Nền tảng chia sẻ tài liệu Toán học mở dành cho học sinh THPT và sinh viên Đại học Việt Nam. Miễn phí, chuẩn mực và cập nhật liên tục.
+                        Tài liệu Toán cho học sinh và sinh viên.
                     </p>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Điều hướng</h3>
+                    <h3 class="footer-col-title">Trang</h3>
                     <ul class="footer-links">
                         <li><a href="/bravemath/index.html">Trang chủ</a></li>
                         <li><a href="/bravemath/index.html#documents">Kho tài liệu</a></li>
@@ -173,53 +150,27 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Chuyên mục</h3>
+                    <h3 class="footer-col-title">Cấp học</h3>
                     <ul class="footer-links">
-                        <li><a href="/bravemath/index.html#documents">Toán THPT Quốc gia</a></li>
-                        <li><a href="/bravemath/index.html#documents">Giải tích Đại học</a></li>
-                        <li><a href="/bravemath/index.html#documents">Xác suất thống kê</a></li>
-                        <li><a href="/bravemath/index.html#documents">Toán rời rạc &amp; Tối ưu</a></li>
+                        <li><a href="/bravemath/index.html#documents">Toán THPT</a></li>
+                        <li><a href="/bravemath/index.html#documents">Toán Đại học</a></li>
+                        <li><a href="/bravemath/index.html#documents">Giải tích</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Hệ sinh thái</h3>
+                    <h3 class="footer-col-title">Kết nối</h3>
                     <ul class="footer-links">
-                        <li><a href="/bravemath/contact.html">Liên hệ &amp; Đóng góp</a></li>
+                        <li><a href="/bravemath/contact.html">Liên hệ &amp; đóng góp</a></li>
                         <li><a href="https://github.com/Bravee9/bravemath" target="_blank" rel="noopener noreferrer">Mã nguồn GitHub</a></li>
-                        <li><a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-copy">
-                    <p>&copy; 2025 - 2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
-                </div>
-                <div class="footer-status">
-                    <span class="status-dot"></span>
-                    <span>Hệ thống hoạt động bình thường</span>
-                </div>
+                <p class="footer-copy">&copy; 2025–2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
+                <span class="footer-status"><span class="status-dot"></span>Hệ thống hoạt động bình thường</span>
             </div>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('open');
-        });
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('bravemath-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('bravemath-theme', 'dark');
-            }
-        }
-        document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-        document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-    </script>
+    <script type="module" src="./src/js/site.js"></script>
 </body>
-
 </html>
