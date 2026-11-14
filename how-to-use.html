@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hướng dẫn sử dụng — Bravemath</title>
     <link rel="icon" href="./assets/images/favicon.png" type="image/png">
-    <meta name="description" content="Hướng dẫn chi tiết cách sử dụng Bravemath: tìm kiếm, tải và sử dụng tài liệu toán học miễn phí.">
+    <meta name="description" content="Cách tìm, xem, tải và lưu tài liệu trên Bravemath.">
     <link rel="canonical" href="https://bravee9.github.io/bravemath/how-to-use.html">
 
     <!-- Google Analytics -->
@@ -16,33 +16,13 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date()); gtag('config', 'G-PXJXVDWLCG');
     </script>
-
-    <!-- Theme init -->
-    <script>
-        (function () {
-            const t = localStorage.getItem('bravemath-theme');
-            if (t === 'light') {
-                document.documentElement.classList.remove('dark');
-            } else {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
+    <script>if (localStorage.getItem('bravemath-theme') === 'dark') document.documentElement.classList.add('dark');</script>
 
     <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
-<body>
-
-    <!-- ===== OCEAN SWISS MINIMALIST BACKGROUND ===== -->
-    <div class="ocean-bg-wrapper" aria-hidden="true">
-        <div class="bg-ocean-animated"></div>
-        <div class="ocean-grid-overlay"></div>
-        <div class="ocean-orb-1"></div>
-        <div class="ocean-orb-2"></div>
-    </div>
-
-    <!-- Header -->
+<body class="docs-page guide-page">
+<!-- Header -->
     <header class="site-header">
         <div class="header-inner">
             <a href="/bravemath/index.html" class="brand-logo" style="margin-right: 16px;">
@@ -70,7 +50,7 @@
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                     </svg>
                 </button>
-                <button id="mobile-menu-btn" class="mobile-action-btn" aria-label="Menu" title="Menu">
+                <button id="mobile-menu-btn" class="mobile-action-btn" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
@@ -79,65 +59,78 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="/bravemath/index.html" class="mobile-nav-link">Trang chủ</a>
+            <a href="/bravemath/index.html#documents" class="mobile-nav-link">Kho tài liệu</a>
             <a href="/bravemath/about.html" class="mobile-nav-link">Giới thiệu</a>
-            <a href="/bravemath/how-to-use.html" class="mobile-nav-link">Hướng dẫn sử dụng</a>
+            <a href="/bravemath/how-to-use.html" class="mobile-nav-link active">Hướng dẫn sử dụng</a>
             <a href="/bravemath/contact.html" class="mobile-nav-link">Liên hệ</a>
         </div>
     </header>
 
     <!-- Main -->
     <main class="site-section">
-        <div class="site-container" style="max-width:820px;">
-            <nav style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--c-muted); margin-bottom:24px;" aria-label="Breadcrumb">
-                <a href="/bravemath/index.html" style="color:var(--c-muted); text-decoration:none;">Trang chủ</a>
-                <span>/</span>
-                <span style="color:var(--c-accent);">Hướng dẫn sử dụng</span>
+        <div class="docs-container guide-container">
+            <nav class="docs-breadcrumb" aria-label="Đường dẫn">
+                <a href="/bravemath/index.html">Trang chủ</a>
+                <span aria-hidden="true">/</span>
+                <span>Hướng dẫn</span>
             </nav>
 
-            <header style="padding-bottom:32px; margin-bottom:36px; border-bottom:1px solid var(--c-border);">
-                <div class="section-tag">Tài liệu hướng dẫn</div>
-                <h1 class="section-title" style="font-size:clamp(28px, 4vw, 40px); margin-bottom:12px;">Hướng dẫn tra cứu &amp; khai thác tài liệu</h1>
-                <p style="font-size:16px; color:var(--c-text-body); line-height:1.7;">
-                    Quy trình tìm kiếm, xem trước trực tuyến, ghim tài liệu yêu thích và tải xuống file PDF trên Bravemath.
-                </p>
+            <header class="docs-header">
+                <h1 class="docs-title">Hướng dẫn sử dụng</h1>
+                <p class="docs-subtitle">Cách tìm, xem, tải và lưu tài liệu.</p>
             </header>
 
-            <div class="card">
-                <div class="prose">
-                    <h2>1. Tìm kiếm và lọc tài liệu</h2>
-                    <p>Hệ thống hỗ trợ tra cứu tức thì theo nhiều tiêu chí kết hợp:</p>
-                    <ul>
-                        <li><strong>Từ khoá trực tiếp:</strong> Nhập tên chuyên đề, công thức, tên tác giả hoặc khái niệm toán học vào thanh tìm kiếm trên Header.</li>
-                        <li><strong>Bộ lọc đa chiều:</strong> Lọc theo Cấp độ (THPT / Đại học), Môn học (Giải tích, Xác suất thống kê, Toán rời rạc, Đại số, Hình học, Tối ưu hóa) và Thể loại (Lý thuyết, Đề thi, Bài tập, Giải chi tiết).</li>
-                        <li><strong>Ghim tài liệu:</strong> Nhấp vào biểu tượng ngôi sao ở góc phải ảnh bìa để lưu tài liệu vào cột "Tài liệu đã ghim" phục vụ việc tra cứu lại nhanh chóng.</li>
-                    </ul>
+            <nav class="on-page-nav" aria-label="Nội dung trang">
+                <a href="#tim-kiem">Tìm kiếm</a>
+                <a href="#xem-tai">Xem và tải</a>
+                <a href="#luu-tai-lieu">Lưu tài liệu</a>
+                <a href="#giao-dien">Giao diện</a>
+                <a href="#bao-loi">Báo lỗi</a>
+            </nav>
 
-                    <h2>2. Xem trước tài liệu (Live Preview)</h2>
-                    <p>
-                        Nhấp vào ảnh bìa của bất kỳ tài liệu nào để mở trình đọc PDF trên tab mới. Trên máy tính để bàn, bạn có thể di chuột lên thẻ tài liệu trong 0.2 giây để kích hoạt cửa sổ <strong>Hover Preview</strong> đọc thử trực tiếp mà không cần rời khỏi trang.
-                    </p>
-
-                    <h2>3. Tải tài liệu PDF</h2>
-                    <ol>
-                        <li>Xác định tài liệu bạn cần trong danh mục.</li>
-                        <li>Nhấp nút <strong>"Tải xuống"</strong> ở cuối thẻ tài liệu.</li>
-                        <li>Trình duyệt sẽ kết nối trực tiếp tới máy chủ Google Drive để tải file PDF gốc về thiết bị.</li>
-                    </ol>
-
-                    <h2>4. Chế độ giao diện Ocean Dark / Light</h2>
-                    <p>
-                        Giao diện mặc định sử dụng tông màu <strong>Ocean Dark</strong> giúp giảm mỏi mắt khi học tập trong thời gian dài. Bạn có thể chuyển đổi sang chế độ Sáng (Light Mode) bất cứ lúc nào thông qua nút biểu tượng mặt trời / mặt trăng trên thanh điều hướng.
-                    </p>
-
-                    <h2>5. Quy tắc sử dụng &amp; Bản quyền</h2>
-                    <div class="note-box">
-                        <ul>
-                            <li>Tất cả tài liệu được chia sẻ miễn phí, phục vụ mục đích học tập và nghiên cứu phi thương mại.</li>
-                            <li>Vui lòng giữ nguyên thông tin tác giả và nguồn gốc khi trích dẫn hoặc chia sẻ lại.</li>
-                            <li>Nếu phát hiện liên kết tải xuống gặp sự cố, vui lòng thông báo qua trang <a href="/bravemath/contact.html">Liên hệ</a>.</li>
-                        </ul>
+            <div class="guide-list">
+                <section id="tim-kiem" class="guide-section">
+                    <div class="guide-number" aria-hidden="true">1</div>
+                    <div class="prose">
+                        <h2>Tìm kiếm và lọc</h2>
+                        <p>Nhập tên tài liệu, chủ đề hoặc tác giả vào ô tìm kiếm trên trang chủ.</p>
+                        <p>Dùng các bộ lọc để chọn cấp học, môn học và loại tài liệu. Mục Sắp xếp cho phép đổi thứ tự theo ngày hoặc tên.</p>
                     </div>
-                </div>
+                </section>
+
+                <section id="xem-tai" class="guide-section">
+                    <div class="guide-number" aria-hidden="true">2</div>
+                    <div class="prose">
+                        <h2>Xem trước và tải PDF</h2>
+                        <p>Chọn <strong>Xem trước</strong> hoặc nhấp vào ảnh bìa để mở tài liệu trên Google Drive.</p>
+                        <p>Chọn <strong>Tải PDF</strong> để tải tệp về thiết bị.</p>
+                    </div>
+                </section>
+
+                <section id="luu-tai-lieu" class="guide-section">
+                    <div class="guide-number" aria-hidden="true">3</div>
+                    <div class="prose">
+                        <h2>Lưu tài liệu</h2>
+                        <p>Chọn biểu tượng dấu trang trên một tài liệu. Tài liệu đó sẽ xuất hiện trong mục Tài liệu đã lưu.</p>
+                        <p>Danh sách này được lưu trên trình duyệt hiện tại. Nếu xóa dữ liệu trình duyệt hoặc đổi thiết bị, danh sách sẽ không được giữ lại.</p>
+                    </div>
+                </section>
+
+                <section id="giao-dien" class="guide-section">
+                    <div class="guide-number" aria-hidden="true">4</div>
+                    <div class="prose">
+                        <h2>Chế độ sáng và tối</h2>
+                        <p>Dùng nút mặt trăng hoặc mặt trời trên thanh điều hướng để đổi chế độ hiển thị. Lựa chọn được lưu trên trình duyệt.</p>
+                    </div>
+                </section>
+
+                <section id="bao-loi" class="guide-section">
+                    <div class="guide-number" aria-hidden="true">5</div>
+                    <div class="prose">
+                        <h2>Báo liên kết hỏng</h2>
+                        <p>Nếu không thể xem hoặc tải tài liệu, hãy gửi tên tài liệu và mô tả lỗi qua trang <a href="/bravemath/contact.html">Liên hệ</a>.</p>
+                    </div>
+                </section>
             </div>
         </div>
     </main>
@@ -152,11 +145,11 @@
                         <span class="brand-logo-text">Brave<span class="brand-logo-accent">math</span></span>
                     </a>
                     <p class="footer-brand-desc">
-                        Nền tảng chia sẻ tài liệu Toán học mở dành cho học sinh THPT và sinh viên Đại học Việt Nam. Miễn phí, chuẩn mực và cập nhật liên tục.
+                        Tài liệu Toán cho học sinh và sinh viên.
                     </p>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Điều hướng</h3>
+                    <h3 class="footer-col-title">Trang</h3>
                     <ul class="footer-links">
                         <li><a href="/bravemath/index.html">Trang chủ</a></li>
                         <li><a href="/bravemath/index.html#documents">Kho tài liệu</a></li>
@@ -165,53 +158,27 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Chuyên mục</h3>
+                    <h3 class="footer-col-title">Cấp học</h3>
                     <ul class="footer-links">
-                        <li><a href="/bravemath/index.html#documents">Toán THPT Quốc gia</a></li>
-                        <li><a href="/bravemath/index.html#documents">Giải tích Đại học</a></li>
-                        <li><a href="/bravemath/index.html#documents">Xác suất thống kê</a></li>
-                        <li><a href="/bravemath/index.html#documents">Toán rời rạc &amp; Tối ưu</a></li>
+                        <li><a href="/bravemath/index.html#documents">Toán THPT</a></li>
+                        <li><a href="/bravemath/index.html#documents">Toán Đại học</a></li>
+                        <li><a href="/bravemath/index.html#documents">Giải tích</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="footer-col-title">Hệ sinh thái</h3>
+                    <h3 class="footer-col-title">Kết nối</h3>
                     <ul class="footer-links">
-                        <li><a href="/bravemath/contact.html">Liên hệ &amp; Đóng góp</a></li>
+                        <li><a href="/bravemath/contact.html">Liên hệ &amp; đóng góp</a></li>
                         <li><a href="https://github.com/Bravee9/bravemath" target="_blank" rel="noopener noreferrer">Mã nguồn GitHub</a></li>
-                        <li><a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-copy">
-                    <p>&copy; 2025 - 2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
-                </div>
-                <div class="footer-status">
-                    <span class="status-dot"></span>
-                    <span>Hệ thống hoạt động bình thường</span>
-                </div>
+                <p class="footer-copy">&copy; 2025–2026 Bravemath. Phát triển bởi <a href="https://www.facebook.com/buiquangchienhus" target="_blank" rel="noopener noreferrer">Bùi Quang Chiến</a>.</p>
+                <span class="footer-status"><span class="status-dot"></span>Hệ thống hoạt động bình thường</span>
             </div>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('open');
-        });
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('bravemath-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('bravemath-theme', 'dark');
-            }
-        }
-        document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-        document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-    </script>
+    <script type="module" src="./src/js/site.js"></script>
 </body>
-
 </html>

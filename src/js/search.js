@@ -1,8 +1,4 @@
 /**
- * Search Module — Filter, sort, and search documents.
- */
-
-/**
  * Filter documents by keyword and filter criteria.
  * @param {Array} documents - All documents
  * @param {string} query - Search keyword
